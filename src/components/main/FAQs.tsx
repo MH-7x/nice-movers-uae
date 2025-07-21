@@ -27,7 +27,7 @@ export function FAQs({ faqs }: { faqs: FAQProps[] }) {
             defaultValue="item-1"
           >
             <AccordionItem value={faq.question}>
-              <AccordionTrigger className="text-lg">
+              <AccordionTrigger className="md:text-lg text-base">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance ">

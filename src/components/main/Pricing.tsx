@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const Pricing = () => {
   return (
@@ -39,8 +40,12 @@ const Pricing = () => {
           </p>
         </div>
         <div className="mt-5 flex gap-x-3">
-          <Button className="b-red-bg">Get A Quote</Button>
-          <Button variant={"secondary"}>About Us</Button>
+          <Link href={"/"} title="Get A Free Moving Quote">
+            <Button className="b-red-bg">Get A Quote</Button>
+          </Link>
+          <Link title="About Nice Movers" href={"/"}>
+            <Button variant={"secondary"}>About Us</Button>
+          </Link>
         </div>
       </div>
       <div className="bg-red-300 min-h-80 relative">

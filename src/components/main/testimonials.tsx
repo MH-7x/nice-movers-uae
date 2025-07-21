@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import ReviewCard from "../ReviewCard";
+import Link from "next/link";
 const reviews = [
   {
     reviewerName: "Alexander L",
@@ -109,9 +110,11 @@ const Testimoials = () => {
                 quality standards, your move is in expert hands.
               </p>
             </div>
-            <Button variant={"secondary"} className="mt-5">
-              Contact Us
-            </Button>
+            <Link href={"/"} title="Get A Free Moving Quote">
+              <Button variant={"secondary"} className="mt-5">
+                Contact Us
+              </Button>
+            </Link>
             <Button variant={"link"} className="mt-5 b-white">
               View All Reviews
             </Button>

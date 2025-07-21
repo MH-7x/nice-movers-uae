@@ -1,73 +1,85 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
-const servicesList = [
+export const servicesList = [
   {
     title: "House Movers",
     desc: "Nice Movers offers fast and affordable house moving services across the UAE, ensuring a safe and stress-free relocation for families and individuals.",
     src: "/House-Movers.jpg",
     alt: "Nice Movers house relocation for families.",
+    link: "/",
   },
   {
     title: "Villa Movers",
     desc: "Expert in villa relocation, Nice Movers safely handles luxury moves in Dubai, Sharjah, and Abu Dhabi with care and precision.",
     src: "/Villa-Movers.jpg",
     alt: "Nice Movers expert villa relocation services.",
+    link: "/",
   },
   {
     title: "Office Moving",
     desc: "Nice Movers provides smooth and efficient office moving services, minimizing downtime while relocating your office furniture and equipment.",
     src: "/Office-Moving.jpg",
     alt: "Nice Movers efficient office moving solutions.",
+    link: "/",
   },
   {
     title: "Storage Services",
     desc: "Secure and flexible storage solutions for furniture, equipment, and bulky items—ideal for short or long-term needs.",
     src: "/Storage-Services.jpg",
     alt: "Nice Movers secure storage facilities.",
+    link: "/",
   },
   {
     title: "Furniture Storage",
     desc: "Safe and reliable furniture storage services to protect your items during renovations, moves, or seasonal use.",
     src: "/Storage-Services.jpg",
     alt: "Nice Movers safe furniture storage.",
+    link: "/",
   },
   {
     title: "Local Moving",
     desc: "Fast and budget-friendly local moving services within your city—perfect for apartments, villas, or small offices.",
     src: "/local-moving.jpg",
     alt: "Nice Movers fast local moving services.",
+    link: "/",
   },
   {
     title: "Transportation",
     desc: "Trusted transportation services for furniture and goods across the UAE with timely delivery and secure handling.",
     src: "/Transportation.jpg",
     alt: "Nice Movers reliable transportation services.",
+    link: "/",
   },
   {
     title: "Cheap Moving",
     desc: "Reliable and low-cost moving solutions for students, studio apartments, and small-scale relocations across the UAE.",
     src: "/Cheap-Moving.jpg",
     alt: "Nice Movers low-cost moving solutions.",
+    link: "/",
   },
   {
     title: "Apartment Relocation",
     desc: "Smooth and stress-free apartment moving services with packing, transport, and delivery handled by trained professionals.",
     src: "/Apartment-Relocation.jpg",
     alt: "Nice Movers stress-free apartment moving.",
+    link: "/",
   },
   {
     title: "Equipment Movers",
     desc: "Specialized in equipment moving, Nice Movers ensures safe transport and setup of machinery and valuable assets.",
     src: "/Equipment-Movers.jpg",
     alt: "Nice Movers specialized equipment moving.",
+    link: "/",
   },
   {
     title: "Installation & Handyman Services",
     desc: "We offer expert installation and handyman solutions, including doors, stairs, glass work, and partitions across the UAE.",
     src: "/Installation-and-Handyman-Services.jpg",
     alt: "Nice Movers expert handyman services.",
+    link: "/",
   },
 ];
 
@@ -86,6 +98,8 @@ export const CoreServices = () => {
           train movers. In UAE, we provide a wide range of moving services but
           here are main services we provide:
         </p>
+
+        {/* residential moves */}
         <div className="mt-20 grid md:grid-cols-2 grid-cols-1 items-center md:gap-20 gap-10 md:w-11/12 w-full mx-auto">
           <div id="residential-moving">
             <h3 className="md:text-3xl text-xl b-text">
@@ -105,8 +119,12 @@ export const CoreServices = () => {
               complete, stress-free family move.
             </p>
             <div className="mt-5 flex gap-x-3">
-              <Button className="b-red-bg">Book Now: Residential Moving</Button>
-              <Button variant={"ghost"}>More details</Button>
+              <Button wtBtn className="b-red-bg">
+                Book Now: Residential Moving
+              </Button>
+              <Link href="/">
+                <Button variant={"ghost"}>More details</Button>
+              </Link>
             </div>
           </div>
           <div
@@ -120,9 +138,12 @@ export const CoreServices = () => {
               className="object-cover object-center"
             />
           </div>
+          {/* residential moves */}
+
+          {/* commercial moves */}
           <div
             id="commercial-moving-image"
-            className="relative md:h-[450px] h-80 rounded-2xl md:order-1 order-2 overflow-hidden"
+            className="relative md:h-[450px] h-80 rounded-2xl  overflow-hidden"
           >
             <Image
               src={"/commercial-moving-uae.jpg"}
@@ -131,7 +152,7 @@ export const CoreServices = () => {
               className="object-cover object-center"
             />
           </div>
-          <div className="md:order-2 order-1" id="commercial-moving">
+          <div className="" id="commercial-moving">
             <h3 className="md:text-3xl text-xl b-text ">
               Commercial Moves In UAE
             </h3>
@@ -149,10 +170,17 @@ export const CoreServices = () => {
               running smoothly.
             </p>
             <div className="mt-5 flex md:gap-x-3 gap-x-1">
-              <Button className="b-red-bg">Book Now: Commercial Moving</Button>
-              <Button variant={"ghost"}>More details</Button>
+              <Button wtBtn className="b-red-bg">
+                Book Now: Commercial Moving
+              </Button>
+              <Link href="/">
+                <Button variant={"ghost"}>More details</Button>
+              </Link>
             </div>
           </div>
+          {/* commercial moves */}
+
+          {/* villa moves */}
           <div id="villa-and-Specialty-moving">
             <h3 className="md:text-3xl text-xl b-text">
               Villa & Specialty Moves In UAE
@@ -172,13 +200,17 @@ export const CoreServices = () => {
               most valuable possessions are always protected.
             </p>
             <div className="mt-5 flex gap-x-3">
-              <Button className="b-red-bg">Book Now: Villa & Specialty</Button>
-              <Button variant={"ghost"}>More details</Button>
+              <Button wtBtn className="b-red-bg">
+                Book Now: Villa & Specialty
+              </Button>
+              <Link href="/">
+                <Button variant={"ghost"}>More details</Button>
+              </Link>
             </div>
           </div>
           <div
             id="villa-and-Specialty-moving-image"
-            className="relative md:h-[450px] h-80 rounded-2xl overflow-hidden"
+            className="relative md:h-[450px] h-80 rounded-2xl  overflow-hidden"
           >
             <Image
               src={"/villa-and-speciality-moving-uae.jpg"}
@@ -187,6 +219,7 @@ export const CoreServices = () => {
               className="object-cover object-center"
             />
           </div>
+          {/* villa moves */}
         </div>
       </section>
       <section
@@ -199,22 +232,24 @@ export const CoreServices = () => {
         </h2>
         <div className="mt-20 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
           {servicesList.map((service, index) => (
-            <div
+            <Link
+              href={service.link}
               key={index}
               id={service.title.split(" ").join("-")}
-              className="md:h-96 h-80 rounded-2xl overflow-hidden relative"
             >
-              <Image
-                src={service.src}
-                alt={service.alt}
-                fill
-                className="absolute object-cover object-center"
-              />
-              <div className="b-red-grd z-10 absolute top-0 left-0 w-full h-full p-5 flex flex-col items-start justify-end">
-                <h3 className="text-xl b-red font-bold ">{service.title}</h3>
-                <p className="text-sm b-text mt-2 ">{service.desc}</p>
+              <div className="md:h-96 h-80 rounded-2xl overflow-hidden relative">
+                <Image
+                  src={service.src}
+                  alt={service.alt}
+                  fill
+                  className="absolute object-cover object-center"
+                />
+                <div className="b-red-grd z-10 absolute top-0 left-0 w-full h-full p-5 flex flex-col items-start justify-end">
+                  <h3 className="text-xl b-red font-bold ">{service.title}</h3>
+                  <p className="text-sm b-text mt-2 ">{service.desc}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

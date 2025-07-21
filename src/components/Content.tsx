@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const Content = () => {
   return (
@@ -22,8 +23,12 @@ const Content = () => {
           relocation with peace of mind across the UAE!
         </p>
         <div className="flex items-center gap-x-5 mt-8">
-          <Button className="">About Company</Button>
-          <Button variant={"secondary"}>Get A Quote</Button>
+          <Link href={"/"} title="About Nice Movers">
+            <Button className="b-text-bg">About Company</Button>
+          </Link>
+          <Link href={"/"} title="Get A Free Moving Quote">
+            <Button variant={"secondary"}>Get A Quote</Button>
+          </Link>
         </div>
       </div>
       <div id="image" className="relative md:h-[500px] h-[400px] bg-red-200">

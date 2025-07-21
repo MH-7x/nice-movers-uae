@@ -1,6 +1,7 @@
 import Content from "@/components/Content";
 import ContactSection from "@/components/main/ContactSection";
 import { CoreServices } from "@/components/main/CoreServices";
+import CTA from "@/components/main/CTA";
 import { FAQs } from "@/components/main/FAQs";
 import HeroSection from "@/components/main/HeroSection";
 import Locations from "@/components/main/Locations";
@@ -75,6 +76,7 @@ export default function Home() {
       <Testimoials />
       <Pricing />
       <FAQs faqs={faqs} />
+      <CTA />
     </main>
   );
 }

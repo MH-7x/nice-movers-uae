@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import logo from "../../../public/Picture1.png";
 import Image from "next/image";
 import Link from "next/link";
+import { servicesList } from "./CoreServices";
 export const MobileNavbar = () => {
   return (
     <header className="fixed z-50 top-0 left-0 w-full px-3 py-4 bg-white">
@@ -59,12 +60,12 @@ const Sidebar = () => {
             <Plus className="transition-transform peer-checked:rotate-45" />
           </label>
           <DropDown
-            list={[
-              {
-                title: `House Shifting`,
-                link: "/used-home-furniture-dubai",
-              },
-            ]}
+            list={servicesList.map((ser) => {
+              return {
+                link: ser.link,
+                title: ser.title,
+              };
+            })}
           />
         </li>
 
@@ -125,11 +126,10 @@ const DropDown = ({ list }: { list: { title: string; link: string }[] }) => {
       {list.map((item) => (
         <li key={item.title} title={item.title}>
           <Link
-            className="pb-0.5 px-1 text-base"
+            className="pb-0.5 px-1 text-[15px] underline underline-offset-1"
             href={item.link}
             onClick={closeSidebar} // Close sidebar on link click
           >
-            <span className="text-base text-accent pr-1">&rarr;</span>{" "}
             {item.title}
           </Link>
         </li>

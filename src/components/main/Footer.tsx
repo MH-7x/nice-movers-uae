@@ -2,10 +2,14 @@ import { Code2, Mail, PhoneCallIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { services } from "../../../List";
+import { servicesList } from "./CoreServices";
 
 const Footer = () => {
+  const mid = Number((services.length / 2).toFixed());
   return (
     <>
+      {" "}
       <footer className="relative z-10 bg-white mt-20 pt-20 dark:bg-dark  lg:pt-[120px] ">
         <div className="container md:px-0 px-3 mx-auto">
           <div className="md:-mx-4 -mx-2 flex flex-wrap">
@@ -19,13 +23,13 @@ const Footer = () => {
                     alt="Nice Movers Logo"
                   />
                 </Link>
-                <p className="mb-7 text-base text-body-color dark:text-dark-6">
+                <p className="mb-7 text-sm text-body-color dark:text-dark-6">
                   Nice Movers – Licensed UAE movers and packers since 2015,
                   offering reliable home, office, and villa relocation services
                   across all Emirates.
                 </p>
                 <Link
-                  href={"tel:+971556461731"}
+                  href={"tel:+971563560017"}
                   className="flex items-center text-sm font-medium text-dark dark:text-white hover:underline underline-offset-4 transition-colors"
                 >
                   <PhoneCallIcon
@@ -34,20 +38,9 @@ const Footer = () => {
                     strokeWidth={1.5}
                     className="mr-3 text-primary"
                   />
-                  <span>+971 55 6461731</span>
+                  <span>+971 56 3560017</span>
                 </Link>
-                <Link
-                  href={"tel:+971567878464"}
-                  className="flex items-center text-sm font-medium text-dark dark:text-white hover:underline underline-offset-4 transition-colors mt-3"
-                >
-                  <PhoneCallIcon
-                    width={20}
-                    height={20}
-                    strokeWidth={1.5}
-                    className="mr-3 text-primary"
-                  />
-                  <span>+971 56 7878464</span>
-                </Link>
+
                 <Link
                   href={"mailto:abumuhammad.movers@gmail.com"}
                   className="flex items-center text-sm font-medium text-dark dark:text-white hover:underline underline-offset-4 transition-colors mt-3"
@@ -64,33 +57,27 @@ const Footer = () => {
             </div>
 
             <LinkGroup header="SERVICES">
-              <NavLink link="/home-moving-dubai" label="Home Moving" />
-              <NavLink link="#" label="Office Relocation" />
-              <NavLink
-                link="/local-movers-in-dubai"
-                label="Local Movers in Dubai"
-              />
-              <NavLink
-                link="/packing-services-in-dubai"
-                label="Packing Services"
-              />
-              <NavLink
-                link="/single-item-movers-dubai"
-                label="Single Item Moving"
-              />
-              <NavLink link="#" label="Furniture Installation" />
-              <NavLink link="#" label="Storage Services" />
-              <NavLink link="#" label="Furniture Movers in Dubai" />
+              {servicesList.map((service, index) => (
+                <NavLink
+                  key={index}
+                  link={service.link}
+                  label={service.title}
+                />
+              ))}
             </LinkGroup>
             <LinkGroup header="LOCATIONS">
               <NavLink link="#" label="Movers in Dubai" />
               <NavLink link="#" label="Movers in Sharjah" />
               <NavLink link="#" label="Movers in Abu Dhabi" />
               <NavLink link="#" label="Movers in Ajman" />
+              <NavLink link="#" label="Movers in Ras Al Khaimah" />
+              <NavLink link="#" label="Movers in Al Ain" />
+              <NavLink link="#" label="Movers in Fujairah" />
             </LinkGroup>
             <LinkGroup header="Useful Links">
               <NavLink link="/about-us" label="About Us" />
               <NavLink link="/book-movers-online" label="Contact Us" />
+              <NavLink link="/book-movers-online" label="Blogs" />
               <NavLink link="/faqs" label="faqs" />
               <NavLink link="#" label="Sitemap" />
               <NavLink link="#" label="Gallery" />
@@ -160,8 +147,8 @@ const Footer = () => {
                   </a>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  &copy; {new Date().getFullYear()} Abu Muhammad Movers. All
-                  Rights Reserved.
+                  &copy; {new Date().getFullYear()} Nice Movers LLC. All Rights
+                  Reserved.
                 </p>
                 <p className="text-sm text-muted-foreground flex items-center mt-1 gap-x-2">
                   <Code2 width={15} height={20} /> Develop by{" "}
@@ -233,6 +220,51 @@ const Footer = () => {
           </span>
         </div>
       </footer>
+      <section
+        id="nice-movers-services-in-uae"
+        className="w-full px-10 py-2 b-text-bg"
+      >
+        <div className="grid grid-cols-2">
+          <details className="group">
+            <summary className="flex justify-between items-center b-white">
+              <h3 className="text-base">services</h3>
+            </summary>
+            <ul
+              id="services-list"
+              className="flex flex-wrap text-sm gap-x-3 gap-y-1 text-[#eeeeee]"
+            >
+              {services.slice(0, mid).map((ser, i) => (
+                <li
+                  className="underline underline-offset-1"
+                  key={i}
+                  id={ser.split(" ").join("-")}
+                >
+                  {ser}
+                </li>
+              ))}
+            </ul>
+          </details>
+          <details className="group">
+            <summary className="flex justify-between items-center b-white">
+              <h3 className="text-base">services</h3>
+            </summary>
+            <ul
+              id="services-list-2"
+              className="flex flex-wrap text-sm gap-x-3 gap-y-1 text-[#eeeeee]"
+            >
+              {services.slice(mid, services.length - 1).map((ser, i) => (
+                <li
+                  className="underline underline-offset-1"
+                  key={i}
+                  id={ser.split(" ").join("-")}
+                >
+                  {ser}
+                </li>
+              ))}
+            </ul>
+          </details>
+        </div>
+      </section>
     </>
   );
 };
@@ -250,10 +282,10 @@ const LinkGroup = ({
     <>
       <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
         <div className="mb-10 w-full">
-          <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
+          <h4 className="mb-5 text-lg font-semibold text-dark dark:text-white">
             {header}
           </h4>
-          <ul className="space-y-3">{children}</ul>
+          <ul className="space-y-1">{children}</ul>
         </div>
       </div>
     </>
@@ -265,7 +297,7 @@ const NavLink = ({ link, label }: { link: string; label: string }) => {
     <li>
       <a
         href={link}
-        className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
+        className="inline-block text-sm leading-loose hover:underline underline-offset-2 hover:text-[#c00000]"
       >
         {label}
       </a>

@@ -18,10 +18,12 @@ const HeroSection = () => {
           villas.
         </p>
         <div className="flex items-center gap-x-5 w-full justify-center mt-5">
-          <Button className={"b-red-bg"} size={"lg"}>
+          <Button callBtn className={"b-red-bg"} size={"lg"}>
             CALL NOW
           </Button>
-          <Button size={"lg"}>OUR SERVICES</Button>
+          <Button className="b-text-bg" size={"lg"}>
+            OUR SERVICES
+          </Button>
         </div>
       </section>
       <BuildingsSvg />
