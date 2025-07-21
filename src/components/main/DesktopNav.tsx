@@ -4,6 +4,7 @@ import Image from "next/image";
 import logo from "../../../public/Picture1.png";
 import { NavItems } from "../NavItems";
 import Link from "next/link";
+
 const DesktopNav = () => {
   return (
     <header className="fixed top-0 left-0 bg-white py-2 w-full z-50">

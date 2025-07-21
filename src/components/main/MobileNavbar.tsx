@@ -1,10 +1,10 @@
 "use client";
 import { Menu, Plus } from "lucide-react";
-import { Button } from "../ui/button";
 import logo from "../../../public/Picture1.png";
 import Image from "next/image";
 import Link from "next/link";
 import { servicesList } from "./CoreServices";
+import { locations } from "../NavItems";
 export const MobileNavbar = () => {
   return (
     <header className="fixed z-50 top-0 left-0 w-full px-3 py-4 bg-white">
@@ -50,7 +50,7 @@ const Sidebar = () => {
 
       <ul className="w-full px-5 mt-[70px] text-lg">
         {/* SERVICES DROPDOWN */}
-        <li className="border-b border-accent/50 mb-2">
+        <li className="border-b border-[#e7e6e6] mb-2">
           <input type="checkbox" id="services-toggle" className="peer hidden" />
           <label
             htmlFor="services-toggle"
@@ -70,7 +70,7 @@ const Sidebar = () => {
         </li>
 
         {/* LOCATIONS DROPDOWN */}
-        <li className="border-b border-accent/50 mb-2">
+        <li className="border-b border-[#e7e6e6] mb-2">
           <input
             type="checkbox"
             id="locations-toggle"
@@ -84,27 +84,27 @@ const Sidebar = () => {
             <Plus className="transition-transform peer-checked:rotate-45" />
           </label>
           <DropDown
-            list={[
-              {
-                title: `Movers In Dubai`,
-                link: "/used-furniture-in-abu-dhabi",
-              },
-            ]}
+            list={locations.map((loc) => {
+              return {
+                link: loc.link,
+                title: loc.title,
+              };
+            })}
           />
         </li>
 
         {/* OTHER LINKS */}
-        <li className="border-b border-accent/50 mb-2 pl-4 py-2">
+        <li className="border-b border-[#e7e6e6] mb-2 pl-4 py-2">
           <Link onClick={closeSidebar} href={"/about-us"}>
             About Us
           </Link>
         </li>
-        <li className="border-b border-accent/50 mb-2 pl-4 py-2">
+        <li className="border-b border-[#e7e6e6] mb-2 pl-4 py-2">
           <Link onClick={closeSidebar} href={"/contact-us"}>
             Contact Us
           </Link>
         </li>
-        <li className="border-b border-accent/50 mb-2 pl-4 py-2">
+        <li className="border-b border-[#e7e6e6] mb-2 pl-4 py-2">
           <a onClick={closeSidebar} href={"/blogs"}>
             {" "}
             Blogs

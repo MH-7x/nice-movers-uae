@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/main/Navbar";
 import Footer from "@/components/main/Footer";
+import { FixedBtns } from "@/components/main/FixedBtns";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
+        <FixedBtns />
         <div className="gray-grd"></div>
         <Navbar />
         {children}
