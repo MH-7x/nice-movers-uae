@@ -34,12 +34,12 @@ const ReviewCard: FC<ReviewCardProps> = ({
       <hr className="my-2" />
 
       <div className="flex justify-between items-center text-sm">
-        <div className="text-xl font-bold text-black">
+        <div className="text-lg font-bold b-text">
           AED {price.toLocaleString()}
         </div>
 
         <div className="flex flex-col text-right">
-          <span className="text-base font-semibold b-red hover:underline cursor-pointer">
+          <span className="text-sm font-semibold b-red hover:underline cursor-pointer">
             {moveType}
           </span>
           <div className="flex items-center text-gray-500 text-xs">

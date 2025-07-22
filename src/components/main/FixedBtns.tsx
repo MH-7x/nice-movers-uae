@@ -4,7 +4,7 @@ import React from "react";
 
 export const FixedBtns = () => {
   return (
-    <div className="fixed w-full bottom-0 left-0 z-50 flex items-end justify-between px-3 pb-5">
+    <div className="fixed w-full bottom-0 left-0 z-50 flex items-end justify-between md:px-10 px-3 mb-5">
       <Link
         href={"tel:971563560017"}
         title="Nice Movers Phone Number"

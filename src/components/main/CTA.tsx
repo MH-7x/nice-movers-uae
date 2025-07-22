@@ -16,12 +16,12 @@ const CTA = () => {
         <h2 className="md:text-4xl text-2xl font-bold b-white text-shadow-2xs">
           Ready To Move <br /> With Nice Movers!
         </h2>
-        <p className="text-[#cdcdcd] max-w-2xl mt-3">
+        <p className="text-[#d6d6d6] max-w-2xl mt-3">
           Book Your Move Today! Contact Nice Movers now to reserve your slot.
-          Call us at +971‑XXX‑XXXX or start a live chat with our relocation
+          Call us at +971 563560017 or start a live chat with our relocation
           experts.
         </p>
-        <p className="text-[#cdcdcd] max-w-2xl mt-1">
+        <p className="text-[#d6d6d6] max-w-2xl mt-1">
           With Nice Movers, you’re choosing an insured, licensed team that’s
           trusted across the UAE – let us make your next move smooth, safe and
           hassle-free!

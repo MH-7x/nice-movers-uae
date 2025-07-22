@@ -5,11 +5,11 @@ import Link from "next/link";
 
 export const servicesList = [
   {
-    title: "House Movers",
+    title: "House Shifting",
     desc: "Nice Movers offers fast and affordable house moving services across the UAE, ensuring a safe and stress-free relocation for families and individuals.",
     src: "/House-Movers.jpg",
     alt: "Nice Movers house relocation for families.",
-    link: "/",
+    link: "/house-shifting-services",
   },
   {
     title: "Villa Movers",

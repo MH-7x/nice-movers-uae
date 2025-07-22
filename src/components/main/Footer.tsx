@@ -2,7 +2,7 @@ import { Code2, Mail, PhoneCallIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { services } from "../../../List";
+import { services, ServicesLocations } from "../../../List";
 import { servicesList } from "./CoreServices";
 
 const Footer = () => {
@@ -51,7 +51,7 @@ const Footer = () => {
                     strokeWidth={1.5}
                     className="mr-3 text-primary"
                   />
-                  <span>abumuhammad.movers@gmail.com</span>
+                  <span>nice.movers@gmail.com</span>
                 </Link>
               </div>
             </div>
@@ -66,13 +66,10 @@ const Footer = () => {
               ))}
             </LinkGroup>
             <LinkGroup header="LOCATIONS">
-              <NavLink link="#" label="Movers in Dubai" />
-              <NavLink link="#" label="Movers in Sharjah" />
-              <NavLink link="#" label="Movers in Abu Dhabi" />
-              <NavLink link="#" label="Movers in Ajman" />
-              <NavLink link="#" label="Movers in Ras Al Khaimah" />
-              <NavLink link="#" label="Movers in Al Ain" />
-              <NavLink link="#" label="Movers in Fujairah" />
+              {ServicesLocations &&
+                ServicesLocations.map((loc) => (
+                  <NavLink key={loc.link} link={loc.link} label={loc.title} />
+                ))}
             </LinkGroup>
             <LinkGroup header="Useful Links">
               <NavLink link="/about-us" label="About Us" />
@@ -186,7 +183,7 @@ const Footer = () => {
                   gradientUnits="userSpaceOnUse"
                 >
                   <stop stopColor="#3056D3" stopOpacity="0.08" />
-                  <stop offset={1} stopColor="#C4C4C4" stopOpacity={0} />
+                  <stop offset={1} stopColor="#c000000" stopOpacity={0} />
                 </linearGradient>
               </defs>
             </svg>

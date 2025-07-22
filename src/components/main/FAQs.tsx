@@ -30,7 +30,7 @@ export function FAQs({ faqs }: { faqs: FAQProps[] }) {
               <AccordionTrigger className="md:text-lg text-base">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance ">
+              <AccordionContent className="flex flex-col gap-2 ">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

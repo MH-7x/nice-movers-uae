@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import ReviewCard from "../ReviewCard";
 import Link from "next/link";
-const reviews = [
+export const reviews = [
   {
     reviewerName: "Alexander L",
     rating: 9.8,

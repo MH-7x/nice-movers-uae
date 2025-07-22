@@ -1,8 +1,12 @@
 import React from "react";
 
-const Process = () => {
+const Process = ({ dm = false }: { dm?: boolean }) => {
   return (
-    <section className="md:mt-52 mt-80 md:w-11/12 mx-auto w-full md:px-0 px-3 ">
+    <section
+      className={`${
+        dm ? "md:mt-52 mt-36" : "md:mt-52 mt-80"
+      } md:w-11/12 mx-auto w-full md:px-0 px-3`}
+    >
       <h2 className="md:text-4xl text-2xl font-bold text-center b-red">
         What Is Our <br className="md:hidden" /> Moving Process?
       </h2>

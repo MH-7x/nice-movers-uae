@@ -68,10 +68,40 @@ export default function Home() {
     <main className="z-20 mt-32">
       <HeroSection />
       <Content />
-      <ContactSection />
+      <ContactSection
+        title="Book Now — Packers And Movers in UAE — Low Rates"
+        desc="All Covered. No Hassle. Low-cost movers and packers expert service —
+          book now! Door-to-Door Delivery. Same Day Mover Services. Fixed
+          Prices."
+      />
       <WhyChooseUs />
       <CoreServices />
-      <Locations />
+      <Locations
+        id="service-locations"
+        title="Coverage & Locations In United Arab Emairtes"
+        desc={
+          <>
+            <p>
+              Nice Movers serves all of the UAE. We have branches and teams in
+              Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, Ras Al Khaimah, Al Ain
+              and beyond.{" "}
+            </p>
+            <p>
+              Our local offices and experts mean you get the same personalized
+              service coast-to-coast.
+            </p>
+            <p>
+              As noted by industry leaders, we cover the entire region –
+              literally “anywhere in Dubai, Abu Dhabi, Sharjah… or anywhere in
+              between”
+            </p>
+          </>
+        }
+        img={{
+          src: "/movers-in-uae-2.png",
+          alt: "moving trucks of Nice Movers UAE",
+        }}
+      />
       <Process />
       <Testimoials />
       <Pricing />

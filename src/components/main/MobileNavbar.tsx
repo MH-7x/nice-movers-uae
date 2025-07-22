@@ -4,7 +4,7 @@ import logo from "../../../public/Picture1.png";
 import Image from "next/image";
 import Link from "next/link";
 import { servicesList } from "./CoreServices";
-import { locations } from "../NavItems";
+import { ServicesLocations } from "../../../List";
 export const MobileNavbar = () => {
   return (
     <header className="fixed z-50 top-0 left-0 w-full px-3 py-4 bg-white">
@@ -84,7 +84,7 @@ const Sidebar = () => {
             <Plus className="transition-transform peer-checked:rotate-45" />
           </label>
           <DropDown
-            list={locations.map((loc) => {
+            list={ServicesLocations.map((loc) => {
               return {
                 link: loc.link,
                 title: loc.title,
