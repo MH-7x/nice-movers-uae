@@ -63,7 +63,9 @@ export function NavItems() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>ABOUT US</NavigationMenuTrigger>
+          <NavigationMenuTrigger>
+            <NavigationMenuLink href="/about-us"> ABOUT US</NavigationMenuLink>
+          </NavigationMenuTrigger>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>CONTACT US</NavigationMenuTrigger>
