@@ -6,10 +6,12 @@ const ContactSection = ({
   title,
   desc,
   dm = false,
+  h1 = false,
 }: {
   title: string;
   desc: string | ReactNode;
   dm?: boolean;
+  h1?: boolean;
 }) => {
   return (
     <section
@@ -24,7 +26,11 @@ const ContactSection = ({
 
       {/* Right Info Panel */}
       <div>
-        <h2 className="b-red md:text-4xl text-2xl font-bold">{title}</h2>
+        {h1 ? (
+          <h1 className="b-red md:text-4xl text-2xl font-bold">{title}</h1>
+        ) : (
+          <h2 className="b-red md:text-4xl text-2xl font-bold">{title}</h2>
+        )}
         <p className="b-text md:text-lg md:mt-5 mt-3">{desc}</p>
         <div className="w-full grid md:grid-cols-2 gap-10 mt-8 px-8">
           <div className="flex flex-col items-center justify-center gap-3">

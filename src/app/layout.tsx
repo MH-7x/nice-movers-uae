@@ -16,6 +16,11 @@ const GoogleSans = localfont({
       weight: "400",
     },
     {
+      path: "./GoogleSans-Medium.woff2",
+      style: "normal",
+      weight: "500",
+    },
+    {
       path: "./GoogleSans-Bold.woff2",
       style: "normal",
       weight: "700",
