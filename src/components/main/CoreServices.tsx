@@ -102,8 +102,8 @@ export const CoreServices = () => {
         {/* residential moves */}
         <div className="mt-20 grid md:grid-cols-2 grid-cols-1 items-center md:gap-20 gap-10 md:w-11/12 w-full mx-auto">
           <div id="residential-moving">
-            <h3 className="md:text-3xl text-xl b-text">
-              Residential Moves In UAE
+            <h3 className="md:text-3xl font-medium text-xl b-text">
+              Residential Moves
             </h3>
             <p className="b-text md:mt-5 mt-3 md:text-base text-sm">
               From studios to family homes, our home movers and packers UAE team
@@ -120,7 +120,7 @@ export const CoreServices = () => {
             </p>
             <div className="mt-5 flex gap-x-3">
               <Button wtBtn className="b-red-bg">
-                Book Now: Residential Moving
+                Book: Residential Moving
               </Button>
               <Link href="/">
                 <Button variant={"ghost"}>More details</Button>
@@ -153,8 +153,8 @@ export const CoreServices = () => {
             />
           </div>
           <div className="" id="commercial-moving">
-            <h3 className="md:text-3xl text-xl b-text ">
-              Commercial Moves In UAE
+            <h3 className="md:text-3xl font-medium text-xl b-text">
+              Commercial Moves
             </h3>
             <p className="b-text md:mt-5 mt-3 md:text-base text-sm">
               Our office & commercial moving services UAE support businesses of
@@ -171,7 +171,7 @@ export const CoreServices = () => {
             </p>
             <div className="mt-5 flex md:gap-x-3 gap-x-1">
               <Button wtBtn className="b-red-bg">
-                Book Now: Commercial Moving
+                Book: Commercial Moving
               </Button>
               <Link href="/">
                 <Button variant={"ghost"}>More details</Button>
@@ -182,8 +182,8 @@ export const CoreServices = () => {
 
           {/* villa moves */}
           <div id="villa-and-Specialty-moving">
-            <h3 className="md:text-3xl text-xl b-text">
-              Villa & Specialty Moves In UAE
+            <h3 className="md:text-3xl font-medium text-xl b-text">
+              Villa & Specialty Moves
             </h3>
             <p className="b-text md:mt-5 mt-3 md:text-base text-sm">
               For large villas and special items (pianos, fine art, safes,
@@ -201,7 +201,7 @@ export const CoreServices = () => {
             </p>
             <div className="mt-5 flex gap-x-3">
               <Button wtBtn className="b-red-bg">
-                Book Now: Villa & Specialty
+                Book: Villa & Specialty
               </Button>
               <Link href="/">
                 <Button variant={"ghost"}>More details</Button>

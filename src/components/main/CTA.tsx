@@ -12,7 +12,7 @@ const CTA = ({ title, desc }: { title?: ReactNode; desc?: ReactNode }) => {
         fill
         className="absolute object-cover object-center"
       />
-      <div className="absolute w-full h-full top-0 left-0 flex flex-col items-start justify-center bg-gradient-to-r from-[#c00000ef] md:via-[#c00000c9] via-[#c00000b8] md:to-[#c0000030] to-[#c00000b8] md:pl-20 md:px-0 px-3">
+      <div className="absolute w-full h-full top-0 left-0 flex flex-col items-start justify-center cta-grd md:pl-20 md:px-0 px-3">
         <h2 className="md:text-4xl text-2xl font-bold b-white text-shadow-2xs">
           {title ? (
             title

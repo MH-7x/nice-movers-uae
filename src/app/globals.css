@@ -124,10 +124,6 @@
   }
 }
 
-.gray-grd {
-  @apply fixed top-0 left-0 w-full bg-gradient-to-l from-[#edecec] via-[#fafafa] to-[#edecec] -z-[1] h-screen;
-}
-
 .b-red {
   color: #c00000;
 }
@@ -146,7 +142,19 @@
 .b-white-bg {
   background: #e7e6e6;
 }
-
+.gray-grd {
+  background: linear-gradient(45deg, #edecec, #fafafa, #edecec);
+}
 .b-red-grd {
-  @apply bg-gradient-to-b from-transparent via-[#e7e6e695] to-[#e7e6e6];
+  background: linear-gradient(transparent, #e7e6e6bf, #e7e6e6);
+}
+
+.cta-grd {
+  background: linear-gradient(45deg, #c00000ef, #c00000c9, #c00000b8);
+}
+
+@media (width >= 48rem) {
+  .cta-grd {
+    background: linear-gradient(45deg, #c00000ef, #c00000b8, #c0000030);
+  }
 }

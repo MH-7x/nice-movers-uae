@@ -48,7 +48,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased ${GoogleSans.className} `}>
         <FixedBtns />
-        <div className="gray-grd"></div>
+        <div className="fixed top-0 left-0 w-full gray-grd z-[-1] h-screen"></div>
         <Navbar />
         {children}
         <Footer />

@@ -87,10 +87,10 @@ const WhyChooseUs = () => {
         id="our-moving-experties"
         className="md:w-11/12 w-full mt-36 mx-auto md:px-0 px-3"
       >
-        <h2 className="text-4xl b-red font-bold text-center">
+        <h2 className="md:text-4xl text-3xl b-red font-bold text-center">
           Seemless Moving Experience
         </h2>
-        <p className="text-lg b-text mt-3 max-w-2xl mx-auto text-center">
+        <p className="md:text-lg b-text mt-3 max-w-2xl mx-auto text-center">
           Our teams will treat your possessions like they would their own,
           ensuring that the greatest care and diligence is taken.
         </p>
