@@ -16,7 +16,7 @@ export const servicesList = [
     desc: "Expert in villa relocation, Nice Movers safely handles luxury moves in Dubai, Sharjah, and Abu Dhabi with care and precision.",
     src: "/Villa-Movers.jpg",
     alt: "Nice Movers expert villa relocation services.",
-    link: "/",
+    link: "/villa-movers-in-dubai",
   },
   {
     title: "Office Moving",

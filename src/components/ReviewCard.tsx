@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 interface ReviewCardProps {
   rating: number;
@@ -21,7 +22,15 @@ const ReviewCard: FC<ReviewCardProps> = ({
   to,
 }) => {
   return (
-    <div className="w-full max-w-md bg-white border-gray-200 rounded-xl  p-4">
+    <div className="w-full max-w-md relative bg-white border-gray-200 rounded-xl  p-4">
+      <Image
+        src={"/google-review-badge.png"}
+        alt="google verifed review badge"
+        width={60}
+        height={60}
+        className="absolute top-2 right-4 object-cover"
+        quality={90}
+      />
       <div className="flex items-center gap-2 mb-2">
         <div className="b-red-bg text-white font-semibold text-sm px-2 py-1 rounded-md">
           {rating}

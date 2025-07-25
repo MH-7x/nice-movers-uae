@@ -47,7 +47,7 @@ export const reviews = [
     reviewerName: "Michael G",
     rating: 9.4,
     reviewText:
-      "GI Movers made our move stress‑free and punctual. Polite and careful with delicate items, and arranged white goods before leaving. Very professional and friendly.",
+      "Nice Movers made our move stress‑free and punctual. Polite and careful with delicate items, and arranged white goods before leaving. Very professional and friendly.",
     moveType: "Inter‑emirate home move",
     from: "Abu Dhabi",
     to: "Dubai",

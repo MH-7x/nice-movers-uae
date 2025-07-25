@@ -29,7 +29,7 @@ import Link from "next/link";
 import { ServicesLocations } from "../../../../List";
 import Prices from "@/components/main/Prices";
 import CTA from "@/components/main/CTA";
-
+import imgSrc from "../../../../public/house-shifting-services.png";
 const content = [
   {
     title: "Apartment moving and packing",
@@ -203,7 +203,14 @@ export const metadata: Metadata = {
 const HouseShiftingPage = () => {
   return (
     <main className="z-20 md:mt-[124px] mt-[69px] max-w-[1400px] mx-auto bg-white">
-      <ServiceHero />
+      <ServiceHero
+        title="Affordable House Shifting Services in Dubai, UAE"
+        desc=" Nice Movers is a leading moving and packing company for house
+              shifting services in overall UAE. We offer affordable rates from
+              other moving companies in UAE."
+        btnText="Call Now: Home Movers"
+        image={{ alt: "House Shifting Services in Dubai", src: imgSrc }}
+      />
       <ServiceContent />
       <ContactSection
         dm
