@@ -1,5 +1,29 @@
 import { servicesList } from "@/components/main/CoreServices";
 import { APP } from "@/lib/App";
+import { PlainFAQ } from "@/lib/GenerateFaqSchema";
+
+export const breadcrumbs = [
+  {
+    name: "Home",
+    url: APP.url,
+  },
+  {
+    name: "House Shifting Services",
+    url: `${APP.url}/house-shifting-services`,
+  },
+  {
+    name: "Contact Us",
+    url: `${APP.url}/contact-us`,
+  },
+  {
+    name: "About Us",
+    url: `${APP.url}/about-us`,
+  },
+  {
+    name: "Villa Movers in Dubai",
+    url: `${APP.url}/villa-movers-in-dubai`,
+  }
+]
 
 export const services = [
     "Dubai movers",
@@ -190,6 +214,22 @@ export const ServicesLocations = [
   },
 ];
 
+export const cities = [
+  "Abu Dhabi",
+  "Dubai",
+  "Fujairah",
+  "Sharjah",
+  "Al Ain",
+  "Palm Jumeirah",
+  "JVC (Jumeirah Village Circle)",
+  "Business Bay",
+  "JLT (Jumeirah Lake Towers)",
+  "Al Nahda",
+  "Al Barsha",
+  "Arabian Ranches",
+]
+
+
 export const schemaData = {
     "@context": "https://schema.org",
     "@type": "MovingCompany",
@@ -259,3 +299,94 @@ export const schemaData = {
       }))
     }
   };
+
+export const HouseShiftingRawFaqs: PlainFAQ[] = [
+  {
+    question: "How to book house shifting services?",
+    answer:
+      "To book our house shifting service in Dubai, click on Call or WhatsApp button at the bottom of the website and tell us everything about your move. Another way is to fill out the quote form or visit the contact us page. We will receive your details and contact you as soon as possible.",
+  },
+  {
+    question: "How much does a house moving service cost in Dubai?",
+    answer:
+      "The cost of moving and packing for house shifting service depends on various factors like volume, distance, and the services you need. We have estimated price ranges you can check. Click here to see more.",
+  },
+  {
+    question: "Why should you hire Movers and Packers?",
+    answer:
+      "Whether it’s an apartment move or an office transfer, the process is often stressful and challenging. We ensure convenience by handling dismantling, packing, moving, and reassembling. We use bubble wrap and strong boxes to protect your belongings during the move.",
+  },
+  {
+    question: "Why are we the UAE’s Professional House Shifting Company?",
+    answer:
+      "We offer: Safe and secure moving and packing services, Free site survey, Use of only covered vehicles, Full insurance, Dedicated coordinator, Option for partial or full loading, 24/7 customer support, and Guaranteed fastest services.",
+  },
+  {
+    question: "Do you reassemble the furniture after the moving service?",
+    answer:
+      "Absolutely! Our movers will disassemble your furniture as needed and reassemble it at your new location. We take great care in packing your furniture to ensure safety throughout the move.",
+  },
+  {
+    question: "How long does it take to finish the house shifting service?",
+    answer:
+      "The time varies depending on the amount of items, distance, and services required. Studio: 6-8 hours. 1 Bedroom: 8-10 hours. 2 Bedroom: 10-12 hours. 3 Bedroom: 2 days. 4 Bedroom: 2 days. 5 Bedroom: 3 days. Please contact us for a more accurate estimate.",
+  },
+  {
+    question: "Do I need to buy packaging materials myself?",
+    answer:
+      "No, you don’t need to buy packaging materials. By booking The Nice Movers, our experts bring all necessary materials as part of the service to ensure a smooth and safe move.",
+  },
+  {
+    question: "Where do you provide house shifting services in UAE?",
+    answer:
+      "We provide house shifting services in all major areas of Dubai and across the UAE. We have branches in various locations and offer seamless relocation services throughout the country.",
+  },
+];
+
+export const VillaMovingRawFaqs : PlainFAQ[] = [
+  {
+    question: "How much does it cost to move a villa in Dubai?",
+    answer:
+      "The villa movers in Dubai price depends on factors like villa size, distance, and required services. One truckload can cost you between AED 1000 – AED 1500. A 3-bedroom villa move typically runs AED 4,000–5,000. Luxury or larger villas can cost more. Nice Movers offers an online estimator so you can get an accurate quote for your move."
+  },
+  {
+    question: "Do you offer packing materials?",
+    answer:
+      "Yes, we provide high-quality, eco-friendly packing materials as a part of our comprehensive packing service."
+  },
+  {
+    question: "How useful are villa movers and packers in Dubai?",
+    answer:
+      "Villa movers and packers make the moving process much smoother by handling everything in an organized way. They label all items clearly, ensuring you face no hassle when unpacking and setting up your new home."
+  },
+  {
+    question: "Do you offer villa moving services in all over UAE?",
+    answer:
+      "Although we specialize in villa relocations in Dubai and Abu Dhabi, our services extend across all UAE emirates — including Sharjah, Ras Al Khaimah, Fujairah, Ajman, and Umm Al Quwain — providing professional villa moving solutions no matter where you're located."
+  },
+  {
+    question: "What type of Villa moving services are you offering?",
+    answer:
+      "Although we specialize in villa relocations in Dubai and Abu Dhabi, our services extend across all UAE emirates — including Sharjah, Ras Al Khaimah, Fujairah, Ajman, and Umm Al Quwain — providing professional villa moving solutions no matter where you're located."
+  },
+  {
+    question: "Do you serve Dubai Silicon Oasis and other areas?",
+    answer:
+      "Yes. We cover all Dubai neighborhoods, including Dubai Silicon Oasis, Palm Jumeirah, Arabian Ranches, Jumeirah, Emirates Hills, and more. Whether you’re moving within Silicon Oasis or to any villa community, Nice Movers has you covered."
+  },
+  {
+    question: "What type of Villa moving services are you offering?",
+    answer:
+      "Our Professional Moving Services – Tailored for Every Relocation Need. Villa Moving: We provide complete villa relocation services across the UAE, handling everything from secure packing and careful transportation to organized unpacking and setup — ensuring a smooth and stress-free experience. Luxury Villa Moving: Our team is highly experienced in handling luxury relocations. We use premium packing methods to safely move high-value items such as designer furniture, artwork, antiques, and delicate décor. Residential Moving: Whether you're shifting to a new apartment, townhouse, or home, our residential moving services ensure a smooth, reliable, and timely transition tailored to your unique needs."
+  },
+  {
+    question: "Are your services cheap and budget-friendly?",
+    answer:
+      "We aim to be among the cheap villa movers in Dubai without cutting corners. By working efficiently and offering transparent quotes, we keep costs low while maintaining high quality. Our competitive pricing has satisfied many clients looking for an affordable move."
+  },
+  {
+    question: "Can I read your villa movers in Dubai reviews?",
+    answer:
+      "Yes, you can read our customer reviews on our website and on independent platforms like Google."
+  }
+]

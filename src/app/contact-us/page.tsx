@@ -11,6 +11,21 @@ import {
   ShieldCheckIcon,
   Truck,
 } from "lucide-react";
+import MetadataTemplate from "@/lib/MetaDataTemplate";
+
+export const metadata = MetadataTemplate({
+  data: {
+    meta: {
+      title: "Contact Us  | Free Moving Quotes",
+      desc: "Nice Movers is ISO verifed and professional moving company that provide a wide range of moving and packing services in overall UAE at affordable prices. Call to us or get free quote today.",
+    },
+    image: {
+      path: "/contact-us.jpg",
+      alt: "Get A Free Moving Quote From Nice Movers",
+    },
+    path: "/contact-us",
+  },
+});
 
 const ContactUsPage = () => {
   return (
