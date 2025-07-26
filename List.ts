@@ -1,3 +1,6 @@
+import { servicesList } from "@/components/main/CoreServices";
+import { APP } from "@/lib/App";
+
 export const services = [
     "Dubai movers",
     "Best Mover Dubai",
@@ -186,3 +189,73 @@ export const ServicesLocations = [
     link: "movers-and-packers-in-arabian-ranches",
   },
 ];
+
+export const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "MovingCompany",
+    "name": APP.name,
+    "url": APP.url,
+    "logo": `${APP.url}/Picture1.png`,
+    "image": `${APP.url}/nice-movers-transport-trucks.jpg`,
+    "description": "Nice Movers is a leading movers and packers company in the UAE, offering affordable, fast, and secure relocation services including house shifting, villa moving, office relocation, storage, and more.",
+    "telephone": "+971563560017",
+    "email": "nicemovers.com@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2 Moatab Bin Auf St - Bu Shaghara - Hay Al Qasimiah - Sharjah",
+      "addressLocality": "Sharjah",
+      "addressRegion": "Sharjah",
+      "postalCode": "00000",
+      "addressCountry": "AE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "10:00",
+        "closes": "18:00"
+      }
+    ],
+    "areaServed": [
+      "Abu Dhabi",
+      "Dubai",
+      "Fujairah",
+      "Sharjah",
+      "Al Ain",
+      "Palm Jumeirah",
+      "JVC",
+      "Business Bay",
+      "JLT",
+      "Al Nahda",
+      "Al Barsha",
+      "Arabian Ranches"
+    ],
+    "priceRange": "$$",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Moving Services",
+      "itemListElement": servicesList.map(services => ({
+        
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": services.title,
+            "description": services.desc,
+            "url": `${APP.url}/${services.link}`,
+        },
+      }))
+    }
+  };

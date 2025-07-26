@@ -9,6 +9,23 @@ import Pricing from "@/components/main/Pricing";
 import Process from "@/components/main/Process";
 import Testimoials from "@/components/main/testimonials";
 import WhyChooseUs from "@/components/main/WhyChooseUs";
+import MetadataTemplate from "@/lib/MetaDataTemplate";
+import Script from "next/script";
+import { schemaData } from "../../List";
+
+export const metadata = MetadataTemplate({
+  data: {
+    meta: {
+      title: "Affordable Movers and Packers in UAE | Nice Movers in UAE",
+      desc: "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
+    },
+    image: {
+      path: "/nice-movers-transport-trucks.jpg",
+      alt: "Nice Movers Company Trucks",
+    },
+    path: "",
+  },
+});
 
 const faqs = [
   {
@@ -34,79 +51,107 @@ const faqs = [
   {
     question: "How can I choose reliable movers in the UAE?",
     answer:
-      "Look for licensed companies with positive reviews and industry experience. Verify their trade license includes relocation services and ask for references. Multiple quotes help compare services effectively.:contentReference[oaicite:1]{index=1}",
+      "Look for licensed companies with positive reviews and industry experience. Verify their trade license includes relocation services and ask for references. Multiple quotes help compare services effectively.",
   },
   {
     question: "What should I prepare before the move?",
     answer:
-      "Declutter beforehand, inform your building management to secure moving permission or elevator access, and label fragile items. A proper survey and inventory ensure accurate quotes.:contentReference[oaicite:2]{index=2}",
+      "Declutter beforehand, inform your building management to secure moving permission or elevator access, and label fragile items. A proper survey and inventory ensure accurate quotes.",
   },
   {
     question: "Do you handle fragile, oversized or office relocations?",
     answer:
-      "Yes. Our crews are trained to pack fragile and oversized items, disassemble/reassemble furniture, and conduct commercial office moves with minimized downtime.:contentReference[oaicite:3]{index=3}",
+      "Yes. Our crews are trained to pack fragile and oversized items, disassemble/reassemble furniture, and conduct commercial office moves with minimized downtime.",
   },
   {
     question: "Can I track my belongings during the move?",
     answer:
-      "Yes. Some UAE moving companies offer GPS or app-based tracking so you can monitor your shipment in real time.:contentReference[oaicite:4]{index=4}",
+      "Yes. Some UAE moving companies offer GPS or app-based tracking so you can monitor your shipment in real time.",
   },
   {
     question: "How far in advance should I book movers?",
     answer:
-      "Book at least 1–2 weeks in advance, especially during peak seasons and weekends. Last-minute bookings may incur higher fees or limited availability.:contentReference[oaicite:5]{index=5}",
+      "Book at least 1–2 weeks in advance, especially during peak seasons and weekends. Last-minute bookings may incur higher fees or limited availability.",
   },
   {
     question: "What payment methods are accepted?",
     answer:
-      "We accept cash, online transfers, and major credit cards. Payment is collected at the final destination—please confirm acceptable methods before moving day.:contentReference[oaicite:6]{index=6}",
+      "We accept cash, online transfers, and major credit cards. Payment is collected at the final destination—please confirm acceptable methods before moving day.",
   },
 ];
 
+const FAQsSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function Home() {
   return (
-    <main className="z-20 mt-32">
-      <HeroSection />
-      <Content />
-      <ContactSection
-        title="Book Now — Packers And Movers in UAE — Low Rates"
-        desc="All Covered. No Hassle. Low-cost movers and packers expert service —
+    <>
+      <Script
+        id="website-schema-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        strategy="beforeInteractive"
+      />
+      <Script
+        id="faqs-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQsSchema) }}
+        strategy="beforeInteractive"
+      />
+
+      <main className="z-20 mt-32">
+        <HeroSection />
+        <Content />
+        <ContactSection
+          title="Book Now — Packers And Movers in UAE — Low Rates"
+          desc="All Covered. No Hassle. Low-cost movers and packers expert service —
           book now! Door-to-Door Delivery. Same Day Mover Services. Fixed
           Prices."
-      />
-      <WhyChooseUs />
-      <CoreServices />
-      <Locations
-        id="service-locations"
-        title="Coverage & Locations In United Arab Emairtes"
-        desc={
-          <>
-            <p>
-              Nice Movers serves all of the UAE. We have branches and teams in
-              Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, Ras Al Khaimah, Al Ain
-              and beyond.{" "}
-            </p>
-            <p>
-              Our local offices and experts mean you get the same personalized
-              service coast-to-coast.
-            </p>
-            <p>
-              As noted by industry leaders, we cover the entire region –
-              literally “anywhere in Dubai, Abu Dhabi, Sharjah… or anywhere in
-              between”
-            </p>
-          </>
-        }
-        img={{
-          src: "/movers-in-uae-2.png",
-          alt: "moving trucks of Nice Movers UAE",
-        }}
-      />
-      <Process />
-      <Testimoials />
-      <Pricing />
-      <FAQs faqs={faqs} />
-      <CTA />
-    </main>
+        />
+        <WhyChooseUs />
+        <CoreServices />
+        <Locations
+          id="service-locations"
+          title="Coverage & Locations In United Arab Emairtes"
+          desc={
+            <>
+              <p>
+                Nice Movers serves all of the UAE. We have branches and teams in
+                Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, Ras Al Khaimah, Al
+                Ain and beyond.{" "}
+              </p>
+              <p>
+                Our local offices and experts mean you get the same personalized
+                service coast-to-coast.
+              </p>
+              <p>
+                As noted by industry leaders, we cover the entire region –
+                literally “anywhere in Dubai, Abu Dhabi, Sharjah… or anywhere in
+                between”
+              </p>
+            </>
+          }
+          img={{
+            src: "/movers-in-uae-2.png",
+            alt: "moving trucks of Nice Movers UAE",
+          }}
+        />
+        <Process />
+        <Testimoials />
+        <Pricing />
+        <FAQs faqs={faqs} />
+        <CTA />
+      </main>
+    </>
   );
 }

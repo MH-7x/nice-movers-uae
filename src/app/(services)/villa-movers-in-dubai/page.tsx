@@ -84,7 +84,7 @@ const VillaMoversPage = () => {
           alt: "villa movers in dubai",
         }}
       />
-      <section className="max-w-4xl mx-auto mt-20 text-xl flex flex-col gap-y-2 b-text">
+      <section className="max-w-4xl md:px-0 px-3 mx-auto md:mt-20 mt-80 md:text-xl text-base flex flex-col gap-y-2 b-text">
         <p>
           We understand moving a large home can be stressful, so our expert team
           provides fast online estimates and end-to-end support for villa moving
@@ -135,11 +135,14 @@ const VillaMoversPage = () => {
       </section>
 
       <SubService />
-      <section id="villa-movers-prices" className="max-w-4xl mx-auto mt-36">
-        <h2 className="text-4xl b-red font-bold">
+      <section
+        id="villa-movers-prices"
+        className="max-w-4xl md:px-0 px-3 mx-auto mt-36"
+      >
+        <h2 className="md:text-4xl text-2xl b-red font-bold">
           Villa Movers in Dubai Prices
         </h2>
-        <div className="mt-8 text-lg b-text flex flex-col gap-y-2">
+        <div className="mt-8 md:text-lg b-text flex flex-col gap-y-2">
           <p className="">
             We believe in complete transparency when it comes to the cost of
             your move.
@@ -415,9 +418,14 @@ const VillaMoversPage = () => {
           },
         ]}
       />
-      <section id="services-areas" className="max-w-4xl mx-auto mt-36">
-        <h2 className="text-4xl b-red font-bold">Dubai Service Areas</h2>
-        <div className="mt-8 text-lg b-text flex flex-col gap-y-2">
+      <section
+        id="services-areas"
+        className="max-w-4xl mx-auto md:px-0 px-3 mt-36"
+      >
+        <h2 className="md:text-4xl text-2xl b-red font-bold">
+          Dubai Service Areas
+        </h2>
+        <div className="mt-8 md:text-lg text-sm b-text flex flex-col gap-y-2">
           <p>
             Nice Movers operates across all Dubai communities. We specialize in
             villa moves, so our service areas include:
@@ -490,11 +498,11 @@ const VillaMoversPage = () => {
           </>
         }
       />
-      <h3 className="mt-20 text-xl font-medium max-w-3xl mx-auto b-red">
+      <h3 className="mt-20 md:px-0 px-3 text-xl font-medium max-w-3xl mx-auto b-red">
         Don’t wait – let Nice Movers make your Dubai villa relocation easy and
         affordable. Call or message us today for a free quote!
       </h3>
-      <p className="mt-10 max-w-3xl mx-auto b-text pb-10">
+      <p className="mt-10 max-w-3xl md:px-0 px-3 mx-auto b-text pb-10">
         <b>Sources</b>: We’ve incorporated industry insights and customer
         feedback throughout, including data on moving costs and expert advice on
         professional moving services . Customer testimonials are drawn from
