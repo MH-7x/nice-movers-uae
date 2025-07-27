@@ -16,7 +16,7 @@ import { schemaData } from "../../List";
 export const metadata = MetadataTemplate({
   data: {
     meta: {
-      title: "Affordable Movers and Packers in UAE | Nice Movers in UAE",
+      title: "Best Packers and Movers in UAE | Book Now - Low Prices",
       desc: "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
     },
     image: {
