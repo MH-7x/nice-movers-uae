@@ -22,6 +22,10 @@ export const breadcrumbs = [
   {
     name: "Villa Movers in Dubai",
     url: `${APP.url}/villa-movers-in-dubai`,
+  },
+  {
+    name: "Office Movers in Dubai",
+    url: `${APP.url}/villa-movers-in-dubai`,
   }
 ]
 
@@ -390,3 +394,42 @@ export const VillaMovingRawFaqs : PlainFAQ[] = [
       "Yes, you can read our customer reviews on our website and on independent platforms like Google."
   }
 ]
+export const OfficeMoversRawFaqs : PlainFAQ[] = [
+  {
+    "question": "What services are included in your office movers and packers package?",
+    "answer": "We provide a full range of services: free on-site survey and planning, packing and unpacking, furniture disassembly/reassembly, IT equipment handling, document security, loading/unloading, and post-move cleanup. Our professional office movers in Dubai handle every task, from stacking files to cabling networks. If you need special services (like storage or furniture assembly), we can include those too."
+  },
+  {
+    "question": "How do I minimize business disruption during the move?",
+    "answer": "Early planning is key. We coordinate with you to schedule moves during off-peak hours or weekends if possible. We prepare a detailed checklist and keep your staff informed at each stage. By having our team pack efficiently and reassemble quickly, you’ll have minimal downtime. Our focus is on a “quick return to normal” operations."
+  },
+  {
+    "question": "What is the cost of office movers in Dubai?",
+    "answer": "Pricing depends on several factors: office size, distance between locations, number of movers/trucks needed, and any extra services. For context, industry estimates show one moving truckload costs around AED 1,000–1,500. We’ll provide you with a competitive quote customized to your move. Our pricing is transparent, with no hidden charges."
+  },
+  {
+    "question": "What type of office items and equipment do you move?",
+    "answer": "Our office relocation experts in the UAE are trained to safely handle a wide range of commercial assets: Executive desks, ergonomic chairs, and partition panels; Boardroom tables, AV equipment, whiteboards; Reception counters, guest seating, display units; Laptops, desktops, monitors, and cables; Networking gear: routers, switches, modems; Printers, copiers, shredders, telecom systems; Server racks, storage units, and sensitive hardware; Secure handling of confidential files and office records; Kitchen items: fridges, kettles, coffee machines, water coolers."
+  },
+  {
+    "question": "What type of businesses do you relocate across the UAE?",
+    "answer": "We serve a wide range of companies and industries throughout the Emirates, including: Startups and SMEs in Ajman, Sharjah, and Ras Al Khaimah; Corporate headquarters in Dubai, Abu Dhabi, and Al Ain; Legal firms, finance offices, marketing agencies, and IT firms; Government entities and education providers; Co-working spaces, accelerators, and tech hubs; Businesses undergoing expansion, consolidation, or renovation. We are trusted office movers in UAE offering tailored relocation plans for every type of business setup."
+  },
+  {
+    "question": "Are Nice Movers licensed and insured?",
+    "answer": "Yes. We are a fully licensed moving company in Dubai, and we carry comprehensive insurance for your peace of mind. As experts advise, always verify the mover’s license and insurance before hiring. With Nice Movers, your valuable office items are protected under approved regulations throughout the move."
+  },
+  {
+    "question": "How do I hire office movers in Dubai?",
+    "answer": "It’s easy: simply contact Nice Movers via phone or our website’s contact form. Tell us about your move (office size, location, date). We’ll arrange a free survey and then provide a detailed moving plan and quote. Once you approve, we’ll lock in your move date. You can book our office moving service in Dubai directly through our site or by calling our office."
+  },
+  {
+    "question": "What makes corporate moving different from a regular move?",
+    "answer": "Corporate moving (also called business relocation) involves extra coordination. There are many employees to inform, sensitive equipment and documents to protect, and potential regulatory steps. That’s why we offer specialized corporate moving solutions. Our commercial relocation experts handle large-scale moves – even entire company headquarters – with project management and logistical support."
+  },
+  {
+    "question": "How long does it take to move an office in Dubai?",
+    "answer": "The office relocation process can take from a few weeks up to a few months, depending on the size of the office. Meticulous planning is important to ensure that the company’s time is not wasted and the employees’ productivity remains unaffected during the moving process. If you hire office movers and packers in Dubai for your office move, the process will be streamlined and the move will not take a lot of time."
+  }
+]
+

@@ -39,7 +39,7 @@ const Process = ({
                 <div className="w-16 h-16 b-white text-3xl border-[6px] border-[#e7e6e6] font-bold rounded-full b-red-bg flex items-center justify-center">
                   {i + 1}
                 </div>
-                <h3 className="text-lg">{step.title}</h3>
+                <h3 className="text-lg text-center">{step.title}</h3>
                 <p className="text-sm/4.5 b-text text-center">{step.desc}</p>
               </div>
             ))}

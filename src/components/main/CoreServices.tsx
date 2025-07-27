@@ -23,7 +23,7 @@ export const servicesList = [
     desc: "Nice Movers provides smooth and efficient office moving services, minimizing downtime while relocating your office furniture and equipment.",
     src: "/Office-Moving.jpg",
     alt: "Nice Movers efficient office moving solutions.",
-    link: "/",
+    link: "/office-movers-in-dubai",
   },
   {
     title: "Storage Services",
