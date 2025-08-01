@@ -19,14 +19,16 @@ export const MobileNavbar = () => {
             quality={90}
           />
         </div>
+
         <input type="checkbox" id="menu-toggle" className="peer hidden" />
         <label
           htmlFor="menu-toggle"
-          className="flex items-center gap-x-2  py-1.5 px-2.5 rounded-md b-red-bg b-white"
+          className="flex items-center gap-x-2  py-2 px-2.5 rounded-md b-red-bg b-white"
         >
           {" "}
-          <Menu size={18} /> Menu
+          <Menu size={25} />
         </label>
+
         <Sidebar />
       </nav>
     </header>

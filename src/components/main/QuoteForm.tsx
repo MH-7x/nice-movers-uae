@@ -12,10 +12,56 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { Send } from "lucide-react";
+import { SendMail } from "@/lib/FormSubmission";
 const QuoteForm = () => {
   const [movingType, setMovingType] = useState("");
+  const [movingTypeOther, SetMovingTypeOther] = useState("");
   const [movingFrom, setMovingFrom] = useState("");
   const [movingTo, setMovingTo] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
+  const SubmitForm = async () => {
+    if (
+      !movingType ||
+      (movingType === "others" && !movingTypeOther) ||
+      !movingFrom ||
+      !movingTo ||
+      !name ||
+      !phone ||
+      !message
+    ) {
+      alert("please fill out all details!!");
+    } else {
+      const SendingData = {
+        movingType: movingType === "others" ? movingTypeOther : movingType,
+        movingFrom,
+        movingTo,
+        name,
+        phone,
+        message,
+      };
+      try {
+        const { success, error } = await SendMail({ data: SendingData });
+        if (success) {
+          alert("Your request has been sent successfully!");
+          // Reset form fields
+          setMovingType("");
+          SetMovingTypeOther("");
+          setMovingFrom("");
+          setMovingTo("");
+          setName("");
+          setPhone("");
+          setMessage("");
+        } else {
+          alert(error || "Failed to send your request. Please try again.");
+        }
+      } catch (error) {
+        alert(error instanceof Error ? error.message : "something went wrong");
+      }
+    }
+  };
   return (
     <form
       id="quote-form"
@@ -27,7 +73,11 @@ const QuoteForm = () => {
       <input type="hidden" name="moving-to" value={movingTo} />
 
       {/* Moving Type */}
-      <Select value={movingType} onValueChange={setMovingType}>
+      <Select
+        name="moving-type"
+        value={movingType}
+        onValueChange={setMovingType}
+      >
         <SelectTrigger className="w-full p-6">
           <SelectValue placeholder="What you are moving?" />
         </SelectTrigger>
@@ -74,11 +124,17 @@ const QuoteForm = () => {
           placeholder="Specify your needs"
           name="moving-type-other"
           className="mt-5 p-6"
+          value={movingTypeOther}
+          onChange={(e) => SetMovingTypeOther(e.currentTarget.value)}
         />
       )}
       {/* From and To Selects */}
       <div className="w-full grid grid-cols-2 gap-x-5 mt-5">
-        <Select value={movingFrom} onValueChange={setMovingFrom}>
+        <Select
+          name="moving-from"
+          value={movingFrom}
+          onValueChange={setMovingFrom}
+        >
           <SelectTrigger className="w-full p-6">
             <SelectValue placeholder="Moving from" />
           </SelectTrigger>
@@ -99,7 +155,7 @@ const QuoteForm = () => {
           </SelectContent>
         </Select>
 
-        <Select value={movingTo} onValueChange={setMovingTo}>
+        <Select name="moving-to" value={movingTo} onValueChange={setMovingTo}>
           <SelectTrigger className="w-full p-6">
             <SelectValue placeholder="Moving to" />
           </SelectTrigger>
@@ -122,22 +178,37 @@ const QuoteForm = () => {
       </div>
 
       {/* Other Inputs */}
-      <Input placeholder="Your name" name="name" className="mt-5 p-6" />
+      <Input
+        value={name}
+        onChange={(e) => setName(e.currentTarget.value)}
+        placeholder="Your name"
+        name="name"
+        className="mt-5 p-6"
+      />
       <Input
         placeholder="Phone no."
-        name="number"
+        name="phone"
         type="number"
         className="mt-5 p-6"
+        value={phone}
+        onChange={(e) => setPhone(e.currentTarget.value)}
       />
       <Textarea
         placeholder="More details about your move..."
         name="message"
         className="mt-5 p-5 min-h-32"
+        value={message}
+        onChange={(e) => setMessage(e.currentTarget.value)}
       />
 
       {/* Submit Button */}
-      <Button size={"lg"} className="b-red-bg mt-5 md:w-[300px] w-full mx-auto">
-        Send Now <Send />
+      <Button
+        onClick={SubmitForm}
+        size={"lg"}
+        type="button"
+        className="b-red-bg mt-5 "
+      >
+        <span>Send Now</span> <Send />
       </Button>
     </form>
   );

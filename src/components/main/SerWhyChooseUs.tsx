@@ -6,17 +6,14 @@ const SerWhyChooseUs = ({
   content: { title: string; desc: ReactNode }[];
 }) => {
   return (
-    <div className="flex flex-wrap mt-16">
-      {content.map((feat, i) => (
-        <div key={i} className="w-full px-4 md:w-1/2 lg:w-1/3">
-          <div className="md:mb-9 mb-0 rounded-xl py-8 px-0 sm:p-9 lg:px-6 xl:px-9">
-            <div>
-              <h3 className="mb-4 text-lg font-medium b-red sm:text-lg">
-                {feat.title}
-              </h3>
-              <div className="text-sm b-text"> {feat.desc}</div>
-            </div>
-          </div>
+    <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-16 md:w-11/12 mx-auto">
+      {content.map((box, index) => (
+        <div
+          key={index}
+          className="p-5 rounded-2xl bg-gradient-to-b from-white via-white to-[#00000009] flex flex-col items-start justify-start gap-3"
+        >
+          <h3 className="text-lg font-medium b-red">{box.title}</h3>
+          <div className="b-text text-sm flex flex-col gap-y-1">{box.desc}</div>
         </div>
       ))}
     </div>
