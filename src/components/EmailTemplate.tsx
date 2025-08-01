@@ -51,7 +51,7 @@ export const EmailTemplate = ({
                 objectFit: "contain",
                 margin: "0 auto",
               }}
-              src={`https://dubaiusedfurniture.ae/_next/static/media/logo-svg.7b088266.svg`}
+              src={`https://nicemovers.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FPicture1.a75f7cd9.png&w=1920&q=90`}
             />
           </Section>
 
