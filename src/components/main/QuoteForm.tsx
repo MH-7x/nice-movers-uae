@@ -13,6 +13,7 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { Send } from "lucide-react";
 import { SendMail } from "@/lib/FormSubmission";
+import { toast } from "sonner";
 const QuoteForm = () => {
   const [movingType, setMovingType] = useState("");
   const [movingTypeOther, SetMovingTypeOther] = useState("");
@@ -22,46 +23,85 @@ const QuoteForm = () => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
+  const showToast = (
+    type: "success" | "error",
+    title: string,
+    description: string
+  ) => {
+    toast[type](title, {
+      description,
+      style: {
+        backgroundColor: type === "success" ? "green" : "red",
+        color: type === "success" ? "#e7e6e6" : "#721c24",
+      },
+      action: {
+        label: "OK",
+        onClick: () => toast.dismiss(),
+      },
+    });
+  };
+
   const SubmitForm = async () => {
-    if (
+    const isOtherTypeInvalid = movingType === "others" && !movingTypeOther;
+    const isFormInvalid =
       !movingType ||
-      (movingType === "others" && !movingTypeOther) ||
+      isOtherTypeInvalid ||
       !movingFrom ||
       !movingTo ||
       !name ||
       !phone ||
-      !message
-    ) {
-      alert("please fill out all details!!");
-    } else {
-      const SendingData = {
-        movingType: movingType === "others" ? movingTypeOther : movingType,
-        movingFrom,
-        movingTo,
-        name,
-        phone,
-        message,
-      };
-      try {
-        const { success, error } = await SendMail({ data: SendingData });
-        if (success) {
-          alert("Your request has been sent successfully!");
-          // Reset form fields
-          setMovingType("");
-          SetMovingTypeOther("");
-          setMovingFrom("");
-          setMovingTo("");
-          setName("");
-          setPhone("");
-          setMessage("");
-        } else {
-          alert(error || "Failed to send your request. Please try again.");
-        }
-      } catch (error) {
-        alert(error instanceof Error ? error.message : "something went wrong");
+      !message;
+
+    if (isFormInvalid) {
+      showToast(
+        "error",
+        "Please Fill Out All Fields",
+        "All fields are required to send the form."
+      );
+      return;
+    }
+
+    const formData = {
+      movingType: movingType === "others" ? movingTypeOther : movingType,
+      movingFrom,
+      movingTo,
+      name,
+      phone,
+      message,
+    };
+
+    try {
+      const { success, error } = await SendMail({ data: formData });
+
+      if (success) {
+        showToast(
+          "success",
+          "Your request has been sent",
+          "We will get back to you soon."
+        );
+
+        // Reset form
+        setMovingType("");
+        SetMovingTypeOther("");
+        setMovingFrom("");
+        setMovingTo("");
+        setName("");
+        setPhone("");
+        setMessage("");
+      } else {
+        showToast(
+          "error",
+          "Failed to send request",
+          error || "Please try again later."
+        );
       }
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : "An unexpected error occurred";
+      showToast("error", "Submission Error", errorMessage);
     }
   };
+
   return (
     <form
       id="quote-form"
