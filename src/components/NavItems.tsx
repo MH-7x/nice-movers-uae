@@ -73,7 +73,9 @@ export function NavItems() {
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>BLOGS</NavigationMenuTrigger>
+          <NavigationMenuLink className="font-medium" href="/blogs">
+            BLOGS
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

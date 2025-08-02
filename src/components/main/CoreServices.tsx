@@ -33,8 +33,8 @@ export const servicesList = [
     link: "/",
   },
   {
-    title: "Furniture Storage",
-    desc: "Safe and reliable furniture storage services to protect your items during renovations, moves, or seasonal use.",
+    title: "Furniture Moving",
+    desc: "Reliable and safe furniture moving services across the UAE, ensuring your belongings are handled with care and precision.",
     src: "/Storage-Services.jpg",
     alt: "Nice Movers safe furniture storage.",
     link: "/",

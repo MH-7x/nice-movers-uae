@@ -5,6 +5,7 @@ import Footer from "@/components/main/Footer";
 import { FixedBtns } from "@/components/main/FixedBtns";
 import localfont from "next/font/local";
 import { Toaster } from "@/components/ui/sonner";
+import PopUp from "@/components/PopUp";
 
 export const metadata: Metadata = {
   applicationName: "Nice Movers",
@@ -55,9 +56,9 @@ const GoogleSans = localfont({
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={`antialiased ${GoogleSans.className} `}>
@@ -67,6 +68,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Toaster position="top-center" />
+        <PopUp />
       </body>
     </html>
   );
