@@ -11,7 +11,7 @@ import Testimoials from "@/components/main/testimonials";
 import WhyChooseUs from "@/components/main/WhyChooseUs";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
 import Script from "next/script";
-import { schemaData } from "../../List";
+// import { schemaData } from "../../List";
 import { type Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -83,23 +83,23 @@ const faqs = [
   },
 ];
 
-const FAQsSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
+// const FAQsSchema = {
+//   "@context": "https://schema.org",
+//   "@type": "FAQPage",
+//   mainEntity: faqs.map((faq) => ({
+//     "@type": "Question",
+//     name: faq.question,
+//     acceptedAnswer: {
+//       "@type": "Answer",
+//       text: faq.answer,
+//     },
+//   })),
+// };
 
 export default function Home() {
   return (
     <>
-      <Script
+      {/* <Script
         id="website-schema-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -110,7 +110,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQsSchema) }}
         strategy="beforeInteractive"
-      />
+      /> */}
 
       <main className="z-20 mt-32">
         <HeroSection />
