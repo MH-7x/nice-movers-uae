@@ -7,6 +7,7 @@ import localfont from "next/font/local";
 import { Toaster } from "@/components/ui/sonner";
 import PopUp from "@/components/PopUp";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import GTM from "@/components/GTM";
 
 export const metadata: Metadata = {
   applicationName: "Nice Movers",
@@ -63,6 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GoogleAnalytics />
+      <GTM />
       <body className={`antialiased ${GoogleSans.className} `}>
         <FixedBtns />
         <div className="fixed top-0 left-0 w-full gray-grd z-[-1] h-screen"></div>
