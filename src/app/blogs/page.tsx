@@ -50,22 +50,19 @@ const blogs = [
   },
 ];
 
-export async function generateMetadata(): Promise<Metadata> {
-  return MetadataTemplate({
-    data: {
-      meta: {
-        title: "Our Blogs | Nice Movers",
-        desc: "Nice Movers is ISO verifed and professional moving company that provide a wide range of moving and packing services in overall UAE at affordable prices. Call to us or get free quote today.",
-      },
-      image: {
-        path: "/contact-us.jpg",
-        alt: "Get A Free Moving Quote From Nice Movers",
-      },
-      path: "/blogs",
+export const metadata: Metadata = MetadataTemplate({
+  data: {
+    meta: {
+      title: "Our Blogs | Nice Movers",
+      desc: "Nice Movers is ISO verifed and professional moving company that provide a wide range of moving and packing services in overall UAE at affordable prices. Call to us or get free quote today.",
     },
-  });
-}
-
+    image: {
+      path: "/contact-us.jpg",
+      alt: "Get A Free Moving Quote From Nice Movers",
+    },
+    path: "/blogs",
+  },
+});
 const BlogSection = () => {
   return (
     <main className="py-20 md:mt-32 mt-10 px-4 md:px-10 max-w-7xl mx-auto">

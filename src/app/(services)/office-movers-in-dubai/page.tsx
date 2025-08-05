@@ -194,23 +194,20 @@ const content = [
   },
 ];
 
-export async function generateMetadata(): Promise<Metadata> {
-  return MetadataTemplate({
-    data: {
-      meta: {
-        title:
-          "Affordable Office Movers in Dubai | Best Office Relocation Services",
-        desc: "Seamless office relocation in Dubai. Nice Movers oers professional oce movers and packers, specializing in IT moving & minimizing business disruption. Get your free, no-obligation quote today!",
-      },
-      path: "/office-movers-in-dubai",
-      image: {
-        path: "/office-movers-in-dubai.jpg",
-        alt: "Office Movers in Dubai",
-      },
+export const metadata: Metadata = MetadataTemplate({
+  data: {
+    meta: {
+      title:
+        "Affordable Office Movers in Dubai | Best Office Relocation Services",
+      desc: "Seamless office relocation in Dubai. Nice Movers oers professional oce movers and packers, specializing in IT moving & minimizing business disruption. Get your free, no-obligation quote today!",
     },
-  });
-}
-
+    path: "/office-movers-in-dubai",
+    image: {
+      path: "/office-movers-in-dubai.jpg",
+      alt: "Office Movers in Dubai",
+    },
+  },
+});
 const JsonLd = generateServiceSchema({
   serviceName: "Office Movers in Dubai",
   serviceDescription:
