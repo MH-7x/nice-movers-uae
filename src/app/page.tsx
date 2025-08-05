@@ -9,26 +9,41 @@ import Pricing from "@/components/main/Pricing";
 import Process from "@/components/main/Process";
 import Testimoials from "@/components/main/testimonials";
 import WhyChooseUs from "@/components/main/WhyChooseUs";
-import MetadataTemplate from "@/lib/MetaDataTemplate";
-import Script from "next/script";
-// import { schemaData } from "../../List";
-import { type Metadata } from "next";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return MetadataTemplate({
-    data: {
-      meta: {
-        title: "Best Packers and Movers in UAE | Book Now - Low Prices",
-        desc: "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
-      },
-      image: {
-        path: "/nice-movers-transport-trucks.jpg",
+import Script from "next/script";
+import { schemaData } from "../../List";
+import { type Metadata } from "next";
+import { APP } from "@/lib/App";
+
+export const metadata: Metadata = {
+  title: "Best Packers and Movers in UAE | Book Now - Low Prices",
+  description:
+    "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
+  alternates: {
+    canonical: `${APP.url}`,
+  },
+  openGraph: {
+    url: `${APP.url}`,
+    title: "Best Packers and Movers in UAE | Book Now - Low Prices",
+    images: [
+      {
+        url: `${APP.url}/nice-movers-transport-trucks.jpg`,
         alt: "Nice Movers Company Trucks",
       },
-      path: "",
-    },
-  });
-}
+    ],
+    description:
+      "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
+    type: "website",
+    countryName: "United Arab Emairtes",
+    emails: ["nicemovers.com@gmail.com"],
+    phoneNumbers: [APP.phone],
+    siteName: APP.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: APP.name,
+  },
+};
 
 const faqs = [
   {
@@ -83,23 +98,23 @@ const faqs = [
   },
 ];
 
-// const FAQsSchema = {
-//   "@context": "https://schema.org",
-//   "@type": "FAQPage",
-//   mainEntity: faqs.map((faq) => ({
-//     "@type": "Question",
-//     name: faq.question,
-//     acceptedAnswer: {
-//       "@type": "Answer",
-//       text: faq.answer,
-//     },
-//   })),
-// };
+const FAQsSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 
 export default function Home() {
   return (
     <>
-      {/* <Script
+      <Script
         id="website-schema-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -110,7 +125,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQsSchema) }}
         strategy="beforeInteractive"
-      /> */}
+      />
 
       <main className="z-20 mt-32">
         <HeroSection />
