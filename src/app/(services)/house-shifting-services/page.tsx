@@ -368,20 +368,21 @@ const content = [
     ),
   },
 ];
-
-export const metadata = MetadataTemplate({
-  data: {
-    meta: {
-      title: "House Shifting Services in Dubai | Book At Low Prices",
-      desc: "Nice Movers is a top rated and best home movers and packers in UAE. We provide affordable house shifting services. Call us or request a quote today!",
+export async function generateMetadata() {
+  MetadataTemplate({
+    data: {
+      meta: {
+        title: "House Shifting Services in Dubai | Book At Low Prices",
+        desc: "Nice Movers is a top rated and best home movers and packers in UAE. We provide affordable house shifting services. Call us or request a quote today!",
+      },
+      image: {
+        path: "/house-shifting.png",
+        alt: "Houose Shifting Services By Nice Movers",
+      },
+      path: "/house-shifting-services",
     },
-    image: {
-      path: "/house-shifting.png",
-      alt: "Houose Shifting Services By Nice Movers",
-    },
-    path: "/house-shifting-services",
-  },
-});
+  });
+}
 
 const JsonLd = generateServiceSchema({
   serviceName: "House Shifting Services in Dubai",

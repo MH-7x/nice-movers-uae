@@ -49,19 +49,21 @@ const blogs = [
   },
 ];
 
-export const metadata = MetadataTemplate({
-  data: {
-    meta: {
-      title: "Our Blogs | Nice Movers",
-      desc: "Nice Movers is ISO verifed and professional moving company that provide a wide range of moving and packing services in overall UAE at affordable prices. Call to us or get free quote today.",
+export async function generateMetadata() {
+  return MetadataTemplate({
+    data: {
+      meta: {
+        title: "Our Blogs | Nice Movers",
+        desc: "Nice Movers is ISO verifed and professional moving company that provide a wide range of moving and packing services in overall UAE at affordable prices. Call to us or get free quote today.",
+      },
+      image: {
+        path: "/contact-us.jpg",
+        alt: "Get A Free Moving Quote From Nice Movers",
+      },
+      path: "/blogs",
     },
-    image: {
-      path: "/contact-us.jpg",
-      alt: "Get A Free Moving Quote From Nice Movers",
-    },
-    path: "/blogs",
-  },
-});
+  });
+}
 
 const BlogSection = () => {
   return (

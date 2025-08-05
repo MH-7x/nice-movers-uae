@@ -75,19 +75,21 @@ const aboutUsJsonLd = {
   },
 };
 
-export const metadata = MetadataTemplate({
-  data: {
-    meta: {
-      title: "About Us  | Nice Movers in UAE",
-      desc: "Nice Movers is ISO verifed and professional moving company that provide a wide range of moving and packing services in overall UAE at affordable prices. Call to us or get free quote today.",
+export async function generateMetadata() {
+  return MetadataTemplate({
+    data: {
+      meta: {
+        title: "About Us  | Nice Movers in UAE",
+        desc: "Nice Movers is ISO verifed and professional moving company that provide a wide range of moving and packing services in overall UAE at affordable prices. Call to us or get free quote today.",
+      },
+      image: {
+        path: "/Transportation.jpg",
+        alt: "Nice Movers Truck in UAE",
+      },
+      path: "/about-us",
     },
-    image: {
-      path: "/Transportation.jpg",
-      alt: "Nice Movers Truck in UAE",
-    },
-    path: "/about-us",
-  },
-});
+  });
+}
 
 const AboutUsPage = () => {
   return (

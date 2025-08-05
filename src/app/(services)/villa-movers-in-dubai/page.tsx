@@ -77,19 +77,21 @@ const content = [
   },
 ];
 
-export const metadata = MetadataTemplate({
-  data: {
-    meta: {
-      title: "Villa Movers in Dubai | Nice Movers – Free Online Estimates",
-      desc: "Looking for top-rated villa movers in Dubai? Nice Movers offers cheap, professional villa movers in Dubai with free online estimates, transparent pricing, and 24/7 support.",
+export async function generateMetadata() {
+  return MetadataTemplate({
+    data: {
+      meta: {
+        title: "Villa Movers in Dubai | Nice Movers – Free Online Estimates",
+        desc: "Looking for top-rated villa movers in Dubai? Nice Movers offers cheap, professional villa movers in Dubai with free online estimates, transparent pricing, and 24/7 support.",
+      },
+      image: {
+        path: "/villa-movers-in-dubai.jpg",
+        alt: "Villa Movers in Dubai",
+      },
+      path: "/villa-movers-in-dubai",
     },
-    image: {
-      path: "/villa-movers-in-dubai.jpg",
-      alt: "Villa Movers in Dubai",
-    },
-    path: "/villa-movers-in-dubai",
-  },
-});
+  });
+}
 
 const JsonLd = generateServiceSchema({
   serviceName: "Villa Movers in Dubai",

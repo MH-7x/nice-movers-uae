@@ -13,9 +13,9 @@ export interface Data {
   }
 }
 
-export default async function MetadataTemplate({data}: {
+export default  function MetadataTemplate({data}: {
   data : Data;
-}): Promise<Metadata> {
+}):Metadata {
 
   return {
     title: data.meta.title,
