@@ -22,15 +22,18 @@ const DesktopNav = () => {
           </Link>
         </div>
         <div className="w-64 h-16 relative">
-          <Image
-            src={logo}
-            fill
-            className="object-contain object-center absolute"
-            alt="Nice Movers Company Logo"
-            priority
-            loading="eager"
-            quality={90}
-          />
+          <Link title="Home Page" href="/">
+            {" "}
+            <Image
+              src={logo}
+              fill
+              className="object-contain object-center absolute"
+              alt="Nice Movers Company Logo"
+              priority
+              loading="eager"
+              quality={90}
+            />
+          </Link>
         </div>
         <div id="whatsapp-number-section" className="">
           <Button

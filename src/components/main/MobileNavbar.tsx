@@ -10,14 +10,17 @@ export const MobileNavbar = () => {
     <header className="fixed z-50 top-0 left-0 w-full px-3 py-4 bg-white">
       <nav className="flex items-center justify-between">
         <div id="company-logo" className="w-40 h-9 bg-white relative">
-          <Image
-            alt="Nice Movers Company Logo"
-            src={logo}
-            loading="eager"
-            priority
-            className="object-contain object-center absolute mt-0.5"
-            quality={90}
-          />
+          <Link title="Home Page" href="/">
+            {" "}
+            <Image
+              alt="Nice Movers Company Logo"
+              src={logo}
+              loading="eager"
+              priority
+              className="object-contain object-center absolute mt-0.5"
+              quality={90}
+            />
+          </Link>
         </div>
 
         <input type="checkbox" id="menu-toggle" className="peer hidden" />
