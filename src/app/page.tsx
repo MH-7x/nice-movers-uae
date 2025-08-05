@@ -10,42 +10,26 @@ import Process from "@/components/main/Process";
 import Testimoials from "@/components/main/testimonials";
 import WhyChooseUs from "@/components/main/WhyChooseUs";
 
-// import Script from "next/script";
-// import { schemaData } from "../../List";
+import Script from "next/script";
+import { schemaData } from "../../List";
 import { type Metadata } from "next";
-import { APP } from "@/lib/App";
 
-export function generateMetadata(): Metadata {
-  return {
-    title: "Best Packers and Movers in UAE | Book Now - Low Prices",
-    description:
-      "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
-    alternates: {
-      canonical: `${APP.url}`,
-    },
-    openGraph: {
-      url: `${APP.url}`,
+import MetadataTemplate from "@/lib/MetaDataTemplate";
+
+export const metadata: Metadata = MetadataTemplate({
+  data: {
+    meta: {
       title: "Best Packers and Movers in UAE | Book Now - Low Prices",
-      images: [
-        {
-          url: `${APP.url}/nice-movers-transport-trucks.jpg`,
-          alt: "Nice Movers Company Trucks",
-        },
-      ],
-      description:
-        "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
-      type: "website",
-      countryName: "United Arab Emairtes",
-      emails: ["nicemovers.com@gmail.com"],
-      phoneNumbers: [APP.phone],
-      siteName: APP.name,
+      desc: "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
     },
-    twitter: {
-      card: "summary_large_image",
-      creator: APP.name,
+    image: {
+      path: "/nice-movers-transport-trucks.jpg",
+      alt: "Nice Movers Company Trucks",
     },
-  };
-}
+    path: "",
+  },
+});
+
 const faqs = [
   {
     question: "Is my move insured?",
@@ -115,7 +99,7 @@ const FAQsSchema = {
 export default function Home() {
   return (
     <>
-      {/* <Script
+      <Script
         id="website-schema-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -126,7 +110,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQsSchema) }}
         strategy="beforeInteractive"
-      /> */}
+      />
 
       <main className="z-20 mt-32">
         <HeroSection />
