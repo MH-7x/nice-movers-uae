@@ -118,7 +118,7 @@ const QuoteForm = () => {
         value={movingType}
         onValueChange={setMovingType}
       >
-        <SelectTrigger className="w-full p-6">
+        <SelectTrigger title="What are you moving" className="w-full p-6">
           <SelectValue placeholder="What you are moving?" />
         </SelectTrigger>
         <SelectContent className="md:p-5 p-2 ">
@@ -175,7 +175,7 @@ const QuoteForm = () => {
           value={movingFrom}
           onValueChange={setMovingFrom}
         >
-          <SelectTrigger className="w-full p-6">
+          <SelectTrigger title="Moving From" className="w-full p-6">
             <SelectValue placeholder="Moving from" />
           </SelectTrigger>
           <SelectContent className="p-5">
@@ -196,7 +196,7 @@ const QuoteForm = () => {
         </Select>
 
         <Select name="moving-to" value={movingTo} onValueChange={setMovingTo}>
-          <SelectTrigger className="w-full p-6">
+          <SelectTrigger title="Moving To" className="w-full p-6">
             <SelectValue placeholder="Moving to" />
           </SelectTrigger>
           <SelectContent className="p-5">

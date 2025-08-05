@@ -34,7 +34,7 @@ const Content = () => {
       <div id="image" className="relative md:h-[500px] h-[400px] bg-red-200">
         <Image
           alt="Licensed and Certified Moving Company"
-          src={"/licensed-certified-badge.png"}
+          src={"/licensed-certified-badge.jpg"}
           fill
           loading="lazy"
           className="absolute object-center object-cover"

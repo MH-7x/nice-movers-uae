@@ -12,22 +12,21 @@ import WhyChooseUs from "@/components/main/WhyChooseUs";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
 import Script from "next/script";
 import { schemaData } from "../../List";
+import { type Metadata } from "next";
 
-export async function generateMetadata() {
-  return MetadataTemplate({
-    data: {
-      meta: {
-        title: "Best Packers and Movers in UAE | Book Now - Low Prices",
-        desc: "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
-      },
-      image: {
-        path: "/nice-movers-transport-trucks.jpg",
-        alt: "Nice Movers Company Trucks",
-      },
-      path: "",
+export const metadata: Metadata = MetadataTemplate({
+  data: {
+    meta: {
+      title: "Best Packers and Movers in UAE | Book Now - Low Prices",
+      desc: "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
     },
-  });
-}
+    image: {
+      path: "/nice-movers-transport-trucks.jpg",
+      alt: "Nice Movers Company Trucks",
+    },
+    path: "",
+  },
+});
 
 const faqs = [
   {

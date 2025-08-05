@@ -91,7 +91,8 @@ const Footer = () => {
                 </h4>
                 <div className="mb-6 flex items-center">
                   <a
-                    href="javascript:void(0)"
+                    title="facebook profile"
+                    href="https://www.facebook.com/profile.php?id=61578872861851"
                     className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#c00000] hover:bg-[#c00000] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-primary sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg
@@ -104,7 +105,8 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="javascript:void(0)"
+                    title="twiter profile"
+                    href="https://www.facebook.com/profile.php?id=61578872861851"
                     className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#c00000] hover:bg-[#c00000] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-primary sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg
@@ -117,7 +119,8 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="javascript:void(0)"
+                    title="youtube profile"
+                    href="https://www.facebook.com/profile.php?id=61578872861851"
                     className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#c00000] hover:bg-[#c00000] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-primary sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg
@@ -130,7 +133,8 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="javascript:void(0)"
+                    title="linkdin profile"
+                    href="https://www.facebook.com/profile.php?id=61578872861851"
                     className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#c00000] hover:bg-[#c00000] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-primary sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg
@@ -150,6 +154,7 @@ const Footer = () => {
                 <p className="text-sm text-muted-foreground flex items-center mt-1 gap-x-2">
                   <Code2 width={15} height={20} /> Develop by{" "}
                   <Link
+                    title="website developer"
                     className="underline underline-offset-4"
                     href={"https://github.com/MH-7x"}
                   >

@@ -55,12 +55,14 @@ function PopUp() {
   if (!visible) return null;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black/30 flex items-center justify-center z-[9999]">
-      <div className="bg-white rounded-2xl drop-shadow-2xl p-10 w-xl relative">
-        <h3 className="font-bold b-red text-2xl">Need Instant Quote?</h3>
-        <p className="b-text mt-3">
-          Give us your phone number and we will call / WhatsApp <br /> you
-          within 5 minutes!
+    <div className="fixed top-0 left-0 w-full h-full bg-black/30 flex items-center justify-center z-[9999] md:px-0 px-3">
+      <div className="bg-white rounded-2xl drop-shadow-2xl md:p-10 p-5 w-xl relative">
+        <h3 className="font-bold b-red md:text-2xl text-xl">
+          Need Instant Quote?
+        </h3>
+        <p className="b-text md:text-base text-sm mt-3">
+          Give us your phone number and we will call / WhatsApp{" "}
+          <br className="md:block hidden" /> you within 5 minutes!
         </p>
         <div className="flex items-center justify-between my-3 gap-x-3">
           <Input
@@ -85,6 +87,7 @@ function PopUp() {
           Call us direct
         </Link>
         <Button
+          title="Close Popup"
           onClick={handleClose}
           variant={"outline"}
           className="absolute top-5 right-5 cursor-pointer"
