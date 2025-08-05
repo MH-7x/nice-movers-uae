@@ -42,7 +42,7 @@ const Footer = () => {
                 </Link>
 
                 <Link
-                  href={"mailto:abumuhammad.movers@gmail.com"}
+                  href={"mailto:nicemovers.com@gmail.com"}
                   className="flex items-center text-sm font-medium text-dark dark:text-white hover:underline underline-offset-4 transition-colors mt-3"
                 >
                   <Mail
@@ -51,7 +51,7 @@ const Footer = () => {
                     strokeWidth={1.5}
                     className="mr-3 text-primary"
                   />
-                  <span>nice.movers@gmail.com</span>
+                  <span>nicemovers.com@gmail.com</span>
                 </Link>
               </div>
             </div>
@@ -73,9 +73,9 @@ const Footer = () => {
             </LinkGroup>
             <LinkGroup header="Useful Links">
               <NavLink link="/about-us" label="About Us" />
-              <NavLink link="/book-movers-online" label="Contact Us" />
-              <NavLink link="/book-movers-online" label="Blogs" />
-              <NavLink link="/faqs" label="faqs" />
+              <NavLink link="/contact-us" label="Contact Us" />
+              <NavLink link="/blogs" label="Blogs" />
+              <NavLink link="/#" label="faqs" />
               <NavLink link="#" label="Sitemap" />
               <NavLink link="#" label="Gallery" />
               <NavLink

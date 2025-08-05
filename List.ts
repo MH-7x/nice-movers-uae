@@ -159,62 +159,62 @@ export const ServicesLocations = [
   {
     title: "Movers in Abu Dhabi",
     desc: "Professional movers in Abu Dhabi offering reliable and affordable moving services for homes and offices across the UAE.",
-    link: "movers-in-abu-dhabi",
+    link: "/"
   },
   {
     title: "Movers in Dubai",
     desc: "Expert movers in Dubai providing fast, secure, and cost-effective moving solutions for residential and commercial clients.",
-    link: "movers-in-dubai",
+    link: "/"
   },
   {
     title: "Movers in Fujairah",
     desc: "Professional moving and packing services in Fujairah for residential, commercial, and furniture relocation across the UAE.",
-    link: "movers-and-packers-in-fujairah",
+    link: "/"
   },
   {
     title: "Movers in Sharjah",
     desc: "Trusted movers and packers in Sharjah with same-day service, safe packing, and expert handling for all types of moves.",
-    link: "movers-and-packers-in-sharjah",
+    link: "/"
   },
   {
     title: "Movers in Al Ain",
     desc: "Top-rated movers and packers in Al Ain specializing in villa, apartment, and office moving services at competitive rates.",
-    link: "movers-and-packers-in-al-ain",
+    link: "/"
   },
   {
     title: "Movers Palm Jumeirah",
     desc: "Experienced movers and packers in Palm Jumeirah offering luxury relocation services with full packing and transport support.",
-    link: "movers-and-packers-palm-jumeirah",
+    link: "/"
   },
   {
     title: "Movers in JVC",
     desc: "Affordable and professional movers in JVC (Jumeirah Village Circle) for fast, secure, and hassle-free moving solutions.",
-    link: "movers-and-packers-in-jvc",
+    link: "/"
   },
   {
     title: "Movers in Business Bay",
     desc: "Efficient movers and packers in Business Bay for office relocations and home shifting with expert packing and delivery.",
-    link: "movers-and-packers-in-business-bay",
+    link: "/"
   },
   {
     title: "Movers and Packers in JLT",
     desc: "Safe and reliable movers and packers in JLT (Jumeirah Lake Towers) with professional service and timely delivery.",
-    link: "movers-and-packers-in-jlt",
+    link: "/"
   },
   {
     title: "Movers in Al Nahda",
     desc: "Local movers in Al Nahda offering expert house and apartment shifting services with careful packing and handling.",
-    link: "movers-and-packers-in-al-nahda",
+    link: "/"
   },
   {
     title: "Movers in Al Barsha",
     desc: "Skilled movers in Al Barsha providing packing, dismantling, and transport services for all residential and commercial moves.",
-    link: "movers-and-packers-in-al-barsha",
+    link: "/"
   },
   {
     title: "Movers in Arabian Ranches",
     desc: "Professional villa movers in Arabian Ranches offering stress-free moving experiences with premium packing and relocation.",
-    link: "movers-and-packers-in-arabian-ranches",
+    link: "/"
   },
 ];
 
