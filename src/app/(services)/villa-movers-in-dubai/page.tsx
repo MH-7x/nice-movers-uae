@@ -16,6 +16,7 @@ import { APP } from "@/lib/App";
 import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
 import { VillaMovingRawFaqs } from "../../../../List";
 import Script from "next/script";
+import { type Metadata } from "next";
 
 const content = [
   {
@@ -77,7 +78,7 @@ const content = [
   },
 ];
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   return MetadataTemplate({
     data: {
       meta: {

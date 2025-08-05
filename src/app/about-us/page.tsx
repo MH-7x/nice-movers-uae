@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { APP } from "@/lib/App";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
 import { CheckCircle } from "lucide-react";
+import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
@@ -75,7 +76,7 @@ const aboutUsJsonLd = {
   },
 };
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   return MetadataTemplate({
     data: {
       meta: {

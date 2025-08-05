@@ -25,6 +25,7 @@ import { APP } from "@/lib/App";
 import { OfficeMoversRawFaqs } from "../../../../List";
 import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
 import Script from "next/script";
+import { type Metadata } from "next";
 const content = [
   {
     title: "Detailed Pre-Move Planning & Project Management",
@@ -193,7 +194,7 @@ const content = [
   },
 ];
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   return MetadataTemplate({
     data: {
       meta: {

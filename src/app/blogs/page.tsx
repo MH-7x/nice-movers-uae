@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import CategoriesBlogsList from "@/components/CategoriesBlogs";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
+import { type Metadata } from "next";
 
 const blogs = [
   {
@@ -49,7 +50,7 @@ const blogs = [
   },
 ];
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   return MetadataTemplate({
     data: {
       meta: {
