@@ -7,7 +7,7 @@ import { servicesList } from "./CoreServices";
 import { ServicesLocations } from "../../../List";
 export const MobileNavbar = () => {
   return (
-    <header className="fixed z-50 top-0 left-0 w-full px-3 py-4 bg-white">
+    <header className="fixed z-50 top-0 left-0 w-full px-3 py-3 bg-white drop-shadow-md">
       <nav className="flex items-center justify-between">
         <div id="company-logo" className="w-40 h-9 bg-white relative">
           <Link title="Home Page" href="/">

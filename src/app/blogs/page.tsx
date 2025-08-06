@@ -3,52 +3,35 @@ import Image from "next/image";
 import CategoriesBlogsList from "@/components/CategoriesBlogs";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
 import { type Metadata } from "next";
+import { Blog } from "../../../types/Blogs";
+import Link from "next/link";
+import CTA from "@/components/main/CTA";
 
-const blogs = [
-  {
-    title: "SEO Basics: Beginner's Guide to SEO Success",
-    description:
-      "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    image: "/moving-tips-1.jpg", // Replace with actual image
-    link: "#",
-  },
-  {
-    title: "How to quickly deploy a static website",
-    description:
-      "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    link: "#",
-  },
-  {
-    title: "How to Rank Higher on Google (6 Easy Steps)",
-    description:
-      "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    link: "#",
-  },
-  {
-    title: "What is SEO? Search Engine Optimization Explained",
-    description:
-      "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    link: "#",
-  },
-  {
-    title: "12 SEO Best Practices That Everyone Should Follow",
-    description:
-      "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    link: "#",
-  },
-  {
-    title: "Spotify’s Car Thing available to all premium users",
-    description:
-      "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    link: "#",
-  },
-  {
-    title: "How to schedule your Tweets to send later",
-    description:
-      "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    link: "#",
-  },
-];
+export const revalidate = 60;
+
+async function fetchBlogs(): Promise<{ data: Blog[] } | { error: string }> {
+  try {
+    const response = await fetch(`${process.env.CMS_URI}/api/list-all`, {
+      next: { revalidate: 60 },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch blogs" + response.statusText);
+    }
+
+    const results = await response.json();
+    if (!results.success)
+      throw new Error("Operation Failed - " + results.message);
+
+    return { data: results.data as Blog[] };
+  } catch (error) {
+    console.log("Error fetching blogs:", error);
+    return {
+      error:
+        error instanceof Error ? error.message : "An unexpected error occurred",
+    };
+  }
+}
 
 export const metadata: Metadata = MetadataTemplate({
   data: {
@@ -63,60 +46,101 @@ export const metadata: Metadata = MetadataTemplate({
     path: "/blogs",
   },
 });
-const BlogSection = () => {
-  return (
-    <main className="py-20 md:mt-32 mt-10 px-4 md:px-10 max-w-7xl mx-auto">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold mb-3">
-          Movers and Packers Blogs In UAE
-        </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          We use an agile approach to test assumptions and connect with the
-          needs of your audience early and often.
-        </p>
-      </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {/* First post with image */}
-        <div className="bg-white rounded-xl shadow p-4 flex flex-col">
-          <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-            <Image
-              src={"/moving-tips-1.jpg"} // Replace this with actual image URL or use dynamic `blog.image`
-              alt="Blog post"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <h3 className="text-lg font-semibold mb-2">{blogs[0].title}</h3>
-          <p className="text-sm text-gray-600 mb-4">{blogs[0].description}</p>
-          <a
-            href={blogs[0].link}
-            className="text-[#c00000] text-sm font-medium hover:underline flex items-center gap-1"
-          >
-            Read more →
-          </a>
+export default async function BlogSection() {
+  const results = await fetchBlogs();
+
+  if ("error" in results) {
+    return (
+      <div className="py-20 md:mt-32 mt-10 px-4 text-destructive md:px-10 max-w-7xl mx-auto">
+        <div className="p-5 rounded-2xl bg-destructive/50">
+          Error: {results.error}
+        </div>
+      </div>
+    );
+  } else {
+    const UniqueCategories = Array.from(
+      new Set(results.data.map((blog) => blog.category))
+    );
+    const categoryBlogs = UniqueCategories.map((category) => ({
+      category,
+      blogs: results.data.filter((blog) => blog.category === category),
+    }));
+    return (
+      <main className="py-20 md:mt-32 mt-10 px-4 md:px-10 max-w-7xl mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="md:text-3xl text-2xl max-w-3xl b-red mx-auto font-bold mb-3">
+            Expert Moving Tips & Packers Guides for UAE Residents | Movers Blogs
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Discover expert moving tips, packing hacks, and relocation guides
+            tailored for Dubai, Sharjah, Ajman, and across the UAE. Stay
+            informed with our latest movers and packers blogs.
+          </p>
         </div>
 
-        {/* Remaining posts without images */}
-        <div className="md:col-span-2 grid sm:grid-cols-2 gap-6">
-          {blogs.slice(1).map((blog, idx) => (
-            <div key={idx} className="bg-white rounded-xl shadow p-4">
-              <h3 className="text-md font-semibold mb-2">{blog.title}</h3>
-              <p className="text-sm text-gray-600 mb-3">{blog.description}</p>
-              <a
-                href={blog.link}
-                className="text-[#c00000] text-sm font-medium hover:underline flex items-center gap-1"
-              >
-                Read more →
-              </a>
+        <div className="grid md:grid-cols-3 gap-6 mt-20">
+          {/* First post with image */}
+          <div className="bg-white rounded-xl shadow p-4 flex flex-col">
+            <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+              <Image
+                src={results.data[0].image} // Replace this with actual image URL or use dynamic `blog.image`
+                alt="Blog post"
+                fill
+                loading="lazy"
+                className="object-cover"
+              />
             </div>
-          ))}
-        </div>
-      </div>
-      <CategoriesBlogsList />
-      <CategoriesBlogsList />
-    </main>
-  );
-};
+            <h3 className="text-lg font-semibold mb-2 ">
+              <Link href={`/blog/${results.data[0].slug}`}>
+                {results.data[0].title}
+              </Link>
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">
+              {results.data[0].caption}
+            </p>
+            <Link
+              aria-label={`Read more about ${results.data[0].title}`}
+              href={`/blog/${results.data[0].slug}`}
+              className="text-[#c00000] text-sm font-medium hover:underline flex items-center gap-1"
+            >
+              Read more →
+            </Link>
+          </div>
 
-export default BlogSection;
+          {/* Remaining posts without images */}
+          <div className="md:col-span-2 grid sm:grid-cols-2 gap-6">
+            {results.data.slice(1).map((blog, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow p-4">
+                <h3 className="text-md font-semibold mb-2">
+                  <Link href={blog.slug}>{blog.title}</Link>
+                </h3>
+                <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                  {blog.caption}
+                </p>
+                <Link
+                  aria-label={`Read more about ${blog.title}`}
+                  href={`/blog/${blog.slug}`}
+                  className="text-[#c00000] text-sm font-medium hover:underline flex items-center gap-1"
+                >
+                  Read more →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+        {UniqueCategories &&
+          UniqueCategories.length > 0 &&
+          categoryBlogs.map((category, idx) => (
+            <CategoriesBlogsList
+              category={category.category}
+              blogPosts={category.blogs}
+              key={idx}
+            />
+          ))}
+
+        <CTA />
+      </main>
+    );
+  }
+}

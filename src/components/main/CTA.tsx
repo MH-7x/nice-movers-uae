@@ -26,12 +26,12 @@ const CTA = ({ title, desc }: { title?: ReactNode; desc?: ReactNode }) => {
           desc
         ) : (
           <>
-            <p className="text-[#d6d6d6] max-w-2xl mt-3">
+            <p className="text-[#e9e9e9] max-w-2xl mt-3">
               Book Your Move Today! Contact Nice Movers now to reserve your
               slot. Call us at +971 563560017 or start a live chat with our
               relocation experts.
             </p>
-            <p className="text-[#d6d6d6] max-w-2xl mt-1">
+            <p className="text-[#e9e9e9] max-w-2xl mt-1">
               With Nice Movers, you’re choosing an insured, licensed team that’s
               trusted across the UAE – let us make your next move smooth, safe
               and hassle-free!
