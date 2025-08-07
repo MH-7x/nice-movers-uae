@@ -48,5 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       images: [`${APP.url}/office-movers-in-dubai.jpg`],
     },
+    {
+      url: `${APP.url}/blogs`,
+      lastModified: today,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      images: [`${APP.url}/office-movers-in-dubai.jpg`],
+    },
   ]
 }

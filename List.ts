@@ -26,6 +26,10 @@ export const breadcrumbs = [
   {
     name: "Office Movers in Dubai",
     url: `${APP.url}/villa-movers-in-dubai`,
+  },
+  {
+    name: "Blogs",
+    url: `${APP.url}/blogs`,
   }
 ]
 

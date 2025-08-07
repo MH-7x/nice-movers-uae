@@ -6,6 +6,7 @@ import { CalendarPlus, Eye, MessageCircleReply, User2Icon } from "lucide-react";
 import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import React from "react";
 
 export interface Main {
@@ -77,12 +78,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const slug = (await params).slug;
   const BlogDetails = await getBlogDetails(decodeURIComponent(slug));
+
   if ("error" in BlogDetails) {
     return {
       title: "Error",
       description: "Error",
     };
   }
+
   return {
     title: BlogDetails.seo.metaTitle,
     description: BlogDetails.seo.metaDescription,
@@ -132,6 +135,7 @@ export default async function BlogDetailPage({
 }) {
   const slug = (await params).slug;
   const BlogDetails = await getBlogDetails(decodeURIComponent(slug));
+
   if ("error" in BlogDetails) {
     return (
       <header className="mt-[125px] md:bg-secondary/40">
@@ -144,68 +148,91 @@ export default async function BlogDetailPage({
         </div>
       </header>
     );
-  }
-  return (
-    <main className=" w-full md:mt-[125px] mt-[68px] max-w-[1400px] mx-auto">
-      <header className="h-[500px] relative">
-        <Image
-          src={BlogDetails.FeaturedImage}
-          alt={BlogDetails.title}
-          fill
-          className="object-center object-cover absolute"
-          loading="eager"
+  } else {
+    const blogSchema = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: BlogDetails.title,
+      description: BlogDetails.caption,
+      author: { "@type": "Person", name: BlogDetails.author.name },
+      image: BlogDetails.FeaturedImage,
+      datePublished: BlogDetails.createdAt,
+      ...(BlogDetails.updatedAt ? { dateModified: BlogDetails.updatedAt } : {}),
+    };
+    return (
+      <>
+        <Script
+          type="application/ld+json"
+          id="Blog-Schema"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
         />
-        <div
-          className="absolute top-0 left-0 w-full h-full md:bg-black/60 bg-black/70 md:px-32 flex flex-col px-3 items-start justify-center"
-          id="blog-header"
-        >
-          <h1 className="md:text-4xl/11 capitalize text-2xl b-white font-medium max-w-3xl text-shadow-2xs">
-            {BlogDetails.title}
-          </h1>
-          <p className="max-w-3xl mt-5 md:leading-5 md:text-base text-sm b-white">
-            {BlogDetails.caption}
-          </p>
-
-          <div
-            id="details"
-            className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-2"
-          >
-            <div className="flex items-center gap-x-2" id="author">
-              <User2Icon className="b-white" width={20} height={20} />
-              <Link
-                href={"https://github.com/MH-7x"}
-                rel="nofollow"
-                className="b-white text-sm"
-              >
-                By {BlogDetails.author.name}
-              </Link>
-            </div>
-            <div className="flex items-center gap-x-2" id="Publish-Date">
-              <CalendarPlus className="b-white" width={20} height={20} />
-              <p className="b-white text-sm">
-                {formatDate(BlogDetails.createdAt)}
+        <main className=" w-full md:mt-[125px] mt-[68px] max-w-[1400px] mx-auto">
+          <header className="h-[500px] relative">
+            <Image
+              src={BlogDetails.FeaturedImage}
+              alt={BlogDetails.title}
+              fill
+              className="object-center object-cover absolute"
+              loading="eager"
+            />
+            <div
+              className="absolute top-0 left-0 w-full h-full md:bg-black/60 bg-black/70 md:px-32 flex flex-col px-3 items-start justify-center"
+              id="blog-header"
+            >
+              <h1 className="md:text-4xl/11 capitalize text-2xl b-white font-medium max-w-3xl text-shadow-2xs">
+                {BlogDetails.title}
+              </h1>
+              <p className="max-w-3xl mt-5 md:leading-5 md:text-base text-sm b-white">
+                {BlogDetails.caption}
               </p>
-            </div>
-            <div className="flex items-center gap-x-2" id="comments">
-              <MessageCircleReply className="b-white" width={20} height={20} />
-              <p className="b-white text-sm">10</p>
-            </div>
-            <div className="flex items-center gap-x-2" id="blog-views">
-              <Eye className="b-white" width={20} height={20} />
-              <p className="b-white text-sm">147</p>
-            </div>
-          </div>
-        </div>
-      </header>
 
-      <div className="bg-white md:px-16 md:py-32 py-20 grid md:grid-cols-3 grid-cols-1 gap-y-10 gap-x-5">
-        <article
-          dangerouslySetInnerHTML={{ __html: BlogDetails.content }}
-          className="md:col-span-2 blog"
-        ></article>
-        <BlogSidebar />
-      </div>
-      <CTA />
-    </main>
-  );
+              <div
+                id="details"
+                className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-2"
+              >
+                <div className="flex items-center gap-x-2" id="author">
+                  <User2Icon className="b-white" width={20} height={20} />
+                  <Link
+                    href={"https://github.com/MH-7x"}
+                    rel="nofollow"
+                    className="b-white text-sm"
+                  >
+                    By {BlogDetails.author.name}
+                  </Link>
+                </div>
+                <div className="flex items-center gap-x-2" id="Publish-Date">
+                  <CalendarPlus className="b-white" width={20} height={20} />
+                  <p className="b-white text-sm">
+                    {formatDate(BlogDetails.createdAt)}
+                  </p>
+                </div>
+                <div className="flex items-center gap-x-2" id="comments">
+                  <MessageCircleReply
+                    className="b-white"
+                    width={20}
+                    height={20}
+                  />
+                  <p className="b-white text-sm">10</p>
+                </div>
+                <div className="flex items-center gap-x-2" id="blog-views">
+                  <Eye className="b-white" width={20} height={20} />
+                  <p className="b-white text-sm">147</p>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div className="bg-white md:px-16 md:py-32 py-20 grid md:grid-cols-3 grid-cols-1 gap-y-10 gap-x-5">
+            <article
+              dangerouslySetInnerHTML={{ __html: BlogDetails.content }}
+              className="md:col-span-2 blog"
+            ></article>
+            <BlogSidebar />
+          </div>
+          <CTA />
+        </main>
+      </>
+    );
+  }
 }
