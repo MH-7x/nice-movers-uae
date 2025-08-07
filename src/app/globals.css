@@ -158,3 +158,34 @@
     background: linear-gradient(45deg, #c00000ef, #c00000b8, #c0000030);
   }
 }
+.blog {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  padding-right: 30px;
+}
+.blog p {
+  color: #2d2d2d;
+}
+.blog h3 {
+  color: #2d2d2d;
+  @apply text-xl font-medium py-2;
+}
+.blog h2 {
+  color: #c00000;
+  @apply text-2xl font-bold py-3;
+}
+
+.blog ul {
+  @apply list-disc list-inside text-[#2d2d2d];
+}
+.blog a {
+  @apply underline underline-offset-2;
+}
+
+@media (width <= 48rem) {
+  .blog {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+}

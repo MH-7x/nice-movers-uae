@@ -113,7 +113,7 @@ export default async function BlogSection() {
             {results.data.slice(1).map((blog, idx) => (
               <div key={idx} className="bg-white rounded-xl shadow p-4">
                 <h3 className="text-md font-semibold mb-2">
-                  <Link href={blog.slug}>{blog.title}</Link>
+                  <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
                 </h3>
                 <p className="text-sm text-gray-600 mb-3 line-clamp-2">
                   {blog.caption}

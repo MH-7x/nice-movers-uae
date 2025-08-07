@@ -18,7 +18,11 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: `${APP.url}/sitemap.xml`,
+    sitemap: [
+      `${APP.url}/sitemap.xml`,
+      `${APP.url}/sitemap-blogs.xml`
+      
+    ],
     host: `${APP.url}`,
   }
 }
