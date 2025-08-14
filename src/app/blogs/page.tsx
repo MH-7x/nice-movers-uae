@@ -74,8 +74,10 @@ export default async function BlogSection() {
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Discover expert moving tips, packing hacks, and relocation guides
-            tailored for Dubai, Sharjah, Ajman, and across the UAE. Stay
-            informed with our latest movers and packers blogs.
+            tailored for Dubai,{" "}
+            <Link href={"/movers-and-packers-sharjah"}> Sharjah</Link>, Ajman,
+            and across the UAE. Stay informed with our latest movers and packers
+            blogs.
           </p>
         </div>
 

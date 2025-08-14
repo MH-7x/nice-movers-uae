@@ -51,7 +51,12 @@ export const generateServiceSchema = (
     ...(imageUrls.length > 0 && { image: imageUrls }),
   };
 
-  const breadcrumbSchema = {
+  
+
+  return JSON.stringify(serviceSchema, null, 2);
+};
+
+  const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": breadcrumbs.map((crumb, index) => ({
@@ -61,6 +66,5 @@ export const generateServiceSchema = (
       "item": crumb.url,
     })),
   };
-
-  return JSON.stringify([serviceSchema, breadcrumbSchema], null, 2);
-};
+  
+export const breadcrumbSchema = JSON.stringify(breadcrumb, null, 2)

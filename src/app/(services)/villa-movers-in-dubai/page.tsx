@@ -366,9 +366,11 @@ const VillaMoversPage = () => {
                   <p>
                     Although we specialize in villa relocations in Dubai and Abu
                     Dhabi, our services extend across all UAE emirates —
-                    including Sharjah, Ras Al Khaimah, Fujairah, Ajman, and Umm
-                    Al Quwain — providing professional villa moving solutions no
-                    matter where you&apos;re located.
+                    including{" "}
+                    <Link href={"/movers-and-packers-sharjah"}> Sharjah</Link> ,
+                    Ras Al Khaimah, Fujairah, Ajman, and Umm Al Quwain —
+                    providing professional villa moving solutions no matter
+                    where you&apos;re located.
                   </p>
                 </>
               ),

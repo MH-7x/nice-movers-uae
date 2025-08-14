@@ -26,6 +26,7 @@ import { OfficeMoversRawFaqs } from "../../../../List";
 import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
 import Script from "next/script";
 import { type Metadata } from "next";
+import Link from "next/link";
 const content = [
   {
     title: "Detailed Pre-Move Planning & Project Management",
@@ -733,7 +734,9 @@ const OfficeMoversPage = () => {
                   </p>
                   <ul className="list-disc pl-6 mt-2 space-y-1">
                     <li>
-                      Startups and SMEs in Ajman, Sharjah, and Ras Al Khaimah
+                      Startups and SMEs in Ajman,{" "}
+                      <Link href={"/movers-and-packers-sharjah"}> Sharjah</Link>{" "}
+                      , and Ras Al Khaimah
                     </li>
                     <li>
                       Corporate headquarters in Dubai, Abu Dhabi, and Al Ain

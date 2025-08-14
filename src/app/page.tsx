@@ -15,6 +15,7 @@ import { schemaData } from "../../List";
 import { type Metadata } from "next";
 
 import MetadataTemplate from "@/lib/MetaDataTemplate";
+import Link from "next/link";
 
 export const metadata: Metadata = MetadataTemplate({
   data: {
@@ -130,8 +131,9 @@ export default function Home() {
             <>
               <p>
                 Nice Movers serves all of the UAE. We have branches and teams in
-                Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, Ras Al Khaimah, Al
-                Ain and beyond.{" "}
+                Dubai, Abu Dhabi,{" "}
+                <Link href={"/movers-and-packers-sharjah"}> Sharjah</Link> ,
+                Ajman, Fujairah, Ras Al Khaimah, Al Ain and beyond.{" "}
               </p>
               <p>
                 Our local offices and experts mean you get the same personalized

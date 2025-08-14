@@ -25,7 +25,11 @@ export const breadcrumbs = [
   },
   {
     name: "Office Movers in Dubai",
-    url: `${APP.url}/villa-movers-in-dubai`,
+    url: `${APP.url}/office-movers-in-dubai`,
+  },
+  {
+    name: "Movers and packers in Sharjah",
+    url: `${APP.url}/movers-and-packers-sharjah`,
   },
   {
     name: "Blogs",
@@ -178,7 +182,7 @@ export const ServicesLocations = [
   {
     title: "Movers in Sharjah",
     desc: "Trusted movers and packers in Sharjah with same-day service, safe packing, and expert handling for all types of moves.",
-    link: "/"
+    link: "/movers-and-packers-sharjah"
   },
   {
     title: "Movers in Al Ain",
@@ -436,4 +440,40 @@ export const OfficeMoversRawFaqs : PlainFAQ[] = [
     "answer": "The office relocation process can take from a few weeks up to a few months, depending on the size of the office. Meticulous planning is important to ensure that the company’s time is not wasted and the employees’ productivity remains unaffected during the moving process. If you hire office movers and packers in Dubai for your office move, the process will be streamlined and the move will not take a lot of time."
   }
 ]
-
+export const sharjahPageFaqs: PlainFAQ[] = [
+  {
+    question: "How much does moving with Nice Movers cost?",
+    answer:
+      "Our local moves in Sharjah start around AED 499. The exact price depends on the size of your home or office and the services needed. We provide a detailed quote upfront (including packing materials, labor, and transport) so there are no hidden fees.",
+  },
+  {
+    question: "Are you licensed and insured?",
+    answer:
+      "Yes. Nice Movers is fully licensed in the UAE (MOE-approved) and every move is fully insured. We are ISO 9001:2015 and FAIM certified, which means we follow strict international safety and quality standards throughout the moving process.",
+  },
+  {
+    question: "Do you pack fragile items?",
+    answer:
+      "Absolutely. We specialize in packing and moving delicate items like glassware, artwork, antiques, and electronics. Our team uses premium packing materials and techniques to protect your valuables during transit.",
+  },
+  {
+    question: "Which areas of Sharjah do you serve?",
+    answer:
+      "We cover all areas of Sharjah and nearby regions, including Al Nahda, Sharjah Industrial Area, Al Majaz, and much more. Our local experts know the city routes and regulations, ensuring a smooth move no matter where in Sharjah you are located.",
+  },
+  {
+    question: "How do I schedule my move?",
+    answer:
+      "You can call us at +971563560017 or WhatsApp us +971563560017 to request a free quote. We’ll arrange a convenient time for an on-site survey, plan your move, and lock in a date. You can also contact us online +971563560017 for a quick booking.",
+  },
+  {
+    question: "How quickly can you move me?",
+    answer:
+      "Our scheduling is very flexible. For last-minute needs, ask about our same-day service. Otherwise, we recommend booking a few days ahead. Our teams are ready 7 days a week, including weekends and nights.",
+  },
+  {
+    question: "How do I get a quote?",
+    answer:
+      "Give us a call or WhatsApp us +971563560017. We’ll set up a free on-site survey and provide an accurate, no-obligation quote. For reliable service, count on Nice Movers — one of the most recommended movers and packers Sharjah locals trust. We bring nationwide standards right to Sharjah’s doorstep, so you get top-quality moving help close to home.",
+  },
+];
