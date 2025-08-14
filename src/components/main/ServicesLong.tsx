@@ -207,6 +207,7 @@ const ServicesLong = () => {
                 src={service.image.src}
                 alt={service.image.alt}
                 fill
+                loading="lazy"
                 className="absolute object-cover object-center"
               />
               <Link href={"tel:+971563560017"} title="Call To Us">
