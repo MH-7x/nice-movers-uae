@@ -55,5 +55,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       images: [`${APP.url}/office-movers-in-dubai.jpg`],
     },
+    {
+      url: `${APP.url}/movers-and-packers-sharjah`,
+      lastModified: today,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      images: [`${APP.url}/sharjah/moving-truck-sharjah-3.jpg`],
+    },
   ]
 }

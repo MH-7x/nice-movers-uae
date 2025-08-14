@@ -136,7 +136,7 @@ export const metadata: Metadata = MetadataTemplate({
       desc: "Trusted movers and packers Sharjah. Nice Movers offers secure house, villa & office relocation, insured crews, same- day service & free on- site quotes.",
     },
     image: {
-      path: "/house-shifting-services.png",
+      path: "/sharjah/moving-truck-sharjah-3.jpg",
       alt: "movers and packers in sharjah doing packing for home",
     },
     path: "/movers-and-packers-sharjah",
