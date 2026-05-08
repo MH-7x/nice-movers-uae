@@ -291,15 +291,15 @@ const page = () => {
                 When searching for movers and packers in Dubai, you need a
                 company that combines reliability, affordability, and expertise.
                 Since 2015, Nice Movers has been the trusted name for residents
-                and businesses across Dubai and the entire UAE. We're not just
-                another moving company in Dubai—we're your partners in seamless
-                relocation.
+                and businesses across Dubai and the entire UAE. We&apos;re not
+                just another moving company in Dubai—we&apos;re your partners in
+                seamless relocation.
               </p>
               <p>
                 Our movers and packers Dubai team has successfully relocated
-                over 800+ customers with a 4.9★ rating. Whether you're moving a
-                studio apartment, luxury villa, or entire office, we handle
-                every detail with professional precision and care.
+                over 800+ customers with a 4.9★ rating. Whether you&apos;re
+                moving a studio apartment, luxury villa, or entire office, we
+                handle every detail with professional precision and care.
               </p>
             </>
           }
@@ -321,15 +321,15 @@ const page = () => {
               },
               {
                 title: "ISO 9001:2015 Certified & FAIM Accredited",
-                desc: "Our removal company in Dubai processes meet international quality standards. We're FAIM-accredited (the moving industry's gold standard), ensuring professional handling that competitors can't match.",
+                desc: "Our removal company in Dubai processes meet international quality standards. We&apos;re FAIM-accredited (the moving industry&apos;s gold standard), ensuring professional handling that competitors can&apos;t match.",
               },
               {
                 title: "15+ Years of Moving Expertise",
-                desc: "Since 2015, we've perfected the art of residential and commercial moving in Dubai. Our crews are rigorously trained, equipped with premium materials, and proven to deliver stress-free relocations—every single time.",
+                desc: "Since 2015, we&apos;ve perfected the art of residential and commercial moving in Dubai. Our crews are rigorously trained, equipped with premium materials, and proven to deliver stress-free relocations—every single time.",
               },
               {
                 title: "Nationwide Coverage – All Emirates, No Extra Charge",
-                desc: "Operating branches across Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, and beyond, our movers in Dubai network ensures coverage anywhere in the UAE. Same rates whether you're moving within Dubai or across emirates.",
+                desc: "Operating branches across Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, and beyond, our movers in Dubai network ensures coverage anywhere in the UAE. Same rates whether you&apos;re moving within Dubai or across emirates.",
               },
               {
                 title: "Transparent, No Hidden Fees",
@@ -340,7 +340,7 @@ const page = () => {
                 desc: "Need to move this weekend? Public holiday? Late night? Our cheap movers and packers in Dubai team is always ready. Emergency relocations, same-day services, and overnight transport available year-round.",
               },
             ].map((item, index) => (
-              <div className="p-8 bg-white rounded-2xl">
+              <div key={index} className="p-8 bg-white rounded-2xl">
                 <h3 className="text-xl">{item.title}</h3>
                 <div className="b-text mt-3">
                   <p>{item.desc}</p>{" "}
@@ -368,8 +368,8 @@ const page = () => {
               Affordable Movers and Packers in Dubai – Competitive Pricing
             </h2>
             <p className="mb-2 mt-3 text-sm">
-              We believe professional relocation shouldn't break the bank.
-              That's why we offer:
+              We believe professional relocation shouldn&apos;t break the bank.
+              That&apos;s why we offer:
             </p>
             <ul className="mt-3 text-sm space-y-1">
               <li className="flex items-center gap-x-2">
@@ -404,9 +404,9 @@ const page = () => {
             </ul>
             <h3 className="mt-3">How We Keep Costs Down:</h3>
             <p className="text-sm">
-              We've optimized routes, trained crews for efficiency, and built
-              strong supplier relationships. These savings pass directly to
-              you—affordable moving without sacrificing quality.
+              We&apos;ve optimized routes, trained crews for efficiency, and
+              built strong supplier relationships. These savings pass directly
+              to you—affordable moving without sacrificing quality.
             </p>
           </div>
           <div
