@@ -222,7 +222,7 @@ const page = () => {
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              15+ Years Moving Expertise
+              15+ Years Expertise
             </h3>
           </div>
           <div className="flex items-center justify-center flex-col gap-y-3">

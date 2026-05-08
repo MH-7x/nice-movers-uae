@@ -175,6 +175,11 @@ export const ServicesLocations = [
     link: "/movers-and-packers-in-dubai",
   },
   {
+    title: "Movers in Ajman",
+    desc: "Reliable movers in Ajman offering reliable and affordable moving services for homes and offices across the UAE.",
+    link: "/movers-in-ajman",
+  },
+  {
     title: "Movers in Fujairah",
     desc: "Professional moving and packing services in Fujairah for residential, commercial, and furniture relocation across the UAE.",
     link: "/",
@@ -217,11 +222,6 @@ export const ServicesLocations = [
   {
     title: "Movers in Al Barsha",
     desc: "Skilled movers in Al Barsha providing packing, dismantling, and transport services for all residential and commercial moves.",
-    link: "/",
-  },
-  {
-    title: "Movers in Arabian Ranches",
-    desc: "Professional villa movers in Arabian Ranches offering stress-free moving experiences with premium packing and relocation.",
     link: "/",
   },
 ];
