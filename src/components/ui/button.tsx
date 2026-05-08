@@ -32,7 +32,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 function Button({
@@ -42,17 +42,30 @@ function Button({
   asChild = false,
   wtBtn,
   callBtn,
+  quoteBtn,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
     wtBtn?: boolean;
     callBtn?: boolean;
+    quoteBtn?: boolean;
   }) {
   const Comp = asChild ? Slot : "button";
   if (callBtn) {
     return (
       <Link title="Nice Movers Phone Number" href={`tel:+971563560017`}>
+        <Comp
+          data-slot="button"
+          className={cn(buttonVariants({ variant, size, className }))}
+          {...props}
+        />
+      </Link>
+    );
+  }
+  if (quoteBtn) {
+    return (
+      <Link title="Get A Quote From Nice Movers UAE" href={`/contact-us`}>
         <Comp
           data-slot="button"
           className={cn(buttonVariants({ variant, size, className }))}

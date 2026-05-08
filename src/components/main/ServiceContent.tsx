@@ -43,13 +43,14 @@ const ServiceContent = ({
         </div>
         <div className="mt-5 flex gap-x-3">
           <Button
+            quoteBtn
             className="bg-transparent text-[#e7e6e6] hover:text-[#c00000]"
             variant={"outline"}
           >
             Get A Quote
           </Button>
-          <Button className="b-white" variant={"link"}>
-            About Us
+          <Button callBtn className="b-white" variant={"link"}>
+            Call Now For Moving
           </Button>
         </div>
       </div>

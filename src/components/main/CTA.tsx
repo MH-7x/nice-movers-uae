@@ -39,9 +39,10 @@ const CTA = ({ title, desc }: { title?: ReactNode; desc?: ReactNode }) => {
           </>
         )}
         <div className="mt-5 flex gap-x-3">
-          <Link title="Get A Free Moving Quote" href={"/"}>
-            <Button variant={"secondary"}>Get A Quote</Button>
-          </Link>
+          <Button quoteBtn variant={"secondary"}>
+            Get A Quote
+          </Button>
+
           <Button callBtn className="b-white" variant={"link"}>
             Call : +971563560017
           </Button>
