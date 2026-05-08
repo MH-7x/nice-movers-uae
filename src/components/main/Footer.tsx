@@ -67,8 +67,8 @@ const Footer = () => {
             </LinkGroup>
             <LinkGroup header="LOCATIONS">
               {ServicesLocations &&
-                ServicesLocations.map((loc) => (
-                  <NavLink key={loc.link} link={loc.link} label={loc.title} />
+                ServicesLocations.map((loc, i) => (
+                  <NavLink key={i} link={loc.link} label={loc.title} />
                 ))}
             </LinkGroup>
             <LinkGroup header="Useful Links">
@@ -79,8 +79,12 @@ const Footer = () => {
               <NavLink link="#" label="Sitemap" />
               <NavLink link="#" label="Gallery" />
               <NavLink
-                link="https://dubaiusedfurniture.ae/en"
-                label="Furniture Buyers"
+                link="https://rukunalaroobausedfurniture.ae"
+                label="Used Furniture Buyers"
+              />
+              <NavLink
+                link="https://moversandpackersinuae.com"
+                label="Movers and Packers in UAE"
               />
             </LinkGroup>
 
