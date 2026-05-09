@@ -94,7 +94,7 @@ type Service = {
   id: string;
   title: string;
   description: string;
-  icon: React.ElementType;
+
   features: Feature[];
   idealFor?: string[];
   cta?: string;
@@ -447,7 +447,6 @@ const ServiceRow = ({
   index: number;
 }) => {
   const isEven = index % 2 === 0;
-  const Icon = service.icon;
 
   return (
     <div

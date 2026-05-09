@@ -318,7 +318,7 @@ export default function SharjahPage() {
             </div>
           </div>
         </section>
-        <section className="max-w-4xl md:px-0 px-3 mx-auto md:mt-20 mt-80 md:text-xl text-base flex flex-col gap-y-2 b-text">
+        <section className="max-w-4xl md:px-0 px-3 mx-auto mt-20 md:text-xl text-base flex flex-col gap-y-2 b-text">
           <p>
             Whether you&#39;re moving a house, apartment, or large villa, our
             experienced team handles every detail—from premium packing to safe

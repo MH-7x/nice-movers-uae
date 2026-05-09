@@ -45,7 +45,7 @@ const faqs = [
   {
     question: "Do you provide packing materials?",
     answer:
-      "Yes. We bring carton boxes, bubble wrap, stretch film, and furniture blankets on every job. You don't need to source anything.",
+      "Yes. We bring carton boxes, bubble wrap, stretch film, and furniture blankets on every job. You don&apos;t need to source anything.",
   },
   {
     question: "Can you move from Ajman to other Emirates?",
@@ -66,7 +66,7 @@ const faqs = [
     question:
       "What makes Nice Movers different from other moving companies in Ajman?",
     answer:
-      "ISO 9001:2015 certification, transparent pricing, trained crew, and a clear post-move quality check. Most moving companies in Ajman don't offer all four.",
+      "ISO 9001:2015 certification, transparent pricing, trained crew, and a clear post-move quality check. Most moving companies in Ajman don&apos;t offer all four.",
   },
   {
     question: "Do you dismantle and reassemble furniture?",
@@ -242,14 +242,14 @@ const page = () => {
           </h2>
           <p className="md:text-lg b-text mt-6 max-w-5xl mx-auto text-center">
             A lot of people search for the cheapest option when planning a move
-            in Ajman. That's fair. But cheap and unreliable are not the same
-            thing — and with your furniture, valuables, and sometimes your whole
-            home on the line, the difference matters.
+            in Ajman. That&apos;s fair. But cheap and unreliable are not the
+            same thing — and with your furniture, valuables, and sometimes your
+            whole home on the line, the difference matters.
           </p>
           <p className="md:text-lg b-text mt-2 max-w-5xl mx-auto text-center">
-            Nice Movers is not the loudest name in the market. We've grown
+            Nice Movers is not the loudest name in the market. We&apos;ve grown
             through referrals, repeat customers, and a track record of showing
-            up on time with the right equipment. Here's what sets us apart:
+            up on time with the right equipment. Here&apos;s what sets us apart:
           </p>
           <div className="mt-20 md:w-11/12 gap-10 mx-auto grid md:grid-cols-3 grid-cols-1">
             {content.map((box, index) => (
@@ -270,10 +270,11 @@ const page = () => {
             Movers and Packers in Ajman — Complete Relocation Services
           </h2>
           <p className="md:text-lg b-text mt-6 max-w-3xl mx-auto text-center">
-            Whether you're moving a studio apartment or a full-floor commercial
-            office, our team in Ajman handles every part of the process. You
-            don't need to coordinate separate vendors for packing, transport,
-            and installation — we cover it all under one booking.
+            Whether you&apos;re moving a studio apartment or a full-floor
+            commercial office, our team in Ajman handles every part of the
+            process. You don&apos;t need to coordinate separate vendors for
+            packing, transport, and installation — we cover it all under one
+            booking.
           </p>
           <div className="mt-20 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
             {servicesList.map((service, index) => (
@@ -393,7 +394,7 @@ const page = () => {
                   {/* Included Card */}
                   <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
                     <h3 className="font-semibold text-gray-900 text-lg mb-4">
-                      What's included
+                      What&apos;s included
                     </h3>
                     <ul className="space-y-3">
                       {INCLUDED_SERVICES.map((item, i) => (
@@ -515,7 +516,7 @@ const content = [
   },
   {
     title: "Transparent Pricing",
-    desc: "you get a written quote before we start; the number doesn't change",
+    desc: "you get a written quote before we start; the number doesn&apos;t change",
   },
   {
     title: "Same-Day Moving Available ",
@@ -531,10 +532,10 @@ const content = [
   },
 ];
 
-export const servicesList = [
+const servicesList = [
   {
     title: "House Shifting in Ajman",
-    desc: "Our most requested service. We pack every room systematically, dismantle furniture where needed, load with care, and reassemble everything at your new address. Apartments, villas, townhouses — we've done them all across Ajman's neighbourhoods.",
+    desc: "Our most requested service. We pack every room systematically, dismantle furniture where needed, load with care, and reassemble everything at your new address. Apartments, villas, townhouses — we&apos;ve done them all across Ajman&apos;s neighbourhoods.",
     src: "/House-Movers.jpg",
     alt: "Nice Movers house relocation for families.",
     link: "/house-shifting-services",
@@ -572,7 +573,7 @@ export const servicesList = [
 
   {
     title: "Storage Services",
-    desc: "Between moves or during a renovation? We offer secure short- and long-term storage for household items and business inventory. Your belongings stay in a climate-appropriate, monitored facility until you're ready.",
+    desc: "Between moves or during a renovation? We offer secure short- and long-term storage for household items and business inventory. Your belongings stay in a climate-appropriate, monitored facility until you&apos;re ready.",
     src: "/Storage-Services.jpg",
     alt: "Nice Movers secure storage facilities.",
     link: "/",
@@ -627,13 +628,13 @@ const TRUST_SIGNALS = [
     icon: ShieldCheck,
     title: "Licensed UAE Moving Company",
     description:
-      "We operate under a valid UAE trade license. You're protected legally when you hire us.",
+      "We operate under a valid UAE trade license. You&apos;re protected legally when you hire us.",
   },
   {
     icon: Users,
     title: "Experienced, Trained Crew",
     description:
-      "Our movers aren't casual labor. They are trained in lifting techniques, furniture handling, and fragile-item packing. Every team lead has completed professional relocation training.",
+      "Our movers aren&apos;t casual labor. They are trained in lifting techniques, furniture handling, and fragile-item packing. Every team lead has completed professional relocation training.",
   },
   {
     icon: Truck,
@@ -645,6 +646,6 @@ const TRUST_SIGNALS = [
     icon: CalendarDays,
     title: "Available 7 Days a Week",
     description:
-      "Moves don't always land on a weekday. We operate every day, including public holidays, to work around your schedule.",
+      "Moves don&apos;t always land on a weekday. We operate every day, including public holidays, to work around your schedule.",
   },
 ];

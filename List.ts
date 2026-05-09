@@ -180,6 +180,11 @@ export const ServicesLocations = [
     link: "/movers-in-ajman",
   },
   {
+    title: "Movers in Ras Al Khaimah",
+    desc: "Professional movers in Ras Al Khaimah offering reliable and affordable moving services for homes and offices across the UAE.",
+    link: "/movers-in-ras-al-khaimah",
+  },
+  {
     title: "Movers in Fujairah",
     desc: "Professional moving and packing services in Fujairah for residential, commercial, and furniture relocation across the UAE.",
     link: "/",
@@ -214,11 +219,7 @@ export const ServicesLocations = [
     desc: "Safe and reliable movers and packers in JLT (Jumeirah Lake Towers) with professional service and timely delivery.",
     link: "/movers-and-packers-in-dubai",
   },
-  {
-    title: "Movers in Al Nahda",
-    desc: "Local movers in Al Nahda offering expert house and apartment shifting services with careful packing and handling.",
-    link: "/",
-  },
+
   {
     title: "Movers in Al Barsha",
     desc: "Skilled movers in Al Barsha providing packing, dismantling, and transport services for all residential and commercial moves.",

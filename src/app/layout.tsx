@@ -6,7 +6,6 @@ import { FixedBtns } from "@/components/main/FixedBtns";
 import localfont from "next/font/local";
 import { Toaster } from "@/components/ui/sonner";
 import PopUp from "@/components/PopUp";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
 import GTM from "@/components/GTM";
 
 export const metadata: Metadata = {
@@ -71,7 +70,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GoogleAnalytics />
       <GTM />
       <body className={`antialiased ${GoogleSans.className} `}>
         <FixedBtns />

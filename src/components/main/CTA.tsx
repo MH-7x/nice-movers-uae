@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React, { ReactNode } from "react";
 import { Button } from "../ui/button";
-import Link from "next/link";
 
 const CTA = ({ title, desc }: { title?: ReactNode; desc?: ReactNode }) => {
   return (
