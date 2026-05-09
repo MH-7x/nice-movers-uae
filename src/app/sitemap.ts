@@ -75,6 +75,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [`/dubai/nice-movers-and-packers-in-dubai.jpg`],
     },
     {
+      url: `${APP.url}/نقل-الاثاث-دبي`,
+      lastModified: "2026-05-10",
+      changeFrequency: "monthly",
+      priority: 0.8,
+      images: [`/dubai/nice-movers-and-packers-in-dubai.jpg`],
+    },
+    {
       url: `${APP.url}/movers-in-ras-al-khaimah`,
       lastModified: "2026-05-10",
       changeFrequency: "monthly",

@@ -221,9 +221,9 @@ export const ServicesLocations = [
   },
 
   {
-    title: "Movers in Al Barsha",
-    desc: "Skilled movers in Al Barsha providing packing, dismantling, and transport services for all residential and commercial moves.",
-    link: "/",
+    title: "نقل الاثاث دبي",
+    desc: "نقل أثاث دبي: خدمات احترافية تشمل الفك، التغليف، والتركيب بضمان شامل وأسعار تنافسية. فريقنا خبير ومعتمد لضمان سلامة ممتلكاتك.",
+    link: "/نقل-الاثاث-دبي",
   },
 ];
 
