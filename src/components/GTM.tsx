@@ -18,6 +18,19 @@ const GTM: React.FC = () => {
           })(window,document,'script','dataLayer','${GTM_ID}');
         `}
       </Script>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-18151665970"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-18151665970');
+          `}
+      </Script>
     </>
   );
 };
