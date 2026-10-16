@@ -1,9 +1,18 @@
 import Image from "next/image";
 import React from "react";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import Link from "next/link";
 
-export const servicesList = [
+export type ServiceItem = {
+  title: string;
+  desc: string;
+  src: string;
+  alt: string;
+  /** Only set when a dedicated service page exists. */
+  link?: string;
+};
+
+export const servicesList: ServiceItem[] = [
   {
     title: "House Shifting",
     desc: "Nice Movers offers fast and affordable house moving services across the UAE, ensuring a safe and stress-free relocation for families and individuals.",
@@ -30,56 +39,48 @@ export const servicesList = [
     desc: "Secure and flexible storage solutions for furniture, equipment, and bulky items—ideal for short or long-term needs.",
     src: "/Storage-Services.jpg",
     alt: "Nice Movers secure storage facilities.",
-    link: "/",
   },
   {
     title: "Furniture Moving",
     desc: "Reliable and safe furniture moving services across the UAE, ensuring your belongings are handled with care and precision.",
-    src: "/Storage-Services.jpg",
-    alt: "Nice Movers safe furniture storage.",
-    link: "/",
+    src: "/furniture-disassembly.jpg",
+    alt: "Nice Movers team dismantling and reassembling furniture.",
   },
   {
     title: "Local Moving",
     desc: "Fast and budget-friendly local moving services within your city—perfect for apartments, villas, or small offices.",
     src: "/local-moving.jpg",
     alt: "Nice Movers fast local moving services.",
-    link: "/",
   },
   {
     title: "Transportation",
     desc: "Trusted transportation services for furniture and goods across the UAE with timely delivery and secure handling.",
     src: "/Transportation.jpg",
     alt: "Nice Movers reliable transportation services.",
-    link: "/",
   },
   {
     title: "Cheap Moving",
     desc: "Reliable and low-cost moving solutions for students, studio apartments, and small-scale relocations across the UAE.",
     src: "/Cheap-Moving.jpg",
     alt: "Nice Movers low-cost moving solutions.",
-    link: "/",
   },
   {
     title: "Apartment Relocation",
     desc: "Smooth and stress-free apartment moving services with packing, transport, and delivery handled by trained professionals.",
     src: "/Apartment-Relocation.jpg",
     alt: "Nice Movers stress-free apartment moving.",
-    link: "/",
   },
   {
     title: "Equipment Movers",
     desc: "Specialized in equipment moving, Nice Movers ensures safe transport and setup of machinery and valuable assets.",
     src: "/Equipment-Movers.jpg",
     alt: "Nice Movers specialized equipment moving.",
-    link: "/",
   },
   {
     title: "Installation & Handyman Services",
     desc: "We offer expert installation and handyman solutions, including doors, stairs, glass work, and partitions across the UAE.",
     src: "/Installation-and-Handyman-Services.jpg",
     alt: "Nice Movers expert handyman services.",
-    link: "/",
   },
 ];
 
@@ -94,9 +95,9 @@ export const CoreServices = () => {
           Our Core Moving Services <br /> In UAE - Nice Movers
         </h2>
         <p className="b-text md:text-lg/5.5 mt-3 max-w-4xl">
-          We are UAE&apos;s leading moving company with lots of experties and
-          train movers. In UAE, we provide a wide range of moving services but
-          here are main services we provide:
+          We are a leading UAE moving company with deep expertise and trained
+          movers. We provide a wide range of moving services across the UAE;
+          here are the main services we provide:
         </p>
 
         {/* residential moves */}
@@ -122,8 +123,12 @@ export const CoreServices = () => {
               <Button wtBtn className="b-red-bg">
                 Book: Residential Moving
               </Button>
-              <Link href="/">
-                <Button variant={"ghost"}>More details</Button>
+              <Link
+                href="/house-shifting-services"
+                title="House Shifting Services"
+                className={buttonVariants({ variant: "ghost" })}
+              >
+                More details
               </Link>
             </div>
           </div>
@@ -133,8 +138,9 @@ export const CoreServices = () => {
           >
             <Image
               src={"/Residential-Moving-UAE.jpg"}
-              alt="two movers packing house items in front of faimly"
+              alt="two movers packing house items in front of a family"
               fill
+              sizes="(min-width:768px) 50vw, 100vw"
               className="object-cover object-center"
             />
           </div>
@@ -149,6 +155,7 @@ export const CoreServices = () => {
               src={"/commercial-moving-uae.jpg"}
               alt="Nice Movers Team Packing Office Equipments"
               fill
+              sizes="(min-width:768px) 50vw, 100vw"
               className="object-cover object-center"
             />
           </div>
@@ -173,8 +180,12 @@ export const CoreServices = () => {
               <Button wtBtn className="b-red-bg">
                 Book: Commercial Moving
               </Button>
-              <Link href="/">
-                <Button variant={"ghost"}>More details</Button>
+              <Link
+                href="/office-movers-in-dubai"
+                title="Office Movers in Dubai"
+                className={buttonVariants({ variant: "ghost" })}
+              >
+                More details
               </Link>
             </div>
           </div>
@@ -203,8 +214,12 @@ export const CoreServices = () => {
               <Button wtBtn className="b-red-bg">
                 Book: Villa & Specialty
               </Button>
-              <Link href="/">
-                <Button variant={"ghost"}>More details</Button>
+              <Link
+                href="/villa-movers-in-dubai"
+                title="Villa Movers in Dubai"
+                className={buttonVariants({ variant: "ghost" })}
+              >
+                More details
               </Link>
             </div>
           </div>
@@ -214,8 +229,9 @@ export const CoreServices = () => {
           >
             <Image
               src={"/villa-and-speciality-moving-uae.jpg"}
-              alt="Nice Movers UAE team packing and loading boxs to trucks"
+              alt="Nice Movers UAE team packing and loading boxes onto trucks"
               fill
+              sizes="(min-width:768px) 50vw, 100vw"
               className="object-cover object-center"
             />
           </div>
@@ -231,17 +247,14 @@ export const CoreServices = () => {
           Moving Services Offered By Nice Movers{" "}
         </h2>
         <div className="mt-20 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
-          {servicesList.map((service, index) => (
-            <Link
-              href={service.link}
-              key={index}
-              id={service.title.split(" ").join("-")}
-            >
+          {servicesList.map((service, index) => {
+            const card = (
               <div className="md:h-96 h-80 rounded-2xl overflow-hidden relative">
                 <Image
                   src={service.src}
                   alt={service.alt}
                   fill
+                  sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
                   className="absolute object-cover object-center"
                 />
                 <div className="b-red-grd z-10 absolute top-0 left-0 w-full h-full p-5 flex flex-col items-start justify-end">
@@ -249,8 +262,18 @@ export const CoreServices = () => {
                   <p className="text-sm b-text mt-2 ">{service.desc}</p>
                 </div>
               </div>
-            </Link>
-          ))}
+            );
+            const id = service.title.split(" ").join("-");
+            return service.link ? (
+              <Link href={service.link} key={index} id={id}>
+                {card}
+              </Link>
+            ) : (
+              <div key={index} id={id}>
+                {card}
+              </div>
+            );
+          })}
         </div>
       </section>
     </>

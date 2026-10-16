@@ -22,19 +22,22 @@ export function NavItems() {
           <NavigationMenuTrigger IconEnable>SERVICES</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {servicesList.map((service) => (
-                <ListItem
-                  key={service.title}
-                  title={service.title}
-                  href={service.link}
-                  className="line-clamp-1"
-                >
-                  {service.desc}
-                </ListItem>
-              ))}
+              {servicesList.map((service) =>
+                service.link ? (
+                  <ListItem
+                    key={service.title}
+                    title={service.title}
+                    href={service.link}
+                    className="line-clamp-1"
+                  >
+                    {service.desc}
+                  </ListItem>
+                ) : null
+              )}
               <ListItem
                 title={"Used Furniture Buyers in Dubai"}
                 href={"https://dubaiusedfurniture.ae/en"}
+                external
                 className="line-clamp-1"
               >
                 Dubai Used Furniture buy and sell used furniture, home
@@ -86,12 +89,19 @@ function ListItem({
   title,
   children,
   href,
+  external = false,
   ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+}: React.ComponentPropsWithoutRef<"li"> & {
+  href: string;
+  external?: boolean;
+}) {
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
-        <Link href={href}>
+        <Link
+          href={href}
+          {...(external ? { target: "_blank", rel: "nofollow noopener" } : {})}
+        >
           <div className="text-sm leading-none font-medium">{title}</div>
           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}

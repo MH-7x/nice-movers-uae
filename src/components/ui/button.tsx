@@ -35,6 +35,15 @@ const buttonVariants = cva(
   },
 );
 
+const LINK_BUTTONS = {
+  callBtn: { title: "Nice Movers Phone Number", href: "tel:+971563560017" },
+  quoteBtn: { title: "Get A Quote From Nice Movers UAE", href: "/contact-us" },
+  wtBtn: {
+    title: "Nice Movers WhatsApp Contact",
+    href: "https://wa.me/971563560017?text=I%20Need%20Movers",
+  },
+} as const;
+
 function Button({
   className,
   variant,
@@ -51,41 +60,41 @@ function Button({
     callBtn?: boolean;
     quoteBtn?: boolean;
   }) {
-  const Comp = asChild ? Slot : "button";
-  if (callBtn) {
+  const linkKind = callBtn
+    ? "callBtn"
+    : quoteBtn
+      ? "quoteBtn"
+      : wtBtn
+        ? "wtBtn"
+        : null;
+
+  // Link-style buttons render the <a> itself with the button classes
+  // (no <button> nested inside <a>).
+  if (linkKind) {
+    const { title, href } = LINK_BUTTONS[linkKind];
+    const { children, title: customTitle, onClick, id } = props;
     return (
-      <Link title="Nice Movers Phone Number" href={`tel:+971563560017`}>
-        <Comp
-          data-slot="button"
-          className={cn(buttonVariants({ variant, size, className }))}
-          {...props}
-        />
-      </Link>
-    );
-  }
-  if (quoteBtn) {
-    return (
-      <Link title="Get A Quote From Nice Movers UAE" href={`/contact-us`}>
-        <Comp
-          data-slot="button"
-          className={cn(buttonVariants({ variant, size, className }))}
-          {...props}
-        />
-      </Link>
-    );
-  }
-  return wtBtn ? (
-    <Link
-      title="Nice Movers WhatsApp Contact"
-      href={`https://wa.me/971563560017?text=I%20Need%20Movers`}
-    >
-      <Comp
+      <Link
         data-slot="button"
+        href={href}
+        id={id}
+        title={customTitle ?? title}
+        aria-label={props["aria-label"]}
+        onClick={
+          onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>
+        }
         className={cn(buttonVariants({ variant, size, className }))}
-        {...props}
-      />
-    </Link>
-  ) : (
+        {...(linkKind === "wtBtn"
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  const Comp = asChild ? Slot : "button";
+  return (
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}

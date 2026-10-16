@@ -5,15 +5,15 @@ const content = [
   },
   {
     title: "Fully equipped",
-    desc: "Every our teams are set up with the right tools and equipment to make your moving process quick, efficient and safe.",
+    desc: "Every one of our teams is set up with the right tools and equipment to make your moving process quick, efficient and safe.",
   },
   {
     title: "7 days / week",
-    desc: "We’ve got teams available at any day of the week, including public holidays and overnight transportation.",
+    desc: "We’ve got teams available on any day of the week, including public holidays and overnight transportation.",
   },
   {
     title: "100% customer satisfaction",
-    desc: "We are proud to be one of the most trusted mover companies in the UAE with lots of experties in moving services in uae.",
+    desc: "We are proud to be one of the most trusted mover companies in the UAE with deep expertise in moving services across the UAE.",
   },
   {
     title: "Online booking made easy",
@@ -21,7 +21,7 @@ const content = [
   },
   {
     title: "No hidden fees",
-    desc: "Our prices are final and fully inclusive of fuel, and any other charges. What you see is what you pay. Thats way most of local customers choose us.",
+    desc: "Our prices are final and fully inclusive of fuel, and any other charges. What you see is what you pay. That’s why so many local customers choose us.",
   },
 ];
 
@@ -40,31 +40,29 @@ const WhyChooseUs = () => {
           <div className="p-8 bg-white rounded-2xl">
             <h3 className="text-xl">Licensed & Insured</h3>
             <p className="b-text mt-3">
-              We hold all required UAE licenses (MoE) for moving services , and
-              every job includes full insurance for your belongings
+              We hold all required UAE licenses for moving services, and every
+              job includes full insurance for your belongings.
             </p>
           </div>
           <div className="p-8 bg-white rounded-2xl">
             <h3 className="text-xl">Certified Quality</h3>
             <p className="b-text mt-3">
               Our processes meet international standards – we’re ISO 9001:2015
-              certified and FAIM-accredited (the industry’s gold standard).
+              certified for quality management.
             </p>
           </div>
           <div className="p-8 bg-white rounded-2xl">
             <h3 className="text-xl">Nationwide Coverage</h3>
             <div className="b-text mt-3">
               <p>
-                We operate branches across all emirates (Dubai, Abu Dhabi,
-                Sharjah, Ajman, Fujairah, etc.), so we cover anywhere in the
-                UAE.
+                We serve all emirates (Dubai, Abu Dhabi, Sharjah, Ajman,
+                Fujairah, Ras Al Khaimah and Umm Al Quwain), so we can handle
+                your move anywhere in the UAE.
               </p>{" "}
               <p>
-                {" "}
-                As one provider notes, movers like us serve anywhere in Dubai,
-                Abu Dhabi, Sharjah… or anywhere in between Ajman and all over
-                the UAE. In fact, our network reaches – no location is out of
-                reach.
+                Whether you are moving within one city or between emirates, our
+                crews plan the route and the timing for you – no location is
+                out of reach.
               </p>
             </div>
           </div>
@@ -72,7 +70,7 @@ const WhyChooseUs = () => {
             <h3 className="text-xl">Trusted Experience</h3>
             <div className="b-text mt-3">
               <p>
-                Backed by years of experience since 2015, our moving crews are
+                Moving UAE families and businesses since 2015, our crews are
                 rigorously trained and equipped.
               </p>{" "}
               <p>
@@ -88,7 +86,7 @@ const WhyChooseUs = () => {
         className="md:w-11/12 w-full mt-36 mx-auto md:px-0 px-3"
       >
         <h2 className="md:text-4xl text-3xl b-red font-bold text-center">
-          Seemless Moving Experience
+          Seamless Moving Experience
         </h2>
         <p className="md:text-lg b-text mt-3 max-w-2xl mx-auto text-center">
           Our teams will treat your possessions like they would their own,

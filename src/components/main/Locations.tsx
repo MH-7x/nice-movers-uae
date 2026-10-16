@@ -24,6 +24,7 @@ const Locations = ({
             src={img.src}
             alt={img.alt}
             fill
+            sizes="(min-width:768px) 50vw, 100vw"
             className="object-bottom object-cover"
           />
         </div>

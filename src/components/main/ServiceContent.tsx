@@ -25,9 +25,8 @@ const ServiceContent = ({
           ) : (
             <>
               <p>
-                As one of top-rated moving company in Dubai with 15 years of
-                expertise, Nice Movers has completed a thousands of moves with
-                care.
+                As one of the top-rated moving companies in Dubai, Nice Movers
+                has been completing moves with care since 2015.
               </p>
               <p>
                 We provide moving services like: home moving and packing,
@@ -35,8 +34,8 @@ const ServiceContent = ({
                 villa packing and moving.
               </p>
               <p>
-                Our relocation services are design to make you moving easy in
-                UAE.
+                Our relocation services are designed to make your move in the
+                UAE easy.
               </p>
             </>
           )}
@@ -62,6 +61,7 @@ const ServiceContent = ({
                 src={img.src}
                 alt={img.alt}
                 fill
+                sizes="(min-width:768px) 50vw, 100vw"
                 className="absolute object-cover object-right"
               />
             </>
@@ -71,6 +71,7 @@ const ServiceContent = ({
                 src={"/house-shifting-service-process.png"}
                 alt="nice movers team packing home items in boxes"
                 fill
+                sizes="(min-width:768px) 50vw, 100vw"
                 className="absolute object-cover object-top"
               />
             </>

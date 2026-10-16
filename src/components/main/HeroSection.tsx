@@ -1,5 +1,6 @@
 import BuildingsSvg from "../BuildingsSvg";
-import { Button } from "../ui/button";
+import Link from "next/link";
+import { Button, buttonVariants } from "../ui/button";
 
 const HeroSection = () => {
   return (
@@ -21,9 +22,13 @@ const HeroSection = () => {
           <Button callBtn className={"b-red-bg"} size={"lg"}>
             CALL NOW
           </Button>
-          <Button className="b-text-bg" size={"lg"}>
+          <Link
+            href="#main-services"
+            title="Our Moving Services"
+            className={buttonVariants({ size: "lg", className: "b-text-bg" })}
+          >
             OUR SERVICES
-          </Button>
+          </Link>
         </div>
       </section>
       <BuildingsSvg />

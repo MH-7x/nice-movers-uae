@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from "./ui/button";
+import { buttonVariants } from "./ui/button";
 import Link from "next/link";
 
 const Content = () => {
@@ -23,11 +23,19 @@ const Content = () => {
           relocation with peace of mind across the UAE!
         </p>
         <div className="flex items-center gap-x-5 mt-8">
-          <Link href={"/"} title="About Nice Movers">
-            <Button className="b-text-bg">About Company</Button>
+          <Link
+            href={"/about-us"}
+            title="About Nice Movers"
+            className={buttonVariants({ className: "b-text-bg" })}
+          >
+            About Company
           </Link>
-          <Link href={"/"} title="Get A Free Moving Quote">
-            <Button variant={"secondary"}>Get A Quote</Button>
+          <Link
+            href={"/contact-us"}
+            title="Get A Free Moving Quote"
+            className={buttonVariants({ variant: "secondary" })}
+          >
+            Get A Quote
           </Link>
         </div>
       </div>
@@ -36,6 +44,7 @@ const Content = () => {
           alt="Licensed and Certified Moving Company"
           src={"/licensed-certified-badge.jpg"}
           fill
+          sizes="(min-width:768px) 50vw, 100vw"
           loading="lazy"
           className="absolute object-center object-cover"
         />

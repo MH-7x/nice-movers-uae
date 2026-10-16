@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 interface ReviewCardProps {
+  /** Rating on a 5-star scale (e.g. 4.9). */
   rating: number;
   name: string;
   review: string;
@@ -21,19 +22,25 @@ const ReviewCard: FC<ReviewCardProps> = ({
   from,
   to,
 }) => {
+  // Ratings are on a 5-star scale; always show one decimal (e.g. 4.9).
+  const displayRating = Math.min(5, Math.max(0, rating)).toFixed(1);
   return (
     <div className="w-full max-w-md relative bg-white border-gray-200 rounded-xl  p-4">
       <Image
         src={"/google-review-badge.png"}
-        alt="google verifed review badge"
+        alt="Google verified review badge"
         width={60}
         height={60}
         className="absolute top-2 right-4 object-cover"
         quality={90}
       />
       <div className="flex items-center gap-2 mb-2">
-        <div className="b-red-bg text-white font-semibold text-sm px-2 py-1 rounded-md">
-          {rating}
+        <div
+          className="b-red-bg text-white font-semibold text-sm px-2 py-1 rounded-md"
+          role="img"
+          aria-label={`Rated ${displayRating} out of 5`}
+        >
+          {displayRating} <span aria-hidden="true">★</span>
         </div>
         <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
       </div>
