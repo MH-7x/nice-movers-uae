@@ -1,5 +1,5 @@
 import ServiceHero from "@/components/main/ServiceHero";
-import imagSrc from "../../../../public/office-movers-hero-landscape.jpg";
+import imagSrc from "../../../../../public/office-movers-hero-landscape.jpg";
 import ServiceContent from "@/components/main/ServiceContent";
 import {
   ClockArrowDownIcon,
@@ -20,26 +20,26 @@ import { FAQs } from "@/components/main/FAQs";
 import CTA from "@/components/main/CTA";
 import ContactSection from "@/components/main/ContactSection";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
-import { generateServiceSchema } from "@/lib/ServiceSchemaGen";
+import { breadcrumbFor, generateServiceSchema } from "@/lib/ServiceSchemaGen";
 import { APP } from "@/lib/App";
-import { OfficeMoversRawFaqs } from "../../../../List";
-import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
-import Script from "next/script";
+import { generateFAQSchema, type PlainFAQ } from "@/lib/GenerateFaqSchema";
+import JsonLd from "@/components/JsonLd";
+import RelatedLinks from "@/components/main/RelatedLinks";
 import { type Metadata } from "next";
-import Link from "next/link";
+import { type ReactNode } from "react";
 const content = [
   {
     title: "Detailed Pre-Move Planning & Project Management",
     desc: (
       <>
         <p>
-          A successful move starts with a awless plan. One of our senior move
+          A successful move starts with a flawless plan. One of our senior move
           coordinators will conduct a thorough on-site survey to understand your
-          specic requirements.
+          specific requirements.
         </p>
 
         <Accordion type="single" collapsible className="w-full pb-0">
-          <AccordionItem value="apartment-moving-detials">
+          <AccordionItem value="office-moving-details">
             <AccordionTrigger>See all details..</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2 ">
               <p>
@@ -48,7 +48,7 @@ const content = [
                 logistics are handled professionally.
               </p>
               <p>
-                These are the hallmarks of our professional oce relocation
+                These are the hallmarks of our professional office relocation
                 services.
               </p>
             </AccordionContent>
@@ -67,11 +67,11 @@ const content = [
         </p>
 
         <Accordion type="single" collapsible className="w-full pb-0">
-          <AccordionItem value="apartment-moving-detials">
+          <AccordionItem value="office-moving-details">
             <AccordionTrigger>See all details..</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2 ">
               <p>
-                We use high-quality packing materials—from sturdy boxes for les
+                We use high-quality packing materials—from sturdy boxes for files
                 to specialized wrapping for delicate items.
               </p>
               <p>
@@ -100,7 +100,7 @@ const content = [
         </p>
 
         <Accordion type="single" collapsible className="w-full pb-0">
-          <AccordionItem value="apartment-moving-detials">
+          <AccordionItem value="office-moving-details">
             <AccordionTrigger>See all details..</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2 ">
               <p>
@@ -124,19 +124,19 @@ const content = [
         </p>
 
         <Accordion type="single" collapsible className="w-full pb-0">
-          <AccordionItem value="apartment-moving-detials">
+          <AccordionItem value="office-moving-details">
             <AccordionTrigger>See all details..</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2 ">
               <p>
-                From conference tables to desks and cabinets, we ensure your
-                office furniture movers handle each piece safely
+                From conference tables to desks and cabinets, our office
+                furniture movers handle each piece safely.
               </p>
               <p>
                 This specialized service prevents damage to both furniture and
                 office infrastructure.
               </p>
               <p>
-                As professional oce furniture movers, we ensure everything is
+                As professional office furniture movers, we ensure everything is
                 set up correctly in your new space, ready for your team.
               </p>
             </AccordionContent>
@@ -150,12 +150,12 @@ const content = [
     desc: (
       <>
         <p>
-          Your assets are safe with us. We operate a eet of clean, modern, and
+          Your assets are safe with us. We operate a fleet of clean, modern, and
           fully-enclosed moving trucks.
         </p>
 
         <Accordion type="single" collapsible className="w-full pb-0">
-          <AccordionItem value="apartment-moving-detials">
+          <AccordionItem value="office-moving-details">
             <AccordionTrigger>See all details..</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2 ">
               <p>
@@ -175,15 +175,15 @@ const content = [
       <>
         <p>
           If you have a gap between moving out and moving in, or simply need to
-          decluer, we can help.
+          declutter, we can help.
         </p>
 
         <Accordion type="single" collapsible className="w-full pb-0">
-          <AccordionItem value="apartment-moving-detials">
+          <AccordionItem value="office-moving-details">
             <AccordionTrigger>See all details..</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2 ">
               <p>
-                We offer exible and secure oce moving and storage Dubai
+                We offer flexible and secure office moving and storage Dubai
                 solutions in our clean, climate-controlled facilities. Your
                 assets will be kept safe until you are ready for them.
               </p>
@@ -195,12 +195,106 @@ const content = [
   },
 ];
 
+/**
+ * Single source for the visible FAQs and the FAQPage schema.
+ * Each "\n" starts a new paragraph; lines starting with "- " are list items.
+ */
+const officeMoversFaqs: PlainFAQ[] = [
+  {
+    question:
+      "What services are included in your office movers and packers package?",
+    answer:
+      "We provide a full range of services: free on-site survey and planning, packing and unpacking, furniture disassembly/reassembly, IT equipment handling, document security, loading/unloading, and post-move cleanup.\nOur professional office movers in Dubai handle every task, from stacking files to cabling networks. If you need special services (like storage or furniture assembly), we can include those too.",
+  },
+  {
+    question: "How do I minimize business disruption during the move?",
+    answer:
+      "Early planning is key. We coordinate with you to schedule moves during off-peak hours or weekends if possible.\nWe prepare a detailed checklist and keep your staff informed at each stage. By having our team pack efficiently and reassemble quickly, you’ll have minimal downtime and a quick return to normal operations.",
+  },
+  {
+    question: "What is the cost of office movers in Dubai?",
+    answer:
+      "Pricing depends on several factors: office size, distance between locations, number of movers/trucks needed, and any extra services.\nAs a guide, a single truckload move in Dubai usually costs around AED 1,000–1,500, and full office moves start from about AED 1,800 (see the price table on this page). We’ll provide you with a competitive quote customized to your move. Our pricing is transparent, with no hidden charges.",
+  },
+  {
+    question: "What type of office items and equipment do you move?",
+    answer:
+      "Our office relocation experts in the UAE are trained to safely handle a wide range of commercial assets:\n- Executive desks, ergonomic chairs, and partition panels\n- Boardroom tables, AV equipment, whiteboards\n- Reception counters, guest seating, display units\n- Laptops, desktops, monitors, and cables\n- Networking gear: routers, switches, modems\n- Printers, copiers, shredders, telecom systems\n- Server racks, storage units, and sensitive hardware\n- Secure handling of confidential files and office records\n- Kitchen items: fridges, kettles, coffee machines, water coolers",
+  },
+  {
+    question: "What type of businesses do you relocate across the UAE?",
+    answer:
+      "We serve a wide range of companies and industries throughout the Emirates, including:\n- Startups and SMEs in Ajman, Sharjah, and Ras Al Khaimah\n- Corporate headquarters in Dubai, Abu Dhabi, and Al Ain\n- Legal firms, finance offices, marketing agencies, and IT firms\n- Government entities and education providers\n- Co-working spaces, accelerators, and tech hubs\n- Businesses undergoing expansion, consolidation, or renovation\nWe are trusted office movers in the UAE offering tailored relocation plans for every type of business setup.",
+  },
+  {
+    question: "Are Nice Movers licensed and insured?",
+    answer:
+      "Yes. We are a licensed, ISO 9001:2015 certified moving company, and we offer insurance for your peace of mind.\nWe always recommend checking a mover’s license and insurance before hiring. With Nice Movers, your valuable office items are protected throughout the move.",
+  },
+  {
+    question: "How do I hire office movers in Dubai?",
+    answer:
+      "It’s easy: simply contact Nice Movers by phone, WhatsApp or our website’s contact form. Tell us about your move (office size, location, date).\nWe’ll arrange a free survey and then provide a detailed moving plan and quote. Once you approve, we’ll lock in your move date.",
+  },
+  {
+    question: "What makes corporate moving different from a regular move?",
+    answer:
+      "Corporate moving (also called business relocation) involves extra coordination. There are many employees to inform, sensitive equipment and documents to protect, and potential regulatory steps.\nThat’s why we offer specialized corporate moving solutions. Our commercial relocation experts handle large-scale moves – even entire company headquarters – with project management and logistical support.",
+  },
+  {
+    question: "How long does it take to move an office in Dubai?",
+    answer:
+      "The office relocation process can take from a few weeks up to a few months, depending on the size of the office.\nCareful planning is important so that the company’s time is not wasted and employees’ productivity remains unaffected during the move.\nWhen you hire office movers and packers in Dubai, the process is streamlined and the move itself takes far less time.",
+  },
+];
+
+/** Renders a plain-text FAQ answer (paragraphs + "- " list items) as HTML. */
+const renderAnswer = (answer: string) => {
+  const blocks: ReactNode[] = [];
+  let list: string[] = [];
+  const flushList = () => {
+    if (list.length) {
+      blocks.push(
+        <ul key={`ul-${blocks.length}`} className="list-disc pl-6 mt-2 space-y-1">
+          {list.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      );
+      list = [];
+    }
+  };
+  answer.split("\n").forEach((line) => {
+    if (line.startsWith("- ")) {
+      list.push(line.slice(2));
+    } else {
+      flushList();
+      blocks.push(<p key={`p-${blocks.length}`}>{line}</p>);
+    }
+  });
+  flushList();
+  return <>{blocks}</>;
+};
+
+/** Plain-text answer for the FAQPage schema (same words as the visible answer). */
+const schemaAnswer = (answer: string) =>
+  answer
+    .split("\n")
+    .map((line) => line.replace(/^- /, "").trim())
+    .map((line) => (/[.!?:]$/.test(line) ? line : `${line}.`))
+    .join(" ");
+
+const FAQsItems = officeMoversFaqs.map((faq) => ({
+  question: faq.question,
+  answer: renderAnswer(faq.answer),
+}));
+
 export const metadata: Metadata = MetadataTemplate({
   data: {
     meta: {
       title:
         "Affordable Office Movers in Dubai | Best Office Relocation Services",
-      desc: "Seamless office relocation in Dubai. Nice Movers oers professional oce movers and packers, specializing in IT moving & minimizing business disruption. Get your free, no-obligation quote today!",
+      desc: "Seamless office relocation in Dubai. Nice Movers offers professional office movers and packers, specializing in IT moving and minimal downtime. Free quote!",
     },
     path: "/office-movers-in-dubai",
     image: {
@@ -209,32 +303,31 @@ export const metadata: Metadata = MetadataTemplate({
     },
   },
 });
-const JsonLd = generateServiceSchema({
+const serviceJsonLd = generateServiceSchema({
   serviceName: "Office Movers in Dubai",
   serviceDescription:
-    "Seamless office relocation in Dubai. Nice Movers oers professional oce movers and packers, specializing in IT moving & minimizing business disruption. Get your free, no-obligation quote today!",
-  serviceUrl: APP.url + "/house-shifting-services",
-  priceRange: "1,000 AED - 13,000 AED",
+    "Office relocation in Dubai by Nice Movers: professional office movers and packers specializing in IT equipment moving, furniture disassembly and minimal business downtime.",
+  serviceUrl: APP.url + "/office-movers-in-dubai",
+  price: { low: 1000, high: 13000 },
   imageUrls: [APP.url + "/office-movers-in-dubai.jpg"],
 });
 
-const faqJsonLd = generateFAQSchema(OfficeMoversRawFaqs);
+const faqJsonLd = generateFAQSchema(
+  officeMoversFaqs.map((faq) => ({
+    question: faq.question,
+    answer: schemaAnswer(faq.answer),
+  }))
+);
 
 const OfficeMoversPage = () => {
   return (
     <>
-      <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JsonLd }}
-        strategy="beforeInteractive"
+      <JsonLd id="service-schema" data={serviceJsonLd} />
+      <JsonLd
+        id="breadcrumb-schema"
+        data={breadcrumbFor("Office Movers in Dubai", "/office-movers-in-dubai")}
       />
-      <Script
-        id="faqs-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd }}
-        strategy="beforeInteractive"
-      />
+      <JsonLd id="faqs-schema" data={faqJsonLd} />
 
       <main className="z-20 md:mt-[124px] mt-[69px] max-w-[1400px] mx-auto bg-white">
         <ServiceHero
@@ -252,7 +345,7 @@ const OfficeMoversPage = () => {
           desc={
             <>
               <p>
-                Planning an oce move requires a team of professional oce movers
+                Planning an office move requires a team of professional office movers
                 in Dubai you can trust.
               </p>
               <p>
@@ -277,7 +370,7 @@ const OfficeMoversPage = () => {
           }}
         />
         <section
-          id="our-experties"
+          id="our-expertise"
           className="mt-36 md:w-5xl mx-auto grid md:grid-cols-3 gap-10 grid-cols-1 md:px-0 px-3"
         >
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -291,7 +384,7 @@ const OfficeMoversPage = () => {
               Dedicated Move Coordinator
             </h3>
             <p className="b-text text-sm text-center">
-              A single point of contact from start to nish.
+              A single point of contact from start to finish.
             </p>
           </div>
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -319,7 +412,7 @@ const OfficeMoversPage = () => {
               Minimized Business Downtime
             </h3>
             <p className="b-text text-sm text-center">
-              Flexible scheduling, including weekends and aer-hours.
+              Flexible scheduling, including weekends and after-hours.
             </p>
           </div>
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -376,9 +469,8 @@ const OfficeMoversPage = () => {
               arrive safely
             </p>
             <p className="">
-              we operate “with no compromise in value and professionalism,”
-              providing expert management and resources to meet your move
-              expectations
+              We never compromise on value or professionalism, providing expert
+              management and resources to meet your move expectations.
             </p>
           </div>
         </section>
@@ -400,7 +492,7 @@ const OfficeMoversPage = () => {
             {content.map((box, index) => (
               <div key={index}>
                 <h3 className="text-xl b-text font-bold">{box.title}</h3>
-                <div className="mt-3 text-sm b-tex">{box.desc}</div>
+                <div className="mt-3 text-sm b-text">{box.desc}</div>
                 <div className="border-b-2 w-full mt-5 border-[#c00000]"></div>
               </div>
             ))}
@@ -422,9 +514,10 @@ const OfficeMoversPage = () => {
                       and follow proven processes to avoid delays or damage
                     </p>
                     <p>
-                      We are fully licensed and insured, so your business assets
-                      are protected — industry experts recommend always
-                      verifying a mover’s license and insurance before hiring
+                      We are a licensed, ISO 9001:2015 certified company and
+                      offer moving insurance, so your business assets are
+                      protected. We always recommend checking a mover’s license
+                      and insurance before hiring.
                     </p>
                   </>
                 ),
@@ -438,13 +531,12 @@ const OfficeMoversPage = () => {
                       execution focus on reducing downtime.
                     </p>
                     <p>
-                      According to Crown Workspace, a full-scale office move
-                      should minimize costs and downtime while keeping essential
-                      services running
+                      We plan every office move to keep costs and downtime low
+                      while your essential services keep running.
                     </p>
                     <p>
-                      Likewise, 800 Truck highlights our commitment to “minimize
-                      business disruption” for a quick return to work
+                      Our goal is to minimize business disruption so your team
+                      can get back to work quickly.
                     </p>
                   </>
                 ),
@@ -476,9 +568,9 @@ const OfficeMoversPage = () => {
                       security protocols
                     </p>
                     <p>
-                      As Allied Moving Services notes, protecting client data
-                      and communicating clearly with employees are essential
-                      parts of a stress-free move
+                      Protecting your data and keeping your employees clearly
+                      informed are essential parts of a stress-free move, and
+                      we plan for both.
                     </p>
                   </>
                 ),
@@ -492,8 +584,8 @@ const OfficeMoversPage = () => {
                       detailed quotes upfront.
                     </p>
                     <p>
-                      For example, industry data shows one moving truckload in
-                      Dubai typically costs around AED 1,000–1,500
+                      For example, a single truckload move in Dubai usually
+                      costs around AED 1,000–1,500.
                     </p>
                     <p>
                       Your actual cost depends on the size of your office and
@@ -532,7 +624,7 @@ const OfficeMoversPage = () => {
           </h2>
           <div className="mt-8 md:text-lg text-sm b-text flex flex-col gap-y-2">
             <p>
-              Our deep local knowledge extends across the city. Whether your oce
+              Our deep local knowledge extends across the city. Whether your office
               is relocating to, from, or within any of Dubai&apos;s bustling
               commercial districts, we have you covered. We regularly serve
               clients in:
@@ -569,23 +661,23 @@ const OfficeMoversPage = () => {
           </Button>
         </section>
         <Process
-          title={<>Our Simple 4-Step Oce Moving Process</>}
+          title={<>Our Simple 4-Step Office Moving Process</>}
           cus={[
             {
               title: "Step 1: Free Consultation & On-Site Survey",
-              desc: "Contact us to schedule a free, no-obligation consultation. Our move coordinator will visit your oce to assess the volume of items, discuss your timeline, and understand any special requirements. We can also provide initial online estimates for oce movers in Dubai for preliminary planning",
+              desc: "Contact us to schedule a free, no-obligation consultation. Our move coordinator will visit your office to assess the volume of items, discuss your timeline, and understand any special requirements. We can also provide initial online estimates for office movers in Dubai for preliminary planning",
             },
             {
               title: "Step 2: Receive Your Customized Moving Plan & Quote",
-              desc: "You’ll receive a detailed proposal outlining the entire moving strategy, including the schedule, services included, and a transparent, xed-price quote.",
+              desc: "You’ll receive a detailed proposal outlining the entire moving strategy, including the schedule, services included, and a transparent, fixed-price quote.",
             },
             {
               title: "Step 3: Flawless Execution by Professional Movers",
-              desc: "On moving day, our uniformed, professional team will arrive on time with all the necessary equipment and materials. They will execute the plan eciently, handling every item with precision and care under the supervision of your dedicated coordinator.",
+              desc: "On moving day, our uniformed, professional team will arrive on time with all the necessary equipment and materials. They will execute the plan efficiently, handling every item with precision and care under the supervision of your dedicated coordinator.",
             },
             {
               title: "Step 4: Post-Move Setup & Support",
-              desc: "Our job isn’t done when the last box is unloaded. We assist with unpacking, reassembling furniture, and placing items according to your oor plan. We'll also remove all used packing materials, leaving your new oce clean and ready for business.",
+              desc: "Our job isn’t done when the last box is unloaded. We assist with unpacking, reassembling furniture, and placing items according to your floor plan. We'll also remove all used packing materials, leaving your new office clean and ready for business.",
             },
           ]}
         />
@@ -632,211 +724,13 @@ const OfficeMoversPage = () => {
             But, remember that the final cost depends on different factors like
             <span className="underline underline-offset-4"> volume</span>,
             <span className="underline underline-offset-4"> distance</span> and
-            the services you need. Here,there is no need to worry, just contact
+            the services you need. There is no need to worry, just contact
             us and get all levels of moving and Packing Services at affordable
             pricing.
           </p>
         </section>
-        <FAQs
-          faqs={[
-            {
-              question:
-                "What services are included in your office movers and packers package?",
-              answer: (
-                <>
-                  <p>
-                    We provide a full range of services: free on-site survey and
-                    planning, packing and unpacking, furniture
-                    disassembly/reassembly, IT equipment handling, document
-                    security, loading/unloading, and post-move cleanup.
-                  </p>
-                  <p>
-                    Our professional office movers in Dubai handle every task,
-                    from stacking files to cabling networks. If you need special
-                    services (like storage or furniture assembly), we can
-                    include those too.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question:
-                "How do I minimize business disruption during the move?",
-              answer: (
-                <>
-                  <p>
-                    Early planning is key. We coordinate with you to schedule
-                    moves during off-peak hours or weekends if possible.
-                  </p>
-                  <p>
-                    We prepare a detailed checklist and keep your staff informed
-                    at each stage. By having our team pack efficiently and
-                    reassemble quickly, you’ll have minimal downtime. Our focus
-                    is on a “quick return to normal” operations.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "What is the cost of office movers in Dubai?",
-              answer: (
-                <>
-                  <p>
-                    Pricing depends on several factors: office size, distance
-                    between locations, number of movers/trucks needed, and any
-                    extra services.
-                  </p>
-                  <p>
-                    For context, industry estimates show one moving truckload
-                    costs around AED 1,000–1,500. We’ll provide you with a
-                    competitive quote customized to your move. Our pricing is
-                    transparent, with no hidden charges.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "What type of office items and equipment we move",
-              answer: (
-                <>
-                  <p>
-                    Our office relocation experts in the UAE are trained to
-                    safely handle a wide range of commercial assets:
-                  </p>
-                  <ul className="list-disc pl-6 mt-2 space-y-1">
-                    <li>
-                      Executive desks, ergonomic chairs, and partition panels
-                    </li>
-                    <li>Boardroom tables, AV equipment, whiteboards</li>
-                    <li>Reception counters, guest seating, display units</li>
-                    <li>Laptops, desktops, monitors, and cables</li>
-                    <li>Networking gear: routers, switches, modems</li>
-                    <li>Printers, copiers, shredders, telecom systems</li>
-                    <li>Server racks, storage units, and sensitive hardware</li>
-                    <li>
-                      Secure handling of confidential files and office records
-                    </li>
-                    <li>
-                      Kitchen items: fridges, kettles, coffee machines, water
-                      coolers
-                    </li>
-                  </ul>
-                </>
-              ),
-            },
-            {
-              question: "What type of businesses we relocate across the UAE",
-              answer: (
-                <>
-                  <p>
-                    We serve a wide range of companies and industries throughout
-                    the Emirates, including:
-                  </p>
-                  <ul className="list-disc pl-6 mt-2 space-y-1">
-                    <li>
-                      Startups and SMEs in Ajman,{" "}
-                      <Link href={"/movers-and-packers-sharjah"}> Sharjah</Link>{" "}
-                      , and Ras Al Khaimah
-                    </li>
-                    <li>
-                      Corporate headquarters in Dubai, Abu Dhabi, and Al Ain
-                    </li>
-                    <li>
-                      Legal firms, finance offices, marketing agencies, and IT
-                      firms
-                    </li>
-                    <li>Government entities and education providers</li>
-                    <li>Co-working spaces, accelerators, and tech hubs</li>
-                    <li>
-                      Businesses undergoing expansion, consolidation, or
-                      renovation
-                    </li>
-                  </ul>
-                  <p className="mt-3">
-                    We are trusted office movers in UAE offering tailored
-                    relocation plans for every type of business setup.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "Are Nice Movers licensed and insured?",
-              answer: (
-                <>
-                  <p>
-                    Yes. We are a fully licensed moving company in Dubai, and we
-                    carry comprehensive insurance for your peace of mind.
-                  </p>
-                  <p>
-                    As experts advise, always verify the mover’s license and
-                    insurance before hiring. With Nice Movers, your valuable
-                    office items are protected under approved regulations
-                    throughout the move.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "How do I hire office movers in Dubai?",
-              answer: (
-                <>
-                  <p>
-                    It’s easy: simply contact Nice Movers via phone or our
-                    website’s contact form. Tell us about your move (office
-                    size, location, date).
-                  </p>
-                  <p>
-                    We’ll arrange a free survey and then provide a detailed
-                    moving plan and quote. Once you approve, we’ll lock in your
-                    move date. You can book our office moving service in Dubai
-                    directly through our site or by calling our office.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question:
-                "What makes corporate moving different from a regular move?",
-              answer: (
-                <>
-                  <p>
-                    Corporate moving (also called business relocation) involves
-                    extra coordination. There are many employees to inform,
-                    sensitive equipment and documents to protect, and potential
-                    regulatory steps.
-                  </p>
-                  <p>
-                    That’s why we offer specialized corporate moving solutions.
-                    Our commercial relocation experts handle large scale moves –
-                    even entire company headquarters – with project management
-                    and logistical support.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "How dose long it takes to move an office in dubai",
-              answer: (
-                <>
-                  <p>
-                    The office relocation process can take from a few weeks up
-                    to a few months, depending on the size of the office.
-                  </p>
-                  <p>
-                    Meticulous planning is important to ensure that the
-                    company’s time is not wasted and the employees’ productivity
-                    remains unaffected during the moving process.
-                  </p>
-                  <p>
-                    If you hire office movers and packers in Dubai for your
-                    office move, the process will be streamlined and the move
-                    will not take a lot of time.
-                  </p>
-                </>
-              ),
-            },
-          ]}
-        />
+        <RelatedLinks current="/office-movers-in-dubai" />
+        <FAQs faqs={FAQsItems} />
         <CTA
           title={
             <>
@@ -846,13 +740,13 @@ const OfficeMoversPage = () => {
           desc={
             <>
               <p className="text-[#d6d6d6] max-w-2xl mt-3">
-                Take the stress out of your upcoming oce relocation. Let the
-                experts at Nice Movers handle the heavy liing so you can focus
+                Take the stress out of your upcoming office relocation. Let the
+                experts at Nice Movers handle the heavy lifting so you can focus
                 on your business.
               </p>
               <p className="text-[#d6d6d6] max-w-2xl mt-3">
                 Fill out the form below or call us directly for a free,
-                no-obligation quote from the best oce movers and packers in
+                no-obligation quote from the best office movers and packers in
                 Dubai.
               </p>
             </>

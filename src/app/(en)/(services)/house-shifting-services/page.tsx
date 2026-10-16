@@ -26,184 +26,120 @@ import {
 
 import Image from "next/image";
 import Link from "next/link";
-import { HouseShiftingRawFaqs, ServicesLocations } from "../../../../List";
+import { ServicesLocations } from "../../../../../List";
 import Prices from "@/components/main/Prices";
 import CTA from "@/components/main/CTA";
-import imgSrc from "../../../../public/house-shifting-services.png";
+import imgSrc from "../../../../../public/house-shifting-services.png";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
 
-import Script from "next/script";
-import { generateServiceSchema } from "@/lib/ServiceSchemaGen";
+import JsonLd from "@/components/JsonLd";
+import RelatedLinks from "@/components/main/RelatedLinks";
+import { breadcrumbFor, generateServiceSchema } from "@/lib/ServiceSchemaGen";
 import { APP } from "@/lib/App";
-import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
+import { generateFAQSchema, type PlainFAQ } from "@/lib/GenerateFaqSchema";
 import { type Metadata } from "next";
+import { type ReactNode } from "react";
 
-const FAQsItems = [
+type PageFAQ = PlainFAQ & { link?: { href: string; text: string } };
+
+/**
+ * Single source for the visible FAQs and the FAQPage schema.
+ * Each "\n" starts a new paragraph; lines starting with "- " are list items.
+ */
+const houseShiftingFaqs: PageFAQ[] = [
   {
     question: "How to book house shifting services?",
-    answer: (
-      <>
-        <p>
-          {" "}
-          To book our house shifting service in Dubai, click on Call or WhatsApp
-          button that in bottom in website and tell us eveything about your
-          move.
-        </p>
-        <p>
-          Other way to book our service is to fill out the quote form in website
-          or visit to contact us page, we will recive your details and contact
-          you as soon as possiable!
-        </p>
-      </>
-    ),
+    answer:
+      "To book our house shifting service anywhere in the UAE, tap the Call or WhatsApp button at the bottom of the website and tell us everything about your move.\nYou can also fill out the quote form on this page or visit our contact us page. We will receive your details and contact you as soon as possible.",
   },
   {
-    question: "How much a house moving service cost in dubai?",
-    answer: (
-      <>
-        <p>
-          {" "}
-          the cost moving and packing for house shifting service is different
-          factors like volume, distance and the services you need.
-        </p>
-        <p>
-          {" "}
-          But we estimated price ranges that are usually cost for house shifting
-          service.{" "}
-          <Link className="inline-block" href={"#house-shifting-price"}>
-            click here to see{" "}
-          </Link>
-        </p>
-      </>
-    ),
+    question: "How much does a house moving service cost in the UAE?",
+    answer:
+      "The cost of a house shifting service depends on factors like the volume of your belongings, the distance and the services you need.\nWe have listed the estimated price ranges that house shifting usually costs on this page.",
+    link: { href: "#house-shifting-price", text: "See our house shifting prices" },
   },
   {
     question: "Why should you hire Movers and Packers?",
-    answer: (
-      <>
-        <p>
-          {" "}
-          Whether it’s an apartment move or an office transfer, the process is
-          frequently taxing and fraught with difficulties.
-        </p>
-        <p>
-          We guarantee that our service will provide you with the convenience
-          you need by taking care of all of your dismantlings, packing, moving,
-          and reassembling needs.
-        </p>
-        <p>
-          Packing is one of the most difficult yet necessary phases of the
-          process. We utilize bubble wrap and robust boxes, so you can be
-          confident that your treasures are in good hands.
-        </p>
-      </>
-    ),
+    answer:
+      "Whether it’s an apartment move or an office transfer, the process is often stressful and full of challenges.\nOur service gives you the convenience you need by taking care of all the dismantling, packing, moving and reassembling.\nPacking is one of the most difficult yet necessary parts of the process. We use bubble wrap and strong boxes, so you can be confident that your belongings are in good hands.",
   },
   {
-    question: "Why We are the UAE’s Professional House Shifting Company?",
-    answer: (
-      <>
-        <ul>
-          <li>- Moving and Packing Services that are Safe and Secure</li>
-          <li>- You should not charge for the site survey.</li>
-          <li>- Only covered cars are used for transportation.</li>
-          <li>- Completely Insured</li>
-          <li>- Appoint a coordinator.</li>
-          <li>
-            - The ability to choose between partial and full loading services.
-          </li>
-          <li>- 24/7 Customer Support</li>
-          <li>- Guaranteed the quickest services</li>
-        </ul>
-      </>
-    ),
+    question: "Why are we the UAE’s professional house shifting company?",
+    answer:
+      "- Safe and secure moving and packing services\n- Free site survey\n- Only covered trucks are used for transportation\n- Moving insurance available\n- A dedicated move coordinator\n- A choice between partial and full loading services\n- 24/7 customer support\n- Fast, on-time service",
   },
   {
     question: "Do you reassemble the furniture after the moving service?",
-    answer: (
-      <>
-        <p>
-          Absolutely! Our movers will disassemble your furniture as needed to
-          facilitate the move, and upon arrival at your new location, they will
-          reassemble it to its original configuration.
-        </p>
-        <p>
-          Our expert movers and packers take great care in packing your
-          furniture meticulously to ensure their safety throughout the entire
-          move.
-        </p>
-      </>
-    ),
+    answer:
+      "Absolutely! Our movers will disassemble your furniture as needed to facilitate the move, and upon arrival at your new location, they will reassemble it to its original configuration.\nOur expert movers and packers take great care in packing your furniture to keep it safe throughout the entire move.",
   },
   {
     question: "How long does it take to finish the house shifting service?",
-    answer: (
-      <>
-        <p>
-          The duration of a house shifting service can vary depending on several
-          factors, including the amount of furniture and belongings, the
-          distance between the old and new locations, and whether additional
-          services like packing and unpacking are required.
-        </p>
-        <p>
-          However, as a general guideline, here are estimated timeframes for
-          different types of moves:
-        </p>
-        <ul>
-          <li>Studio: Typically takes 6-8 hours.</li>
-          <li>1 Bedroom: Usually requires 8-10 hours.</li>
-          <li>2 Bedroom: Typically takes around 10-12 hours.</li>
-          <li>3 Bedroom: A 3-bedroom move can often span 2 days.</li>
-          <li>4 Bedroom: Similarly, a 4-bedroom move may take 2 days.</li>
-          <li>
-            5 Bedroom: For larger 5-bedroom moves, it can extend to 3 days.
-          </li>
-        </ul>
-        <p>
-          These timeframes are approximate and can vary based on the specific
-          circumstances of each move. It&apos;s advisable to get in touch with
-          our experts to get a more accurate estimate based on your unique needs
-          and requirements.
-        </p>
-      </>
-    ),
+    answer:
+      "The duration of a house shifting service varies with the amount of furniture and belongings, the distance between the old and new locations, and whether additional services like packing and unpacking are required.\nAs a general guideline, here are estimated timeframes for different types of moves:\n- Studio: typically takes 6-8 hours.\n- 1 Bedroom: usually requires 8-10 hours.\n- 2 Bedroom: typically takes around 10-12 hours.\n- 3 Bedroom: a 3-bedroom move can often span 2 days.\n- 4 Bedroom: a 4-bedroom move may also take 2 days.\n- 5 Bedroom: larger 5-bedroom moves can extend to 3 days.\nThese timeframes are approximate and depend on the specific circumstances of each move. Contact our team for a more accurate estimate based on your needs.",
   },
   {
     question: "Do I need to buy packaging materials myself?",
-    answer: (
-      <>
-        <p>
-          By booking The Nice Movers house shifting service, you don&apos;t need
-          to buy packaging materials yourself.
-        </p>
-        <p>
-          Our experts will come prepared with all the required packaging
-          materials as part of their moving service, ensuring that you have the
-          necessary supplies for a smooth and safe move. All you need to do is
-          contact us and we will do the rest!
-        </p>
-      </>
-    ),
+    answer:
+      "When you book the Nice Movers house shifting service, you don’t need to buy packaging materials yourself.\nOur team comes prepared with all the required packaging materials as part of the moving service, so you have everything needed for a smooth and safe move. All you need to do is contact us and we will do the rest!",
   },
   {
-    question: "Where do you provide house shifting services in UAE",
-    answer: (
-      <>
-        <p>
-          We cover all major areas in Dubai, the UAE, and have options for
-          seamless relocations across anywhere in UAE. Here are some areas we
-          have branches:
-        </p>
-        <ul>
-          {ServicesLocations &&
-            ServicesLocations.map((loc) => (
-              <li key={loc.title}>{loc.title}</li>
-            ))}
-        </ul>
-      </>
-    ),
+    question: "Where do you provide house shifting services in UAE?",
+    answer: `We serve all major areas of Dubai and the rest of the UAE, including moves from one emirate to another. Here are some of the areas we serve:\n${ServicesLocations.filter((loc) => /^[ -~]+$/.test(loc.title)).map(
+      (loc) => `- ${loc.title}`
+    ).join("\n")}`,
   },
 ];
+
+/** Renders a plain-text FAQ answer (paragraphs + "- " list items) as HTML. */
+const renderAnswer = (faq: PageFAQ) => {
+  const blocks: ReactNode[] = [];
+  let list: string[] = [];
+  const flushList = () => {
+    if (list.length) {
+      blocks.push(
+        <ul key={`ul-${blocks.length}`} className="list-disc list-inside">
+          {list.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      );
+      list = [];
+    }
+  };
+  faq.answer.split("\n").forEach((line) => {
+    if (line.startsWith("- ")) {
+      list.push(line.slice(2));
+    } else {
+      flushList();
+      blocks.push(<p key={`p-${blocks.length}`}>{line}</p>);
+    }
+  });
+  flushList();
+  return (
+    <>
+      {blocks}
+      {faq.link && (
+        <Link className="inline-block underline" href={faq.link.href}>
+          {faq.link.text}
+        </Link>
+      )}
+    </>
+  );
+};
+
+/** Plain-text answer for the FAQPage schema (same words as the visible answer). */
+const schemaAnswer = (answer: string) =>
+  answer
+    .split("\n")
+    .map((line) => line.replace(/^- /, "").trim())
+    .map((line) => (/[.!?:]$/.test(line) ? line : `${line}.`))
+    .join(" ");
+
+const FAQsItems = houseShiftingFaqs.map((faq) => ({
+  question: faq.question,
+  answer: renderAnswer(faq),
+}));
 
 const content = [
   {
@@ -241,7 +177,7 @@ const content = [
           </li>
         </ul>
         <Accordion type="single" collapsible className="w-full pb-0">
-          <AccordionItem value="apartment-moving-detials">
+          <AccordionItem value="apartment-moving-details">
             <AccordionTrigger>See all details..</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2 ">
               <p>
@@ -256,7 +192,7 @@ const content = [
                 loading, unloading, and unpacking at the new location.
               </p>
               <p>
-                For studio apartments, Nice Movers offer moving and packing
+                For studio apartments, Nice Movers offers moving and packing
                 services that are tailored to the needs of customers living in
                 small spaces.
               </p>
@@ -279,7 +215,7 @@ const content = [
     desc: (
       <>
         <p>
-          We have experties in moving and packing services in UAE for villas of
+          We have expertise in moving and packing services in the UAE for villas of
           all sizes, including:
         </p>
         <ul className="mt-3">
@@ -305,7 +241,7 @@ const content = [
           transportation.
         </p>
         <Accordion type="single" collapsible className="w-full pb-0">
-          <AccordionItem value="villa-moving-detials">
+          <AccordionItem value="villa-moving-details">
             <AccordionTrigger>See all details..</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2 ">
               <p>
@@ -314,7 +250,7 @@ const content = [
                 loaded, and transported to the new location.
               </p>
               <p>
-                For 3, 4, and 5-bedroom villas, Nice Movers pffoer comprehensive
+                For 3, 4, and 5-bedroom villas, Nice Movers offers comprehensive
                 packing and moving services that include packing all items,
                 disassembling and reassembling furniture, and loading,
                 unloading, and unpacking at the new location.
@@ -373,56 +309,74 @@ const content = [
 export const metadata: Metadata = MetadataTemplate({
   data: {
     meta: {
-      title: "House Shifting Services in Dubai | Book At Low Prices",
-      desc: "Nice Movers is a top rated and best home movers and packers in UAE. We provide affordable house shifting services. Call us or request a quote today!",
+      title: "House Shifting Services in UAE | Nice Movers",
+      desc: "Affordable house shifting services across the UAE – Dubai, Sharjah, Ajman, Ras Al Khaimah and more. Packing, moving and reassembly. Get a free quote today!",
     },
     image: {
       path: "/house-shifting.png",
-      alt: "Houose Shifting Services By Nice Movers",
+      alt: "House Shifting Services By Nice Movers",
     },
     path: "/house-shifting-services",
   },
 });
 
-const JsonLd = generateServiceSchema({
-  serviceName: "House Shifting Services in Dubai",
+const serviceJsonLd = generateServiceSchema({
+  serviceName: "House Shifting Services in UAE",
   serviceDescription:
-    "Nice Movers is a top rated and best home movers and packers in UAE. We provide affordable house shifting services. Call us or request a quote today!",
+    "Affordable house shifting services across the UAE, including packing, moving, furniture disassembly and reassembly for apartments, villas and single items.",
   serviceUrl: APP.url + "/house-shifting-services",
   priceRange: "650 AED - 4350 AED",
   imageUrls: [APP.url + "/house-shifting.png"],
 });
 
-const faqJsonLd = generateFAQSchema(HouseShiftingRawFaqs);
+const faqJsonLd = generateFAQSchema(
+  houseShiftingFaqs.map((faq) => ({
+    question: faq.question,
+    answer: schemaAnswer(faq.answer),
+  }))
+);
 
 const HouseShiftingPage = () => {
   return (
     <>
-      <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JsonLd }}
-        strategy="beforeInteractive"
+      <JsonLd id="service-schema" data={serviceJsonLd} />
+      <JsonLd
+        id="breadcrumb-schema"
+        data={breadcrumbFor("House Shifting Services", "/house-shifting-services")}
       />
-      <Script
-        id="faqs-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd }}
-        strategy="beforeInteractive"
-      />
+      <JsonLd id="faqs-schema" data={faqJsonLd} />
       <main className="z-20 md:mt-[124px] mt-[69px] max-w-[1400px] mx-auto bg-white">
         <ServiceHero
-          title="Affordable House Shifting Services in Dubai, UAE"
-          desc=" Nice Movers is a leading moving and packing company for house
-              shifting services in overall UAE. We offer affordable rates from
-              other moving companies in UAE."
+          title="Affordable House Shifting Services in UAE"
+          desc="Nice Movers is a leading moving and packing company for house
+              shifting services all over the UAE, with rates that are more
+              affordable than many other moving companies."
           btnText="Call Now: Home Movers"
-          image={{ alt: "House Shifting Services in Dubai", src: imgSrc }}
+          image={{ alt: "House Shifting Services in UAE", src: imgSrc }}
         />
-        <ServiceContent />
+        <ServiceContent
+          title="Best home movers and packers for house shifting services in the UAE"
+          desc={
+            <>
+              <p>
+                Moving homes since 2015, Nice Movers has completed thousands of
+                house moves across Dubai, Sharjah, Ajman, Ras Al Khaimah and
+                the rest of the UAE.
+              </p>
+              <p>
+                We provide home moving and packing, apartment packing and
+                moving, single item moving and villa packing and moving.
+              </p>
+              <p>
+                Our relocation services are designed to make your move in the
+                UAE easy, from the first box to the last piece of furniture.
+              </p>
+            </>
+          }
+        />
         <ContactSection
           dm
-          title="Book Now — House Shifting Services in Dubai — Low Rates"
+          title="Book Now — House Shifting Services in UAE — Low Rates"
           desc={
             <>
               To book our house shifting service in Dubai or anywhere in the UAE
@@ -438,12 +392,12 @@ const HouseShiftingPage = () => {
           desc={
             <>
               <p>
-                Main benefit of hiring Nice Movers during your shifting process
-                is that we guarantees the safety and security of your goods
+                The main benefit of hiring Nice Movers for your house shifting
+                is that we take care of the safety and security of your goods.
               </p>
               <p>
-                With our professionals, you can be sure that your items are in
-                safe hands with risking of breaking, spilling, etc.
+                With our professionals, your items are in safe hands, packed to
+                reduce the risk of breakage, spills and scratches.
               </p>
               <p>
                 Hiring a professional packers and movers company like us can
@@ -458,7 +412,7 @@ const HouseShiftingPage = () => {
           }}
         />
         <section
-          id="our-experties"
+          id="our-expertise"
           className="md:mt-52 mt-[22rem] md:w-5xl mx-auto grid md:grid-cols-3 md:gap-10 gap-5 grid-cols-2 md:px-0 px-3"
         >
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -469,7 +423,7 @@ const HouseShiftingPage = () => {
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              Trained Relocations Experts
+              Trained Relocation Experts
             </h3>
           </div>
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -480,7 +434,7 @@ const HouseShiftingPage = () => {
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              15+ Years Moving Experties
+              Moving Families Since 2015
             </h3>
           </div>
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -502,7 +456,7 @@ const HouseShiftingPage = () => {
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              Fast, Alway On-Time
+              Fast, Always On Time
             </h3>
           </div>
 
@@ -514,7 +468,7 @@ const HouseShiftingPage = () => {
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              Multiple Sizes Trucks
+              Trucks in Multiple Sizes
             </h3>
           </div>
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -537,13 +491,13 @@ const HouseShiftingPage = () => {
             Our Home Relocation <br className="md:hidden" /> Services in UAE
           </h2>
           <p className="md:text-lg b-text mt-3 max-w-2xl mx-auto text-center">
-            Our professional home relocation services includes
+            Our professional home relocation services include
           </p>
           <div className="mt-20 md:w-11/12 gap-20 mx-auto grid md:grid-cols-2 grid-cols-1">
             {content.map((box, index) => (
               <div key={index}>
                 <h3 className="text-xl b-text font-bold">{box.title}</h3>
-                <div className="mt-3 text-sm b-tex">{box.desc}</div>
+                <div className="mt-3 text-sm b-text">{box.desc}</div>
 
                 <div className="border-b-2 w-full mt-5 border-[#c00000]"></div>
               </div>
@@ -557,7 +511,7 @@ const HouseShiftingPage = () => {
           <div id="content" className="md:pl-20 md:text-lg b-white pt-10 px-3">
             <p className="underline underline-offset-1 text-sm">How We Work</p>
             <h2 className="md:text-3xl text-2xl font-bold b-white">
-              Steps Included in Our House Shifting Service in Dubai
+              Steps Included in Our House Shifting Service in the UAE
             </h2>
             <p className="mb-2 mt-3 text-sm">
               Nice Movers comprehensive house shifting services include the
@@ -621,12 +575,12 @@ const HouseShiftingPage = () => {
                 packers and movers in the UAE.
               </p>
               <p>
-                Our trained and professional have completed thousands of moves,
+                Our trained professionals have completed thousands of moves,
                 ensuring that your goods are in safe hands throughout the entire
                 process.
               </p>
               <p>
-                Here are some of our UAE&apos;s clients reviews about their
+                Here are some reviews from our UAE clients about their
                 moving experience with us.
               </p>
             </>
@@ -647,7 +601,7 @@ const HouseShiftingPage = () => {
                 rating={review.rating}
                 name={review.reviewerName}
                 review={review.reviewText}
-                price={review.price} // Random price for demo
+                price={review.price}
                 moveType={review.moveType}
                 from={review.from}
                 to={review.to}
@@ -657,6 +611,8 @@ const HouseShiftingPage = () => {
         </section>
 
         <CTA />
+
+        <RelatedLinks current="/house-shifting-services" />
 
         <FAQs faqs={FAQsItems} />
       </main>

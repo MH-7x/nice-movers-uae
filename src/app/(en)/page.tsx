@@ -1,4 +1,5 @@
 import Content from "@/components/Content";
+import JsonLd from "@/components/JsonLd";
 import ContactSection from "@/components/main/ContactSection";
 import { CoreServices } from "@/components/main/CoreServices";
 import CTA from "@/components/main/CTA";
@@ -10,18 +11,18 @@ import Process from "@/components/main/Process";
 import Testimoials from "@/components/main/testimonials";
 import WhyChooseUs from "@/components/main/WhyChooseUs";
 
-import Script from "next/script";
-import { schemaData } from "../../List";
+import { schemaData, websiteSchema } from "../../../List";
 import { type Metadata } from "next";
 
 import MetadataTemplate from "@/lib/MetaDataTemplate";
+import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
 import Link from "next/link";
 
 export const metadata: Metadata = MetadataTemplate({
   data: {
     meta: {
-      title: "Best Packers and Movers in UAE | Book Now - Low Prices",
-      desc: "Nice Movers is top rated moving company in UAE with over 15+ years of experties in moving with UAE. We offer affordable moving services for homes, offices and single furnitures.",
+      title: "Packers and Movers in UAE | Nice Movers – Free Quote",
+      desc: "Nice Movers is a licensed moving company in the UAE, moving homes, offices and single furniture items since 2015. Fixed, affordable prices – free quote.",
     },
     image: {
       path: "/nice-movers-transport-trucks.jpg",
@@ -35,12 +36,12 @@ const faqs = [
   {
     question: "Is my move insured?",
     answer:
-      "Absolutely. We provide full moving insurance and work only with licensed movers. Experts recommend choosing licensed companies that offer insurance for your belongings to ensure safety and accountability.",
+      "Yes. We are a licensed moving company and offer moving insurance for your belongings, so you have protection and clear accountability if anything goes wrong.",
   },
   {
     question: "Do you offer same-day or urgent service?",
     answer:
-      "Yes. Nice Movers offers emergency and same‑day moving options. Many UAE movers advertise they can dispatch within a few hours for last‑minute moves. Just call to check availability.",
+      "Yes. Nice Movers offers emergency and same‑day moving options, and we can often send a crew within a few hours for last‑minute moves. Just call to check availability.",
   },
   {
     question: "Can I get packing materials and help with packing?",
@@ -50,7 +51,7 @@ const faqs = [
   {
     question: "Are there any hidden fees?",
     answer:
-      "No. We believe in transparent pricing. Like reputable UAE movers, we offer fixed quotes with no hidden charges. You’ll know the cost up front and our quotes include standard services and materials.",
+      "No. We give you a fixed quote up front with no hidden charges. Your quote includes our standard services and packing materials, so you know the cost before moving day.",
   },
   {
     question: "How can I choose reliable movers in the UAE?",
@@ -70,7 +71,7 @@ const faqs = [
   {
     question: "Can I track my belongings during the move?",
     answer:
-      "Yes. Some UAE moving companies offer GPS or app-based tracking so you can monitor your shipment in real time.",
+      "Your move coordinator keeps you updated by phone or WhatsApp throughout the move, from loading to delivery, so you always know where your belongings are.",
   },
   {
     question: "How far in advance should I book movers?",
@@ -84,34 +85,12 @@ const faqs = [
   },
 ];
 
-const FAQsSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
-
 export default function Home() {
   return (
     <>
-      <Script
-        id="website-schema-json-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        strategy="beforeInteractive"
-      />
-      <Script
-        id="faqs-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQsSchema) }}
-        strategy="beforeInteractive"
-      />
+      <JsonLd id="organization-schema-json-ld" data={schemaData} />
+      <JsonLd id="website-schema-json-ld" data={websiteSchema} />
+      <JsonLd id="faqs-schema" data={generateFAQSchema(faqs)} />
 
       <main className="z-20 mt-32">
         <HeroSection />
@@ -126,23 +105,26 @@ export default function Home() {
         <CoreServices />
         <Locations
           id="service-locations"
-          title="Coverage & Locations In United Arab Emairtes"
+          title="Coverage & Locations In United Arab Emirates"
           desc={
             <>
               <p>
-                Nice Movers serves all of the UAE. We have branches and teams in
-                Dubai, Abu Dhabi,{" "}
-                <Link href={"/movers-and-packers-sharjah"}> Sharjah</Link> ,
-                Ajman, Fujairah, Ras Al Khaimah, Al Ain and beyond.{" "}
+                Nice Movers serves all of the UAE. From our base in Sharjah, we
+                serve{" "}
+                <Link href={"/movers-and-packers-in-dubai"}>Dubai</Link>, Abu
+                Dhabi, <Link href={"/movers-and-packers-sharjah"}>Sharjah</Link>
+                , <Link href={"/movers-in-ajman"}>Ajman</Link>, Fujairah,{" "}
+                <Link href={"/movers-in-ras-al-khaimah"}>Ras Al Khaimah</Link>,
+                Al Ain and beyond.
               </p>
               <p>
-                Our local offices and experts mean you get the same personalized
-                service coast-to-coast.
+                Wherever you are moving, you get the same crew standards,
+                packing materials and fixed-price quote.
               </p>
               <p>
-                As noted by industry leaders, we cover the entire region –
-                literally “anywhere in Dubai, Abu Dhabi, Sharjah… or anywhere in
-                between”
+                Whether it is a short move across town or a move from one
+                emirate to another, our team plans the route and handles
+                everything in between.
               </p>
             </>
           }

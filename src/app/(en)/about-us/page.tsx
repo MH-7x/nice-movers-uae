@@ -6,8 +6,9 @@ import { CheckCircle } from "lucide-react";
 import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import React from "react";
+import JsonLd from "@/components/JsonLd";
+import { ORGANIZATION_ID } from "@/lib/ServiceSchemaGen";
 
 const content = [
   {
@@ -38,49 +39,43 @@ const content = [
 
 const aboutUsJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "MovingCompany",
+  "@id": ORGANIZATION_ID,
   name: APP.name,
-  url: APP.url, // Change to your actual domain
-  logo: `${APP.url}/Picture1.png`, // Update with actual logo URL
+  url: APP.url,
+  logo: `${APP.url}/Picture1.png`,
+  image: `${APP.url}/Picture1.png`,
+  telephone: APP.phone,
+  email: "nicemovers.com@gmail.com",
   description:
-    "Nice Movers is a trusted moving and packing company in the UAE, offering professional villa moving, house shifting, storage solutions, and packing services in Dubai, Sharjah, Ajman, and all across the Emirates.",
+    "Nice Movers is a licensed, ISO 9001:2015 certified moving and packing company based in Sharjah, offering house shifting, villa moving, office relocation and packing services across the UAE since 2015.",
   address: {
     "@type": "PostalAddress",
-    streetAddress:
-      "2 Moatab Bin Auf St - Bu Shaghara - Hay Al Qasimiah - Sharjah",
+    streetAddress: "2 Moatab Bin Auf St, Bu Shaghara, Hay Al Qasimiah",
     addressLocality: "Sharjah",
     addressRegion: "Sharjah",
-    postalCode: "00000",
     addressCountry: "AE",
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: APP.phone, // Your phone number
+    telephone: APP.phone,
     contactType: "Customer Service",
     areaServed: "AE",
     availableLanguage: ["English", "Arabic"],
   },
-  sameAs: [
-    "https://www.facebook.com/NiceMoversUAE",
-    "https://www.instagram.com/NiceMoversUAE",
-    "https://www.linkedin.com/company/nicemoversuae", // update with actual URLs or remove if not available
-  ],
-  founder: {
-    "@type": "Person",
-    name: "Mashal Horara", // Replace with actual founder if different
-  },
-  foundingDate: "2010-01-01", // Adjust accordingly
+  sameAs: ["https://www.facebook.com/profile.php?id=61578872861851"],
+  foundingDate: "2015",
   foundingLocation: {
     "@type": "Place",
-    name: "Dubai, UAE",
+    name: "Sharjah, UAE",
   },
 };
 
 export const metadata: Metadata = MetadataTemplate({
   data: {
     meta: {
-      title: "About Us  | Nice Movers in UAE",
-      desc: "Nice Movers is ISO verifed and professional moving company that provide a wide range of moving and packing services in overall UAE at affordable prices. Call to us or get free quote today.",
+      title: "About Us | Nice Movers in UAE",
+      desc: "Meet Nice Movers: a licensed, ISO 9001:2015 certified moving company in Sharjah, moving homes, villas and offices across the UAE since 2015.",
     },
     image: {
       path: "/Transportation.jpg",
@@ -92,12 +87,7 @@ export const metadata: Metadata = MetadataTemplate({
 const AboutUsPage = () => {
   return (
     <>
-      <Script
-        id="about-us-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsJsonLd) }}
-        strategy="beforeInteractive"
-      />
+      <JsonLd id="about-us-schema" data={aboutUsJsonLd} />
 
       <main className="z-20 mt-32">
         <section className="grid md:grid-cols-2 grid-cols-1 lg:px-20 items-center gap-10 py-12 md:px-0 px-3">
@@ -125,8 +115,8 @@ const AboutUsPage = () => {
               <li>Cover all regions in UAE</li>
             </ul>
 
-            <Button size={"lg"} className="mt-5 b-red-bg">
-              Book Appoiment!
+            <Button quoteBtn size={"lg"} className="mt-5 b-red-bg">
+              Book an Appointment
             </Button>
           </div>
           <div className="md:h-[480px] h-[400px]  grid grid-cols-2 place-content-center grid-rows-2 gap-3">
@@ -189,7 +179,7 @@ const AboutUsPage = () => {
               just one call away.
             </p>
 
-            <Link href={"/"} title="Get A Free Moving Quote">
+            <Link href={"/contact-us"} title="Get A Free Moving Quote">
               <Button className="mt-5" variant={"secondary"}>
                 Get A Quote
               </Button>
@@ -204,9 +194,9 @@ const AboutUsPage = () => {
             Why Choose Nice Movers?
           </h2>
           <p className=" b-text mt-3 max-w-2xl mx-auto text-center">
-            There is lot of moving and packing companies in UAE but when its
-            comes to choosing the best, you have to look and study the company
-            in details. Here are some reasons why you should choose us!
+            There are a lot of moving and packing companies in the UAE, but
+            when it comes to choosing the best, you have to look at each
+            company in detail. Here are some reasons why you should choose us!
           </p>
           <div className="mt-20 md:w-11/12 gap-20 mx-auto grid md:grid-cols-3 grid-cols-1">
             {content.map((box, index) => (
@@ -245,11 +235,11 @@ const AboutUsPage = () => {
               Services Locations
             </p>
             <h2 className="md:text-3xl text-2xl font-bold b-white">
-              Our Branches in United Arab Emairtes
+              Areas We Serve Across the UAE
             </h2>
             <p className="mb-2 mt-3 text-sm">
-              Nice Movers has multiple branches across the UAE, we will provide
-              best moving and packing services anywhere in UAE:
+              From our base in Sharjah, our moving crews travel to homes and
+              offices all over the UAE, including:
             </p>
             <ol className="mt-3 text-sm grid grid-cols-2 gap-2">
               <li className="flex items-center gap-x-2">

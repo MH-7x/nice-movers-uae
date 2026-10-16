@@ -1,5 +1,5 @@
 import ServiceHero from "@/components/main/ServiceHero";
-import imagSrc from "../../../../public/villa-movers-in-dubai.jpg";
+import imagSrc from "../../../../../public/villa-movers-in-dubai.jpg";
 import ContactSection from "@/components/main/ContactSection";
 import SubService from "@/components/main/SubService";
 import { Button } from "@/components/ui/button";
@@ -11,11 +11,11 @@ import { FAQs } from "@/components/main/FAQs";
 import Link from "next/link";
 import CTA from "@/components/main/CTA";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
-import { generateServiceSchema } from "@/lib/ServiceSchemaGen";
+import { breadcrumbFor, generateServiceSchema } from "@/lib/ServiceSchemaGen";
 import { APP } from "@/lib/App";
-import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
-import { VillaMovingRawFaqs } from "../../../../List";
-import Script from "next/script";
+import { generateFAQSchema, type PlainFAQ } from "@/lib/GenerateFaqSchema";
+import JsonLd from "@/components/JsonLd";
+import RelatedLinks from "@/components/main/RelatedLinks";
 import { type Metadata } from "next";
 
 const content = [
@@ -41,8 +41,8 @@ const content = [
           We offer competitive, budget-friendly rates and no hidden fees.
         </p>
         <p className="mt-1 text-sm b-text">
-          Free online estimates for villa moving help you plan in advance , and
-          our pricing has earned praise. So lets make a phone call to us.
+          Free online estimates for villa moving help you plan in advance, and
+          our pricing has earned praise. Give us a call to get started.
         </p>
       </>
     ),
@@ -78,6 +78,83 @@ const content = [
   },
 ];
 
+type PageFAQ = PlainFAQ & { link?: { href: string; text: string } };
+
+/**
+ * Single source for the visible FAQs and the FAQPage schema.
+ * Each "\n" starts a new paragraph.
+ */
+const villaMoversFaqs: PageFAQ[] = [
+  {
+    question: "How much does it cost to move a villa in Dubai?",
+    answer:
+      "The price of villa movers in Dubai depends on factors like villa size, distance, and required services.\nOne truckload can cost you between AED 1,000 – AED 1,500.\nA 3-bedroom villa move typically runs AED 4,000–5,000. Luxury or larger villas can cost more.\nNice Movers offers a free online estimate so you can get an accurate quote for your move.",
+    link: { href: "/contact-us", text: "Get your free online estimate" },
+  },
+  {
+    question: "Do you offer packing materials?",
+    answer:
+      "Yes, we provide high-quality, eco-friendly packing materials as part of our comprehensive packing service.",
+  },
+  {
+    question: "How useful are villa movers and packers in Dubai?",
+    answer:
+      "Villa movers and packers make the moving process much smoother by handling everything in an organized way.\nThey label all items clearly, so you face no hassle when unpacking and setting up your new home.",
+  },
+  {
+    question: "Do you offer villa moving services all over the UAE?",
+    answer:
+      "Although we specialize in villa relocations in Dubai and Abu Dhabi, our services extend across all UAE emirates — including Sharjah, Ras Al Khaimah, Fujairah, Ajman, and Umm Al Quwain — providing professional villa moving solutions no matter where you’re located.",
+    link: {
+      href: "/movers-and-packers-sharjah",
+      text: "Movers and packers in Sharjah",
+    },
+  },
+  {
+    question: "Do you serve Dubai Silicon Oasis and other areas?",
+    answer:
+      "Yes. We cover all Dubai neighborhoods, including Dubai Silicon Oasis, Palm Jumeirah, Arabian Ranches, Jumeirah, Emirates Hills, and more.\nWhether you’re moving within Silicon Oasis or to any villa community, Nice Movers has you covered.",
+  },
+  {
+    question: "What type of villa moving services do you offer?",
+    answer:
+      "Villa Moving: We provide complete villa relocation services across the UAE, handling everything from secure packing and careful transportation to organized unpacking and setup — ensuring a smooth and stress-free experience.\nLuxury Villa Moving: Our team is highly experienced in handling luxury relocations. We use premium packing methods to safely move high-value items such as designer furniture, artwork, antiques, and delicate décor.\nResidential Moving: Whether you’re shifting to a new apartment, townhouse, or home, our residential moving services ensure a smooth, reliable, and timely transition tailored to your unique needs.",
+  },
+  {
+    question: "Are your services cheap and budget-friendly?",
+    answer:
+      "We aim to be among the most affordable villa movers in Dubai without cutting corners.\nBy working efficiently and offering transparent quotes, we keep costs low while maintaining high quality. Our competitive pricing has satisfied many clients looking for an affordable move.",
+  },
+  {
+    question: "Can I read your villa movers in Dubai reviews?",
+    answer:
+      "Yes, you can read our customer reviews on this page and on independent platforms like Google.",
+  },
+];
+
+/** Plain-text answer for the FAQPage schema (same words as the visible answer). */
+const schemaAnswer = (answer: string) =>
+  answer
+    .split("\n")
+    .map((line) => line.trim())
+    .join(" ");
+
+const FAQsItems = villaMoversFaqs.map((faq) => ({
+  question: faq.question,
+  answer: (
+    <>
+      {faq.answer.split("\n").map((line) => (
+        <p key={line}>{line}</p>
+      ))}
+      {faq.link && (
+        <Link className="inline-block underline" href={faq.link.href}>
+          {faq.link.text}
+        </Link>
+      )}
+    </>
+  ),
+}));
+
 export const metadata: Metadata = MetadataTemplate({
   data: {
     meta: {
@@ -91,7 +168,7 @@ export const metadata: Metadata = MetadataTemplate({
     path: "/villa-movers-in-dubai",
   },
 });
-const JsonLd = generateServiceSchema({
+const serviceJsonLd = generateServiceSchema({
   serviceName: "Villa Movers in Dubai",
   serviceDescription:
     "Looking for top-rated villa movers in Dubai? Nice Movers offers cheap, professional villa movers in Dubai with free online estimates, transparent pricing, and 24/7 support.",
@@ -100,28 +177,27 @@ const JsonLd = generateServiceSchema({
   imageUrls: [APP.url + "/villa-movers-in-dubai.jpg"],
 });
 
-const faqJsonLd = generateFAQSchema(VillaMovingRawFaqs);
+const faqJsonLd = generateFAQSchema(
+  villaMoversFaqs.map((faq) => ({
+    question: faq.question,
+    answer: schemaAnswer(faq.answer),
+  }))
+);
 
 const VillaMoversPage = () => {
   return (
     <>
-      <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JsonLd }}
-        strategy="beforeInteractive"
+      <JsonLd id="service-schema" data={serviceJsonLd} />
+      <JsonLd
+        id="breadcrumb-schema"
+        data={breadcrumbFor("Villa Movers in Dubai", "/villa-movers-in-dubai")}
       />
-      <Script
-        id="faqs-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd }}
-        strategy="beforeInteractive"
-      />
+      <JsonLd id="faqs-schema" data={faqJsonLd} />
       <main className="z-20 md:mt-[124px] mt-[69px] max-w-[1400px] mx-auto bg-white">
         <ServiceHero
           title="Villa Movers in Dubai"
           desc="Nice Movers is one of the top-rated villa movers in Dubai, offering professional relocation services
-         at budget-friendly rates. Contact us today to get a online estimate for your villa move."
+         at budget-friendly rates. Contact us today to get an online estimate for your villa move."
           btnText="Call Now: Villa Movers"
           image={{
             src: imagSrc,
@@ -132,7 +208,7 @@ const VillaMoversPage = () => {
           <p>
             We understand moving a large home can be stressful, so our expert
             team provides fast online estimates and end-to-end support for villa
-            moving in dubai.
+            moving in Dubai.
           </p>
           <p>
             From the moment you book a free quote to unloading in your new
@@ -147,9 +223,9 @@ const VillaMoversPage = () => {
           title="Get online estimates for villa moving in Dubai"
           desc={
             <>
-              We offer simple process to get estimate prices for villa moving in
-              dubai. Fill the form and set relex in you villa, We will manage
-              the rest.
+              We offer a simple process to get estimated prices for villa
+              moving in Dubai. Fill in the form and relax in your villa – we
+              will manage the rest.
               <br />
               We offer moving services for all sizes of villa like 2-bedroom
               villa, 3-bedroom villa, 4-bedroom villa, 5-bedroom villa.
@@ -201,7 +277,7 @@ const VillaMoversPage = () => {
               1,200–1,800 per truckload.
             </p>
             <p className="">
-              For a precise and instant quote, use our villa movers in dubai
+              For a precise and instant quote, use our villa movers in Dubai
               price online estimates tools.
             </p>
             <p className="">
@@ -229,7 +305,7 @@ const VillaMoversPage = () => {
             </ul>
           </div>
 
-          <Button className="mt-8 b-red-bg" size={"lg"}>
+          <Button quoteBtn className="mt-8 b-red-bg" size={"lg"}>
             Get A Price Now
           </Button>
         </section>
@@ -254,7 +330,7 @@ const VillaMoversPage = () => {
             },
             {
               title: "Goods Transport",
-              desc: "Your items will be safely transported in our multiple sizes of  trucks to your new location.",
+              desc: "Your items will be safely transported in our trucks of multiple sizes to your new location.",
             },
             {
               title: "Unpacking & Setup",
@@ -273,16 +349,16 @@ const VillaMoversPage = () => {
             <>
               <p>
                 We are proud of the positive feedback we receive. Here are a few
-                snippets from our recent villa movers in dubai reviews
+                snippets from our recent villa movers in Dubai reviews.
               </p>
               <p>
-                Our trained and professional have completed thousands of moves,
+                Our trained professionals have completed thousands of moves,
                 ensuring that your goods are in safe hands throughout the entire
                 process.
               </p>
               <p>
-                Here are some of our UAE&apos;s clients reviews about their
-                moving experience with us.
+                Here are some reviews from our UAE clients about their moving
+                experience with us.
               </p>
             </>
           }
@@ -302,7 +378,7 @@ const VillaMoversPage = () => {
                 rating={review.rating}
                 name={review.reviewerName}
                 review={review.reviewText}
-                price={review.price} // Random price for demo
+                price={review.price}
                 moveType={review.moveType}
                 from={review.from}
                 to={review.to}
@@ -310,163 +386,8 @@ const VillaMoversPage = () => {
             ))}
           </div>
         </section>
-        <FAQs
-          faqs={[
-            {
-              question: "How much does it cost to move a villa in Dubai?",
-              answer: (
-                <>
-                  <p>
-                    The villa movers in dubai price depends on factors like
-                    villa size, distance, and required services.
-                  </p>
-                  <p>One truckload can cost you between AED 1000 – AED 1500.</p>
-                  <p>
-                    A 3-bedroom villa move typically runs AED 4,000–5,000 .
-                    Luxury or larger villas can cost more.
-                  </p>
-                  <p>
-                    Nice Movers offers an{" "}
-                    <Link href={"/contact-us"}>online estimator</Link> so you
-                    can get an accurate quote for your move.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "Do you offer packing materials? ",
-              answer: (
-                <>
-                  <p>
-                    Yes, we provide high-quality, eco-friendly packing materials
-                    as a part of our comprehensive packing service.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "How useful are villa movers and packers in Dubai?",
-              answer: (
-                <>
-                  <p>
-                    Villa movers and packers make the moving process much
-                    smoother by handling everything in an organized way.
-                  </p>
-                  <p>
-                    They label all items clearly, ensuring you face no hassle
-                    when unpacking and setting up your new home.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "Do you offer villa moving services in all over UAE?",
-              answer: (
-                <>
-                  <p>
-                    Although we specialize in villa relocations in Dubai and Abu
-                    Dhabi, our services extend across all UAE emirates —
-                    including{" "}
-                    <Link href={"/movers-and-packers-sharjah"}> Sharjah</Link> ,
-                    Ras Al Khaimah, Fujairah, Ajman, and Umm Al Quwain —
-                    providing professional villa moving solutions no matter
-                    where you&apos;re located.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "What type of Villa moving services are you offering?",
-              answer: (
-                <>
-                  <p>
-                    Although we specialize in villa relocations in Dubai and Abu
-                    Dhabi, our services extend across all UAE emirates —
-                    including Sharjah, Ras Al Khaimah, Fujairah, Ajman, and Umm
-                    Al Quwain — providing professional villa moving solutions no
-                    matter where you&apos;re located.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "Do you serve Dubai Silicon Oasis and other areas?",
-              answer: (
-                <>
-                  <p>
-                    Yes. We cover all Dubai neighborhoods, including Dubai
-                    Silicon Oasis, Palm Jumeirah, Arabian Ranches, Jumeirah,
-                    Emirates Hills, and more.
-                  </p>
-                  <p>
-                    Whether you’re moving within Silicon Oasis or to any villa
-                    community, Nice Movers has you covered.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "What type of Villa moving services are you offering?",
-              answer: (
-                <>
-                  <p>
-                    Our Professional Moving Services – Tailored for Every
-                    Relocation Need
-                  </p>
-                  <h4 className="font-medium text-base">Villa Moving</h4>
-                  <p>
-                    We provide complete villa relocation services across the
-                    UAE, handling everything from secure packing and careful
-                    transportation to organized unpacking and setup — ensuring a
-                    smooth and stress-free experience.
-                  </p>
-                  <h4 className="font-medium text-base">Luxury Villa Moving</h4>
-                  <p>
-                    Our team is highly experienced in handling luxury
-                    relocations. We use premium packing methods to safely move
-                    high-value items such as designer furniture, artwork,
-                    antiques, and delicate décor.
-                  </p>
-                  <h4 className="font-medium text-base">Residential Moving</h4>
-                  <p>
-                    Whether you&apos;re shifting to a new apartment, townhouse,
-                    or home, our residential moving services ensure a smooth,
-                    reliable, and timely transition tailored to your unique
-                    needs.
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "Are your services cheap and budget-friendly?",
-              answer: (
-                <>
-                  <p>
-                    We aim to be among the cheap villa movers in Dubai without
-                    cutting corners.
-                  </p>
-                  <p>
-                    By working efficiently and offering transparent quotes, we
-                    keep costs low while maintaining high quality. Our
-                    competitive pricing has satisfied many clients looking for
-                    an affordable move
-                  </p>
-                </>
-              ),
-            },
-            {
-              question: "Can I read your villa movers in Dubai reviews? ",
-              answer: (
-                <>
-                  <p>
-                    Yes, you can read our customer reviews on our website and on
-                    independent platforms like Google
-                  </p>
-                </>
-              ),
-            },
-          ]}
-        />
+        <RelatedLinks current="/villa-movers-in-dubai" />
+        <FAQs faqs={FAQsItems} />
         <section
           id="services-areas"
           className="max-w-4xl mx-auto md:px-0 px-3 mt-36"
@@ -552,12 +473,6 @@ const VillaMoversPage = () => {
           Don’t wait – let Nice Movers make your Dubai villa relocation easy and
           affordable. Call or message us today for a free quote!
         </h3>
-        <p className="mt-10 max-w-3xl md:px-0 px-3 mx-auto b-text pb-10">
-          <b>Sources</b>: We’ve incorporated industry insights and customer
-          feedback throughout, including data on moving costs and expert advice
-          on professional moving services . Customer testimonials are drawn from
-          verified reviews . All information is up-to-date as of 2025.
-        </p>
       </main>
     </>
   );

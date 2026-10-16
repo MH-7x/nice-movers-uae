@@ -1,8 +1,7 @@
-"use client";
 import React from "react";
 import { Blog } from "../../types/Blogs";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { formatDate } from "@/lib/utils";
 
 const CategoriesBlogsList = ({
   blogPosts,
@@ -19,12 +18,7 @@ const CategoriesBlogsList = ({
           <h3 className="md:text-2xl text-2xl capitalize font-bold mb-4 b-text">
             {category} Blogs
           </h3>
-          <p className="text-gray-600">view all our {category} blog posts</p>
-          <Link href={`/category/${category.split(" ").join("-")}`}>
-            <Button size={"sm"} variant={"link"} className="mt-4 b-red">
-              View All
-            </Button>
-          </Link>
+          <p className="text-gray-600">All our {category} blog posts</p>
         </div>
 
         {/* Right section */}
@@ -38,11 +32,7 @@ const CategoriesBlogsList = ({
                 <span className="bg-red-100 b-red font-medium px-2 py-1 rounded-md text-xs">
                   📄
                 </span>
-                <span>
-                  {post.createdAt instanceof Date
-                    ? post.createdAt.toLocaleDateString()
-                    : post.createdAt}
-                </span>
+                <span>{formatDate(post.createdAt)}</span>
               </div>
 
               <h3 className="text-md font-semibold text-gray-900">
