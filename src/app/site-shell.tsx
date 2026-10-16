@@ -1,5 +1,7 @@
+// Shared by the two root layouts: (en)/layout.tsx and (arabic)/layout.tsx.
+// Separate root layouts let the Arabic page declare <html lang="ar" dir="rtl">
+// without changing any URL (route groups don't affect paths).
 import type { Metadata } from "next";
-import "./globals.css";
 import Navbar from "@/components/main/Navbar";
 import Footer from "@/components/main/Footer";
 import { FixedBtns } from "@/components/main/FixedBtns";
@@ -8,7 +10,8 @@ import { Toaster } from "@/components/ui/sonner";
 import PopUp from "@/components/PopUp";
 import GTM from "@/components/GTM";
 
-export const metadata: Metadata = {
+export const rootMetadata: Metadata = {
+  metadataBase: new URL(process.env.APP_URI || "https://www.nicemoversuae.com"),
   applicationName: "Nice Movers",
   robots: {
     "max-image-preview": "large",
@@ -63,23 +66,31 @@ const GoogleSans = localfont({
   preload: true,
 });
 
-export default function RootLayout({
+/** The <body> shared by every page. Site chrome (header, footer, buttons, popup) is English and stays LTR. */
+export function SiteBody({
   children,
+  rtl = false,
 }: {
   children: React.ReactNode;
+  rtl?: boolean;
 }) {
+  const chromeDir = rtl ? { dir: "ltr", lang: "en" } : {};
   return (
-    <html lang="en">
+    <body className={`antialiased ${GoogleSans.className} `}>
       <GTM />
-      <body className={`antialiased ${GoogleSans.className} `}>
+      <div {...chromeDir}>
         <FixedBtns />
-        <div className="fixed top-0 left-0 w-full gray-grd z-[-1] h-screen"></div>
+      </div>
+      <div className="fixed top-0 left-0 w-full gray-grd z-[-1] h-screen"></div>
+      <div {...chromeDir}>
         <Navbar />
-        {children}
+      </div>
+      {children}
+      <div {...chromeDir}>
         <Footer />
-        <Toaster position="top-center" />
         <PopUp />
-      </body>
-    </html>
+      </div>
+      <Toaster position="top-center" />
+    </body>
   );
 }
