@@ -1,8 +1,8 @@
 import Image from "next/image";
-import imageSrc from "../../../../public/sharjah/sharjah-movers-hero-banner.jpg";
+import imageSrc from "../../../../../public/sharjah/sharjah-movers-hero-banner.jpg";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ListTodoIcon, Phone, Star } from "lucide-react";
+import { ListTodoIcon, MapPin, MessageCircle, Phone, Star } from "lucide-react";
 import { Metadata } from "next";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
 import ContactSection from "@/components/main/ContactSection";
@@ -12,15 +12,13 @@ import Locations from "@/components/main/Locations";
 import { reviews } from "@/components/main/testimonials";
 import ReviewCard from "@/components/ReviewCard";
 import { FAQs } from "@/components/main/FAQs";
-import {
-  breadcrumbSchema,
-  generateServiceSchema,
-} from "@/lib/ServiceSchemaGen";
+import { breadcrumbFor, generateServiceSchema } from "@/lib/ServiceSchemaGen";
 import { APP } from "@/lib/App";
 import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
-import { sharjahPageFaqs } from "../../../../List";
-import Script from "next/script";
+import { sharjahPageFaqs } from "../../../../../List";
 import CTA from "@/components/main/CTA";
+import JsonLd from "@/components/JsonLd";
+import RelatedLinks from "@/components/main/RelatedLinks";
 
 const faqs = [
   {
@@ -47,8 +45,7 @@ const faqs = [
       <>
         <p>
           Yes. Nice Movers is fully licensed in the UAE (MOE-approved) and every
-          move is fully insured. We are ISO 9001:2015 and FAIM certified, which
-          means we follow strict international safety and quality standards
+          move is fully insured. We are ISO 9001:2015 certified, which means we follow strict international safety and quality standards
           throughout the moving process.
         </p>
       </>
@@ -85,8 +82,8 @@ const faqs = [
     answer: (
       <>
         <p>
-          You can call us at [+971563560017] or WhatsApp us [+971563560017] to
-          request a free quote. We&#39;ll arrange a convenient time for an
+          You can call or WhatsApp us at +971563560017 to request a free
+          quote. We&#39;ll arrange a convenient time for an
           on-site survey, plan your move, and lock in a date. You can also{" "}
           <Link href={"/contact-us"}>contact us online</Link> for a quick
           booking.
@@ -115,7 +112,7 @@ const faqs = [
           <Link href={"https://wa.me/971563560017?text=I%20Need%20Movers"}>
             WhatsApp us
           </Link>{" "}
-          [+971563560017]. We&#39;ll set up a free on-site survey and provide an
+          at +971563560017. We&#39;ll set up a free on-site survey and provide an
           accurate, no-obligation quote.
         </p>
         <p>
@@ -133,11 +130,11 @@ export const metadata: Metadata = MetadataTemplate({
   data: {
     meta: {
       title: "Movers and Packers Sharjah — Nice Movers UAE | Free Quote",
-      desc: "Trusted movers and packers Sharjah. Nice Movers offers secure house, villa & office relocation, insured crews, same- day service & free on- site quotes.",
+      desc: "Trusted movers and packers in Sharjah. Nice Movers offers secure house, villa & office relocation, insured crews, same-day service & free on-site quotes.",
     },
     image: {
       path: "/sharjah/moving-truck-sharjah-3.jpg",
-      alt: "movers and packers in sharjah doing packing for home",
+      alt: "Nice Movers branded moving truck in a Sharjah residential area",
     },
     path: "/movers-and-packers-sharjah",
   },
@@ -165,8 +162,8 @@ const content = [
       <>
         <p className="mt-3 text-sm b-text">
           We hold all UAE moving licenses (MoE) and include full insurance with
-          every job , giving you peace of mind. You can trust for your moving in
-          sharjah or anywhere.
+          every job, giving you peace of mind. You can trust us for your move in
+          Sharjah or anywhere in the UAE.
         </p>
       </>
     ),
@@ -177,7 +174,7 @@ const content = [
       <>
         <p className="mt-3 text-sm b-text">
           Backed by years of experience since 2015, our crews are rigorously
-          trained and equipped
+          trained and equipped.
         </p>
         <p className="mt-1 text-sm b-text">
           Customers say we are “consistently professional… punctual… great
@@ -214,8 +211,8 @@ const content = [
     desc: (
       <>
         <p className="mt-3 text-sm b-text">
-          We provide clear quotes upfront. Our rates start from AED 499 , fully
-          inclusive of fuel and materials , so there are no surprises.
+          We provide clear quotes upfront. Our rates start from AED 499, fully
+          inclusive of fuel and materials, so there are no surprises.
         </p>
       </>
     ),
@@ -233,13 +230,41 @@ const content = [
   },
 ];
 
-const JsonLd = generateServiceSchema({
+const WHATSAPP_SHARJAH =
+  "https://wa.me/971563560017?text=I%20need%20movers%20in%20Sharjah";
+
+const sharjahAreas = [
+  "Al Nahda",
+  "Al Majaz",
+  "Al Taawun",
+  "Al Khan",
+  "Al Qasimia",
+  "Muwaileh",
+  "University City",
+  "Aljada",
+  "Al Mamzar border",
+  "Industrial Areas",
+];
+
+const serviceJsonLd = generateServiceSchema({
   serviceName: "Movers and Packers in Sharjah",
   serviceDescription:
-    "Trusted movers and packers Sharjah. Nice Movers offers secure house, villa & office relocation, insured crews, same- day service & free on- site quotes.",
+    "Trusted movers and packers in Sharjah. Nice Movers offers secure house, villa & office relocation, insured crews, same-day service & free on-site quotes.",
   serviceUrl: APP.url + "/movers-and-packers-sharjah",
   priceRange: "499 AED - 5000 AED",
-  imageUrls: [APP.url + "/office-movers-in-dubai.jpg"],
+  imageUrls: [APP.url + "/sharjah/moving-truck-sharjah-3.jpg"],
+  areaServed: [
+    "Sharjah",
+    "Al Nahda",
+    "Al Majaz",
+    "Al Taawun",
+    "Al Khan",
+    "Al Qasimia",
+    "Muwaileh",
+    "University City",
+    "Aljada",
+    "Sharjah Industrial Area",
+  ],
 });
 
 const faqJsonLd = generateFAQSchema(sharjahPageFaqs);
@@ -247,24 +272,14 @@ const faqJsonLd = generateFAQSchema(sharjahPageFaqs);
 export default function SharjahPage() {
   return (
     <>
-      <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JsonLd }}
-        strategy="beforeInteractive"
-      />
-
-      <Script
-        id="faqs-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd }}
-        strategy="beforeInteractive"
-      />
-      <Script
+      <JsonLd id="service-schema" data={serviceJsonLd} />
+      <JsonLd id="faqs-schema" data={faqJsonLd} />
+      <JsonLd
         id="breadcrumb-schema"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
+        data={breadcrumbFor(
+          "Movers and Packers in Sharjah",
+          "/movers-and-packers-sharjah"
+        )}
       />
 
       <main className="md:mt-[120px] max-w-[1400px] mx-auto">
@@ -273,7 +288,8 @@ export default function SharjahPage() {
             src={imageSrc}
             placeholder="blur"
             fill
-            loading="eager"
+            priority
+            sizes="100vw"
             alt="Professional movers in Sharjah loading a branded moving truck with skyline in background"
             className="absolute object-cover object-center"
           />
@@ -284,21 +300,21 @@ export default function SharjahPage() {
             <div className="bg-white/90 md:w-[550px] md:p-10 py-7 px-5 md:text-start text-center rounded-2xl">
               <h1 className="font-bold md:text-3xl text-2xl">
                 Movers and Packers in Sharjah{" "}
-                <Link href={"/"} className="b-red underline underline-offset-2">
+                <span className="b-red underline underline-offset-2">
                   {" "}
                   Trusted Local Moving Company
-                </Link>
+                </span>
               </h1>
               <p className="mt-5 b-text md:text-base/5 text-sm">
                 As leading movers and packers Sharjah, Nice Movers UAE provides
                 secure, efficient relocation services for homes, villas, and
-                offices
+                offices.
               </p>
               <div className="flex gap-x-3 mt-5 w-full md:justify-start justify-center">
                 <Button callBtn className="b-red-bg">
                   <Phone /> Call Now
                 </Button>
-                <Button className="b-red underline" variant={"link"}>
+                <Button quoteBtn className="b-red underline" variant={"link"}>
                   <ListTodoIcon /> Get A Quote
                 </Button>
               </div>
@@ -330,8 +346,8 @@ export default function SharjahPage() {
             stress-free.
           </p>
           <p>
-            Nice Movers is fully licensed and insured , with ISO 9001
-            certification . Our trained crew treats your possessions as if they
+            Nice Movers is fully licensed and insured, with ISO 9001:2015
+            certification. Our trained crew treats your possessions as if they
             were our own, ensuring the greatest care.
           </p>
         </section>
@@ -340,8 +356,8 @@ export default function SharjahPage() {
           desc={
             <>
               We believe in transparent pricing: local moves start from just AED
-              499 , with no hidden fees <br /> Ready to move? fill out the quote
-              form or you can Call Now: +971 56 356 0017 or WhatsApp Us for a
+              499, with no hidden fees. <br /> Ready to move? Fill out the quote
+              form, or Call Now: +971 56 356 0017 or WhatsApp Us for a
               free quote today!
             </>
           }
@@ -369,6 +385,52 @@ export default function SharjahPage() {
           </div>
         </section>
         <ServicesLong />
+        <section
+          id="areas-we-serve-in-sharjah"
+          className="max-w-4xl mx-auto md:px-0 px-3 mt-20"
+        >
+          <h2 className="md:text-4xl text-2xl b-red font-bold">
+            Areas We Serve in Sharjah
+          </h2>
+          <ul className="mt-8 grid md:grid-cols-3 grid-cols-2 gap-3 border-t border-[#c00000] pt-5 md:text-lg text-sm b-text">
+            {sharjahAreas.map((area) => (
+              <li key={area} className="flex items-center gap-x-2">
+                <MapPin className="text-[#c00000] shrink-0" size={18} />
+                Movers in {area}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 md:text-lg text-sm b-text flex flex-col gap-y-2">
+            <p>
+              Most residential towers in Sharjah ask for a move-in or move-out
+              approval from building management, and many require a
+              service-lift booking. We plan your moving date around both, so
+              the crew is not kept waiting at the entrance.
+            </p>
+            <p>
+              Moves between Sharjah and Dubai depend heavily on rush-hour
+              traffic, so we usually load early in the morning or outside peak
+              hours. Older low-rise buildings in areas such as Al Qasimia can
+              have limited parking or small lifts, which we check before giving
+              you a quote.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button callBtn className="b-red-bg" size={"lg"}>
+              <Phone /> Call Sharjah Movers
+            </Button>
+            <Link
+              href={WHATSAPP_SHARJAH}
+              target="_blank"
+              rel="noreferrer"
+              title="WhatsApp Nice Movers in Sharjah"
+            >
+              <Button variant={"outline"} size={"lg"} className="b-red">
+                <MessageCircle /> WhatsApp Sharjah Movers
+              </Button>
+            </Link>
+          </div>
+        </section>
         <Process
           title="Our Simple 4-Step Moving Process"
           cus={[
@@ -378,7 +440,7 @@ export default function SharjahPage() {
             },
             {
               title: "Planning & Packing",
-              desc: "After you approve the plan, our professionals arrive on time with high-quality packing supplies.They carefully pack and load your items",
+              desc: "After you approve the plan, our professionals arrive on time with high-quality packing supplies. They carefully pack and load your items",
             },
             {
               title: "Safe Transport",
@@ -386,7 +448,7 @@ export default function SharjahPage() {
             },
             {
               title: "Unloading & Setup",
-              desc: "We unload and place your items where you want them. Furniture is reassembled, boxes unpacked, and a final walkthrough ensures you&#39;re 100% satisfied. ",
+              desc: "We unload and place your items where you want them. Furniture is reassembled, boxes unpacked, and a final walkthrough ensures you're 100% satisfied.",
             },
           ]}
         />
@@ -404,7 +466,7 @@ export default function SharjahPage() {
               </p>
               <p>
                 We always provide a detailed, fixed quote upfront, covering
-                labor, fuel, and materials , so you never face hidden charges.
+                labor, fuel, and materials, so you never face hidden charges.
               </p>
             </>
           }
@@ -422,13 +484,14 @@ export default function SharjahPage() {
             <p>
               Your safety and security are paramount. Nice Movers is fully
               licensed by the UAE authorities (MoE) and every job comes with
-              full insurance
+              full insurance.
             </p>
 
             <div className="border-t border-[#c00000] pt-5">
               <p>
-                Our international ISO 9001 certification and FAIM accreditation
-                mean we adhere to the highest safety and quality standards.
+                Our ISO 9001:2015 certification means our quality management
+                processes are independently audited, and we follow them on every
+                job.
               </p>
               <p>
                 All moving crews are trained in proper handling techniques and
@@ -437,9 +500,21 @@ export default function SharjahPage() {
             </div>
           </div>
 
-          <Button callBtn className="mt-8 b-red-bg" size={"lg"}>
-            Call Sharjah Movers
-          </Button>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button callBtn className="b-red-bg" size={"lg"}>
+              Call Sharjah Movers
+            </Button>
+            <Link
+              href={WHATSAPP_SHARJAH}
+              target="_blank"
+              rel="noreferrer"
+              title="WhatsApp Nice Movers in Sharjah"
+            >
+              <Button variant={"outline"} size={"lg"} className="b-red">
+                <MessageCircle /> WhatsApp Us
+              </Button>
+            </Link>
+          </div>
         </section>
         <section className="mt-36 min-h-96 b-red-bg md:px-0 px-3 md:pb-0 pb-10">
           <div className="grid md:grid-cols-2 grid-cols-1 items-center md:gap-20 gap-10">
@@ -448,6 +523,7 @@ export default function SharjahPage() {
                 src={"/sharjah/happy-customer-movers-sharjah.jpg"}
                 alt="Happy customer shaking hands with a professional mover in Sharjah"
                 fill
+                sizes="(min-width:768px) 50vw, 100vw"
                 className="object-center object-cover"
               />
             </div>
@@ -466,14 +542,16 @@ export default function SharjahPage() {
                   assure you of our quality.
                 </p>
               </div>
-              <Link href={"/"} title="Get A Free Moving Quote">
+              <Link href={"/contact-us"} title="Get A Free Moving Quote">
                 <Button variant={"secondary"} className="mt-5">
                   Contact Us
                 </Button>
               </Link>
-              <Button variant={"link"} className="mt-5 b-white">
-                View All Reviews
-              </Button>
+              <Link href={"#testimonials"} title="Customer reviews">
+                <Button variant={"link"} className="mt-5 b-white">
+                  View All Reviews
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -496,6 +574,7 @@ export default function SharjahPage() {
             ))}
           </div>
         </section>
+        <RelatedLinks current="/movers-and-packers-sharjah" />
         <FAQs faqs={faqs} />
         <CTA />
         <section className="max-w-4xl md:px-0 px-3 mx-auto md:mt-20 mt-80 md:text-xl text-base flex flex-col gap-y-2 b-text">

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import imageSrc from "../../../../public/dubai/nice-movers-and-packers-in-dubai.jpg";
+import imageSrc from "../../../../../public/dubai/nice-movers-and-packers-in-dubai.jpg";
 import {
   AlarmCheckIcon,
   Archive,
@@ -12,6 +12,7 @@ import {
   Home,
   ListTodoIcon,
   Medal,
+  MessageCircle,
   Phone,
   ShieldCheckIcon,
   Star,
@@ -29,13 +30,11 @@ import Testimoials from "@/components/main/testimonials";
 import { FAQs } from "@/components/main/FAQs";
 import Process from "@/components/main/Process";
 import CTA from "@/components/main/CTA";
-import {
-  breadcrumbSchema,
-  generateServiceSchema,
-} from "@/lib/ServiceSchemaGen";
+import { breadcrumbFor, generateServiceSchema } from "@/lib/ServiceSchemaGen";
 import { APP } from "@/lib/App";
 import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
-import Script from "next/script";
+import JsonLd from "@/components/JsonLd";
+import RelatedLinks from "@/components/main/RelatedLinks";
 
 type Feature = {
   title: string;
@@ -101,11 +100,11 @@ type Service = {
   img: string;
 };
 
-export const metadata: Metadata = MetadataTemplate({
+const baseMetadata = MetadataTemplate({
   data: {
     meta: {
       title: "Movers and Packers in Dubai | Affordable & Fast | Nice Movers",
-      desc: "Professional movers and packers in Dubai with 15+ years experience. Licensed, insured, and ISO certified. Affordable residential, office, and villa moving services. Book now!",
+      desc: "Professional movers and packers in Dubai since 2015. Licensed, insured and ISO 9001:2015 certified home, villa and office moving. Free quote in 5 minutes.",
     },
     image: {
       path: "/dubai/nice-movers-and-packers-in-dubai.jpg",
@@ -115,13 +114,45 @@ export const metadata: Metadata = MetadataTemplate({
   },
 });
 
-const JsonLd = generateServiceSchema({
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: `${APP.url}/movers-and-packers-in-dubai`,
+    languages: {
+      "en-AE": `${APP.url}/movers-and-packers-in-dubai`,
+      "ar-AE": `${APP.url}/${encodeURIComponent("نقل-الاثاث-دبي")}`,
+      "x-default": `${APP.url}/movers-and-packers-in-dubai`,
+    },
+  },
+};
+
+const WHATSAPP_DUBAI =
+  "https://wa.me/971563560017?text=I%20need%20movers%20in%20Dubai";
+
+const serviceJsonLd = generateServiceSchema({
   serviceName: "Movers and Packers in Dubai",
   serviceDescription:
-    "Trusted movers and packers in Dubai. Nice Movers offers secure house, villa & office relocation, insured crews, same- day service & free on- site quotes.",
+    "Trusted movers and packers in Dubai. Nice Movers offers secure house, villa & office relocation, insured crews, same-day service & free on-site quotes.",
   serviceUrl: APP.url + "/movers-and-packers-in-dubai",
   priceRange: "499 AED - 5000 AED",
   imageUrls: [APP.url + "/dubai/nice-movers-and-packers-in-dubai.jpg"],
+  areaServed: [
+    "Dubai",
+    "Downtown Dubai",
+    "Dubai Marina",
+    "Jumeirah",
+    "Deira",
+    "Bur Dubai",
+    "Business Bay",
+    "Jumeirah Beach Residence (JBR)",
+    "Palm Jumeirah",
+    "Arabian Ranches",
+    "The Springs",
+    "Emirates Hills",
+    "The Meadows",
+    "Dubai Sports City",
+    "DIFC",
+  ],
 });
 
 const faqJsonLd = generateFAQSchema(faqs);
@@ -129,24 +160,14 @@ const faqJsonLd = generateFAQSchema(faqs);
 const page = () => {
   return (
     <>
-      <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JsonLd }}
-        strategy="beforeInteractive"
-      />
-
-      <Script
-        id="faqs-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd }}
-        strategy="beforeInteractive"
-      />
-      <Script
+      <JsonLd id="service-schema" data={serviceJsonLd} />
+      <JsonLd id="faqs-schema" data={faqJsonLd} />
+      <JsonLd
         id="breadcrumb-schema"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
+        data={breadcrumbFor(
+          "Movers and Packers in Dubai",
+          "/movers-and-packers-in-dubai"
+        )}
       />
       <main className="md:mt-[120px] max-w-[1400px] mx-auto">
         <section id="hero-section" className="relative md:h-[550px] h-[580px]">
@@ -154,7 +175,8 @@ const page = () => {
             src={imageSrc}
             placeholder="blur"
             fill
-            loading="eager"
+            priority
+            sizes="100vw"
             alt="Nice Movers and Packers in Dubai – Professional, Affordable, Trusted Since 2015"
             className="absolute object-cover object-center"
           />
@@ -165,10 +187,10 @@ const page = () => {
             <div className="bg-white/90 md:w-[550px] md:p-10 py-7 px-5 md:text-start text-center rounded-2xl">
               <h1 className="font-bold md:text-3xl text-2xl">
                 Movers and Packers in Dubai –
-                <Link href={"/"} className="b-red underline underline-offset-2">
+                <span className="b-red underline underline-offset-2">
                   {" "}
                   Professional, Affordable, Trusted Since 2015
-                </Link>
+                </span>
               </h1>
               <p className="mt-5 b-text md:text-base/5 text-sm">
                 As leading movers and packers Dubai, Nice Movers UAE provides
@@ -222,7 +244,7 @@ const page = () => {
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              15+ Years Expertise
+              Moving Since 2015
             </h3>
           </div>
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -244,7 +266,7 @@ const page = () => {
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              Fast, Alway On-Time
+              Fast, Always On-Time
             </h3>
           </div>
 
@@ -276,10 +298,10 @@ const page = () => {
           title="Book Now — Movers and Packers in Dubai — Low Rates"
           desc={
             <>
-              To book our movers and packers in dubai or anywhere in the UAE
-              with us, kindly fill out the general inquiry form provided. <br />
-              Subsequently, our booking manager will promptly reach out to you
-              to ascertain the specific requisites about your relocation.
+              To book our movers and packers in Dubai or anywhere in the UAE,
+              fill out the inquiry form. <br />
+              Our booking manager will then contact you to confirm the details
+              of your relocation.
             </>
           }
         />
@@ -320,16 +342,16 @@ const page = () => {
                 desc: "We hold all required UAE Ministry of Economy licenses for moving services in Dubai and comprehensive insurance coverage for your belongings. Every item transported is protected—giving you complete peace of mind.",
               },
               {
-                title: "ISO 9001:2015 Certified & FAIM Accredited",
-                desc: "Our removal company in Dubai processes meet international quality standards. We&apos;re FAIM-accredited (the moving industry&apos;s gold standard), ensuring professional handling that competitors can&apos;t match.",
+                title: "ISO 9001:2015 Certified",
+                desc: "Our moving processes in Dubai run under an ISO 9001:2015 certified quality management system, so booking, packing, handling and damage claims follow the same documented steps on every job.",
               },
               {
-                title: "15+ Years of Moving Expertise",
-                desc: "Since 2015, we&apos;ve perfected the art of residential and commercial moving in Dubai. Our crews are rigorously trained, equipped with premium materials, and proven to deliver stress-free relocations—every single time.",
+                title: "Moving Homes and Offices Since 2015",
+                desc: "Since 2015, we've perfected the art of residential and commercial moving in Dubai. Our crews are rigorously trained, equipped with premium materials, and proven to deliver stress-free relocations—every single time.",
               },
               {
                 title: "Nationwide Coverage – All Emirates, No Extra Charge",
-                desc: "Operating branches across Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, and beyond, our movers in Dubai network ensures coverage anywhere in the UAE. Same rates whether you&apos;re moving within Dubai or across emirates.",
+                desc: "Operating branches across Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, and beyond, our movers in Dubai network ensures coverage anywhere in the UAE. Same rates whether you're moving within Dubai or across emirates.",
               },
               {
                 title: "Transparent, No Hidden Fees",
@@ -418,6 +440,7 @@ const page = () => {
               src={"/Residential-Moving-UAE.jpg"}
               fill
               loading="lazy"
+              sizes="(min-width:768px) 50vw, 100vw"
               className="absolute object-center object-cover"
             />
           </div>
@@ -428,6 +451,7 @@ const page = () => {
         <CoverageAreas />
         <Testimoials />
 
+        <RelatedLinks current="/movers-and-packers-in-dubai" />
         <div className="-mt-10">
           <FAQs faqs={faqs} />
         </div>
@@ -460,6 +484,7 @@ const ServiceRow = ({
             src={service.img}
             alt={service.title}
             fill
+            sizes="(min-width:1024px) 50vw, 100vw"
             className="object-center object-cover"
           />
         </div>
@@ -748,6 +773,21 @@ const CoverageAreas: React.FC = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className="mt-10 flex flex-wrap justify-center gap-3">
+        <Button callBtn className="b-red-bg" size={"lg"}>
+          <Phone /> Call Dubai Movers
+        </Button>
+        <Link
+          href={WHATSAPP_DUBAI}
+          target="_blank"
+          rel="noreferrer"
+          title="WhatsApp Nice Movers in Dubai"
+        >
+          <Button variant={"outline"} size={"lg"} className="b-red">
+            <MessageCircle /> WhatsApp Dubai Movers
+          </Button>
+        </Link>
       </div>
     </section>
   );

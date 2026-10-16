@@ -14,18 +14,18 @@ import {
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import imageSrc from "../../../../public/professional-movers-in-ajman-nice-movers-uae.jpg";
+import imageSrc from "../../../../../public/professional-movers-in-ajman-nice-movers-uae.jpg";
 import Process from "@/components/main/Process";
 
 export const metadata: Metadata = MetadataTemplate({
   data: {
     meta: {
       title: "Movers in Ajman | Trusted Moving Company | Nice Movers UAE",
-      desc: "Looking for professional movers in Ajman? Nice Movers UAE is ISO 9001:2015 certified, offering house shifting, villa & office relocation at affordable prices. Call now for a free quote.",
+      desc: "Professional movers in Ajman, ISO 9001:2015 certified. House shifting, villa & office relocation at transparent prices. Call +971 563560017 for a free quote.",
     },
     image: {
       path: "/professional-movers-in-ajman-nice-movers-uae.jpg",
-      alt: "Nice Movers and Packers in Dubai",
+      alt: "Nice Movers UAE professional movers and packers in Ajman",
     },
     path: "/movers-in-ajman",
   },
@@ -45,7 +45,7 @@ const faqs = [
   {
     question: "Do you provide packing materials?",
     answer:
-      "Yes. We bring carton boxes, bubble wrap, stretch film, and furniture blankets on every job. You don&apos;t need to source anything.",
+      "Yes. We bring carton boxes, bubble wrap, stretch film, and furniture blankets on every job. You don't need to source anything.",
   },
   {
     question: "Can you move from Ajman to other Emirates?",
@@ -66,7 +66,7 @@ const faqs = [
     question:
       "What makes Nice Movers different from other moving companies in Ajman?",
     answer:
-      "ISO 9001:2015 certification, transparent pricing, trained crew, and a clear post-move quality check. Most moving companies in Ajman don&apos;t offer all four.",
+      "ISO 9001:2015 certification, transparent pricing, trained crew, and a clear post-move quality check. Most moving companies in Ajman don't offer all four.",
   },
   {
     question: "Do you dismantle and reassemble furniture?",
@@ -75,13 +75,29 @@ const faqs = [
   },
 ];
 
-const JsonLd = generateServiceSchema({
+const WHATSAPP_AJMAN =
+  "https://wa.me/971563560017?text=I%20need%20movers%20in%20Ajman";
+
+const serviceJsonLd = generateServiceSchema({
   serviceName: "Movers and Packers in Ajman",
   serviceDescription:
-    "Trusted movers and packers in ajman. Nice Movers offers secure house, villa & office relocation, insured crews, same- day service & free on- site quotes.",
+    "Trusted movers and packers in Ajman. Nice Movers offers secure house, villa & office relocation, insured crews, same-day service & free on-site quotes.",
   serviceUrl: APP.url + "/movers-in-ajman",
   priceRange: "499 AED - 5000 AED",
   imageUrls: [APP.url + "/professional-movers-in-ajman-nice-movers-uae.jpg"],
+  areaServed: [
+    "Ajman",
+    "Ajman City Centre",
+    "Al Nuaimiya",
+    "Al Rashidiya",
+    "Al Rumailah",
+    "Al Hamidiya",
+    "Ajman Industrial Area",
+    "Al Jurf",
+    "Al Tallah",
+    "Al Mwaihat",
+    "Emirates City",
+  ],
 });
 
 const faqJsonLd = generateFAQSchema(faqs);
@@ -89,24 +105,11 @@ const faqJsonLd = generateFAQSchema(faqs);
 const page = () => {
   return (
     <>
-      <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JsonLd }}
-        strategy="beforeInteractive"
-      />
-
-      <Script
-        id="faqs-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd }}
-        strategy="beforeInteractive"
-      />
-      <Script
+      <JsonLd id="service-schema" data={serviceJsonLd} />
+      <JsonLd id="faqs-schema" data={faqJsonLd} />
+      <JsonLd
         id="breadcrumb-schema"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
+        data={breadcrumbFor("Movers in Ajman", "/movers-in-ajman")}
       />
       <main className="md:mt-[120px] max-w-[1400px] mx-auto">
         <section id="hero-section" className="relative md:h-[550px] h-[580px]">
@@ -114,8 +117,9 @@ const page = () => {
             src={imageSrc}
             placeholder="blur"
             fill
-            loading="eager"
-            alt="Nice Movers and Packers in Dubai – Professional, Affordable, Trusted Since 2015"
+            priority
+            sizes="100vw"
+            alt="Nice Movers professional movers in Ajman – ISO certified moving company since 2015"
             className="absolute object-cover object-center"
           />
           <div
@@ -125,10 +129,10 @@ const page = () => {
             <div className="bg-white/90 md:w-[550px] md:p-10 py-7 px-5 md:text-start text-center rounded-2xl">
               <h1 className="font-bold md:text-3xl text-2xl">
                 Movers in Ajman –
-                <Link href={"/"} className="b-red underline underline-offset-2">
+                <span className="b-red underline underline-offset-2">
                   {" "}
                   ISO Certified & Affordable Moving Company
-                </Link>
+                </span>
               </h1>
               <p className="mt-5 b-text md:text-base/5 text-sm">
                 Need reliable movers in Ajman? Nice Movers UAE is a licensed,
@@ -184,7 +188,7 @@ const page = () => {
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              15+ Years Expertise
+              Moving Since 2015
             </h3>
           </div>
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -206,7 +210,7 @@ const page = () => {
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              Fast, Alway On-Time
+              Fast, Always On-Time
             </h3>
           </div>
 
@@ -233,6 +237,11 @@ const page = () => {
             </h3>
           </div>
         </section>
+        <ContactSection
+          dm
+          title="Get A Free Moving Quote in Ajman"
+          desc="Tell us your move size, your Ajman pick-up area and your preferred date, and our booking team will send you a written quote for your house, villa or office move."
+        />
         <section
           id="our-moving-experties"
           className="md:w-11/12 w-full mt-36 mx-auto md:px-0 px-3"
@@ -288,6 +297,7 @@ const page = () => {
                     src={service.src}
                     alt={service.alt}
                     fill
+                    sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
                     className="absolute object-cover object-center"
                   />
                   <div className="b-red-grd z-10 absolute top-0 left-0 w-full h-full p-5 flex flex-col items-start justify-end">
@@ -333,9 +343,21 @@ const page = () => {
             We also handle moves from Ajman to Dubai, Sharjah, Abu Dhabi, RAK,
             and all other UAE emirates in a single booking.
           </p>
-          <Button callBtn className="mt-8 b-red-bg" size={"lg"}>
-            Call Ajman Movers
-          </Button>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button callBtn className="b-red-bg" size={"lg"}>
+              Call Ajman Movers
+            </Button>
+            <Link
+              href={WHATSAPP_AJMAN}
+              target="_blank"
+              rel="noreferrer"
+              title="WhatsApp Nice Movers in Ajman"
+            >
+              <Button variant={"outline"} size={"lg"} className="b-red">
+                <MessageCircle /> WhatsApp Ajman Movers
+              </Button>
+            </Link>
+          </div>
         </section>
         <div className="-mt-20">
           <Process
@@ -450,7 +472,7 @@ const page = () => {
                       <Phone size={16} /> Call
                     </a>
                     <a
-                      href="https://wa.me/971563560017"
+                      href={WHATSAPP_AJMAN}
                       target="_blank"
                       rel="noreferrer"
                       className="flex-1 xl:flex-none flex items-center justify-center gap-2 bg-[#a30000] text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-[#8a0000] transition-colors border border-[#a30000]"
@@ -494,7 +516,10 @@ const page = () => {
             </div>
           </div>
         </section>
-        <div className="-mt-28">
+        <div className="-mt-24">
+          <RelatedLinks current="/movers-in-ajman" />
+        </div>
+        <div className="-mt-16">
           <FAQs faqs={faqs} />
         </div>
         <CTA title="Ready to Move? Contact Nice Movers in Ajman" />
@@ -516,7 +541,7 @@ const content = [
   },
   {
     title: "Transparent Pricing",
-    desc: "you get a written quote before we start; the number doesn&apos;t change",
+    desc: "you get a written quote before we start; the number doesn't change",
   },
   {
     title: "Same-Day Moving Available ",
@@ -535,7 +560,7 @@ const content = [
 const servicesList = [
   {
     title: "House Shifting in Ajman",
-    desc: "Our most requested service. We pack every room systematically, dismantle furniture where needed, load with care, and reassemble everything at your new address. Apartments, villas, townhouses — we&apos;ve done them all across Ajman&apos;s neighbourhoods.",
+    desc: "Our most requested service. We pack every room systematically, dismantle furniture where needed, load with care, and reassemble everything at your new address. Apartments, villas, townhouses — we've done them all across Ajman's neighbourhoods.",
     src: "/House-Movers.jpg",
     alt: "Nice Movers house relocation for families.",
     link: "/house-shifting-services",
@@ -560,7 +585,7 @@ const servicesList = [
     desc: "Moving a single sofa or a full bedroom set? Our furniture moving service in Ajman is available as a standalone booking. We dismantle, wrap, transport, and reinstall — all in one trip.",
     src: "/local-moving.jpg",
     alt: "Nice Movers fast local moving services.",
-    link: "/",
+    link: "/house-shifting-services",
   },
 
   {
@@ -568,15 +593,15 @@ const servicesList = [
     desc: "Packing takes longer than most people expect. Our packers and movers in Ajman bring all the materials and handle the entire process, room by room. We label every box so unpacking at the other end is straightforward.",
     src: "/Cheap-Moving.jpg",
     alt: "Nice Movers low-cost moving solutions.",
-    link: "/",
+    link: "/house-shifting-services",
   },
 
   {
     title: "Storage Services",
-    desc: "Between moves or during a renovation? We offer secure short- and long-term storage for household items and business inventory. Your belongings stay in a climate-appropriate, monitored facility until you&apos;re ready.",
+    desc: "Between moves or during a renovation? We offer secure short- and long-term storage for household items and business inventory. Your belongings stay in a climate-appropriate, monitored facility until you're ready.",
     src: "/Storage-Services.jpg",
     alt: "Nice Movers secure storage facilities.",
-    link: "/",
+    link: "/contact-us",
   },
 ];
 
@@ -593,13 +618,12 @@ import {
 import Testimoials from "@/components/main/testimonials";
 import { FAQs } from "@/components/main/FAQs";
 import CTA from "@/components/main/CTA";
-import {
-  breadcrumbSchema,
-  generateServiceSchema,
-} from "@/lib/ServiceSchemaGen";
+import ContactSection from "@/components/main/ContactSection";
+import RelatedLinks from "@/components/main/RelatedLinks";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbFor, generateServiceSchema } from "@/lib/ServiceSchemaGen";
 import { APP } from "@/lib/App";
 import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
-import Script from "next/script";
 
 // --- DATA: Separating content from UI keeps the code clean and maintainable ---
 
@@ -628,13 +652,13 @@ const TRUST_SIGNALS = [
     icon: ShieldCheck,
     title: "Licensed UAE Moving Company",
     description:
-      "We operate under a valid UAE trade license. You&apos;re protected legally when you hire us.",
+      "We operate under a valid UAE trade license. You're protected legally when you hire us.",
   },
   {
     icon: Users,
     title: "Experienced, Trained Crew",
     description:
-      "Our movers aren&apos;t casual labor. They are trained in lifting techniques, furniture handling, and fragile-item packing. Every team lead has completed professional relocation training.",
+      "Our movers aren't casual labor. They are trained in lifting techniques, furniture handling, and fragile-item packing. Every team lead has completed professional relocation training.",
   },
   {
     icon: Truck,
@@ -646,6 +670,6 @@ const TRUST_SIGNALS = [
     icon: CalendarDays,
     title: "Available 7 Days a Week",
     description:
-      "Moves don&apos;t always land on a weekday. We operate every day, including public holidays, to work around your schedule.",
+      "Moves don't always land on a weekday. We operate every day, including public holidays, to work around your schedule.",
   },
 ];

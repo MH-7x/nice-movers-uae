@@ -14,7 +14,7 @@ import {
   UsersRoundIcon,
 } from "lucide-react";
 import { Metadata } from "next";
-import imageSrc from "../../../../public/nice-movers-ras-al-khaimah-professional-moving-company.jpg";
+import imageSrc from "../../../../../public/nice-movers-ras-al-khaimah-professional-moving-company.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -71,14 +71,32 @@ const faqs = [
   },
 ];
 
-const JsonLd = generateServiceSchema({
+const WHATSAPP_RAK =
+  "https://wa.me/971563560017?text=I%20need%20movers%20in%20Ras%20Al%20Khaimah";
+
+const serviceJsonLd = generateServiceSchema({
   serviceName: "Movers in Ras Al Khaimah",
   serviceDescription:
-    "Trusted movers and packers in ras al khaimah. Nice Movers offers secure house, villa & office relocation, insured crews, same- day service & free on- site quotes.",
+    "Trusted movers and packers in Ras Al Khaimah. Nice Movers offers secure house, villa & office relocation, insured crews, same-day service & free on-site quotes.",
   serviceUrl: APP.url + "/movers-in-ras-al-khaimah",
   priceRange: "499 AED - 5000 AED",
   imageUrls: [
     APP.url + "/nice-movers-ras-al-khaimah-professional-moving-company.jpg",
+  ],
+  areaServed: [
+    "Ras Al Khaimah",
+    "Al Hamra Village",
+    "Mina Al Arab",
+    "Al Marjan Island",
+    "Al Nakheel",
+    "Al Dhait",
+    "Dafan Al Nakheel",
+    "Khuzam",
+    "Al Rams",
+    "Al Jazeera",
+    "Al Qusaidat",
+    "Al Kharran",
+    "Al Mairid",
   ],
 });
 
@@ -87,24 +105,14 @@ const faqJsonLd = generateFAQSchema(faqs);
 const page = () => {
   return (
     <>
-      <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JsonLd }}
-        strategy="beforeInteractive"
-      />
-
-      <Script
-        id="faqs-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd }}
-        strategy="beforeInteractive"
-      />
-      <Script
+      <JsonLd id="service-schema" data={serviceJsonLd} />
+      <JsonLd id="faqs-schema" data={faqJsonLd} />
+      <JsonLd
         id="breadcrumb-schema"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
+        data={breadcrumbFor(
+          "Movers in Ras Al Khaimah",
+          "/movers-in-ras-al-khaimah"
+        )}
       />
       <main className="md:mt-[120px] max-w-[1400px] mx-auto">
         <section id="hero-section" className="relative md:h-[550px] h-[580px]">
@@ -112,9 +120,9 @@ const page = () => {
             src={imageSrc}
             placeholder="blur"
             fill
-            loading="eager"
-            alt="Nice Movers UAE team carrying furniture outside a luxury villa in 
-Ras Al Khaimah with a branded moving truck in the background"
+            priority
+            sizes="100vw"
+            alt="Nice Movers UAE team carrying furniture outside a luxury villa in Ras Al Khaimah with a branded moving truck in the background"
             className="absolute object-cover object-center"
           />
           <div
@@ -124,10 +132,10 @@ Ras Al Khaimah with a branded moving truck in the background"
             <div className="bg-white/90 md:w-[550px] md:p-10 py-7 px-5 md:text-start text-center rounded-2xl">
               <h1 className="font-bold md:text-3xl text-2xl">
                 Movers in Ras Al Khaimah –
-                <Link href={"/"} className="b-red underline underline-offset-2">
+                <span className="b-red underline underline-offset-2">
                   {" "}
                   Reliable, ISO-Certified & Affordable
-                </Link>
+                </span>
               </h1>
               <p className="mt-5 b-text md:text-base/5 text-sm">
                 Looking for dependable movers in Ras Al Khaimah? Nice Movers UAE
@@ -189,7 +197,7 @@ Ras Al Khaimah with a branded moving truck in the background"
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              15+ Years Expertise
+              Moving Since 2015
             </h3>
           </div>
           <div className="flex items-center justify-center flex-col gap-y-3">
@@ -211,7 +219,7 @@ Ras Al Khaimah with a branded moving truck in the background"
               className="text-[#c00000] "
             />
             <h3 className="md:text-xl text-center b-text">
-              Fast, Alway On-Time
+              Fast, Always On-Time
             </h3>
           </div>
 
@@ -243,11 +251,10 @@ Ras Al Khaimah with a branded moving truck in the background"
           title="Book Now — Movers in Ras Al Khaimah — Low Rates"
           desc={
             <>
-              To book our movers and packers in ras al khaimah or anywhere in
-              the UAE with us, kindly fill out the general inquiry form
-              provided. <br />
-              Subsequently, our booking manager will promptly reach out to you
-              to as certain the specific requisites about your relocation.
+              To book our movers and packers in Ras Al Khaimah or anywhere in
+              the UAE, fill out the inquiry form. <br />
+              Our booking manager will then contact you to confirm the details
+              of your relocation.
             </>
           }
         />
@@ -302,10 +309,12 @@ Ras Al Khaimah with a branded moving truck in the background"
                 >
                   {/* Image Container with subtle zoom on hover */}
                   <div className="h-56 overflow-hidden relative">
-                    <img
+                    <Image
                       src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover "
+                      alt={service.alt}
+                      fill
+                      sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                      className="object-cover object-center"
                     />
                   </div>
 
@@ -346,7 +355,7 @@ Ras Al Khaimah with a branded moving truck in the background"
                     {/* Bottom push-down for layout consistency & Call to Action */}
                     <div className="mt-auto pt-6 border-t border-gray-100">
                       <a
-                        href="tel:971563560017"
+                        href="tel:+971563560017"
                         className="inline-flex items-center text-[#c00000] font-medium text-sm hover:text-[#404040] transition-colors duration-200"
                       >
                         Call for a Quote
@@ -498,6 +507,7 @@ Ras Al Khaimah with a branded moving truck in the background"
               src={"/Residential-Moving-UAE.jpg"}
               fill
               loading="lazy"
+              sizes="(min-width:768px) 50vw, 100vw"
               className="absolute object-center object-cover"
             />
           </div>
@@ -533,11 +543,24 @@ Ras Al Khaimah with a branded moving truck in the background"
             </div>
           </div>
 
-          <Button callBtn className="mt-8 b-red-bg" size={"lg"}>
-            Call Sharjah Movers
-          </Button>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button callBtn className="b-red-bg" size={"lg"}>
+              Call RAK Movers
+            </Button>
+            <Link
+              href={WHATSAPP_RAK}
+              target="_blank"
+              rel="noreferrer"
+              title="WhatsApp Nice Movers in Ras Al Khaimah"
+            >
+              <Button variant={"outline"} size={"lg"} className="b-red">
+                <MessageCircle /> WhatsApp RAK Movers
+              </Button>
+            </Link>
+          </div>
         </section>
         <Testimoials />
+        <RelatedLinks current="/movers-in-ras-al-khaimah" />
         <FAQs faqs={faqs} />
         <CTA title="Ready to Move? Contact Nice Movers in Ras Al Khaimah" />
       </main>
@@ -547,18 +570,16 @@ Ras Al Khaimah with a branded moving truck in the background"
 
 export default page;
 
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, MessageCircle } from "lucide-react";
 import Process from "@/components/main/Process";
 import Testimoials from "@/components/main/testimonials";
 import { FAQs } from "@/components/main/FAQs";
 import CTA from "@/components/main/CTA";
-import {
-  breadcrumbSchema,
-  generateServiceSchema,
-} from "@/lib/ServiceSchemaGen";
+import RelatedLinks from "@/components/main/RelatedLinks";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbFor, generateServiceSchema } from "@/lib/ServiceSchemaGen";
 import { APP } from "@/lib/App";
 import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
-import Script from "next/script";
 
 // --- Data Structure (Keeps JSX clean) ---
 const servicesData = [
@@ -576,8 +597,8 @@ const servicesData = [
     ],
     footerText:
       "Whether you're shifting a studio, a 2-bedroom apartment, or a 5-bedroom family home, the process is the same: we show up on time and finish the job properly.",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/House-Movers.jpg",
+    alt: "Nice Movers crew handling a house shifting job in Ras Al Khaimah",
   },
   {
     id: 2,
@@ -590,8 +611,8 @@ const servicesData = [
       "3-bedroom and larger family apartments",
       "Furnished and semi-furnished units",
     ],
-    image:
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/Apartment-Relocation.jpg",
+    alt: "Nice Movers apartment relocation service in Ras Al Khaimah",
   },
   {
     id: 3,
@@ -600,8 +621,8 @@ const servicesData = [
       "Villa moves are larger and more complex. There is more furniture, more outdoor equipment, and often more fragile items that need individual attention. Our villa moving service uses dedicated trucks sized for full-villa loads, and we assign senior crew members to every villa job.",
     footerText:
       "We regularly move from and to communities like Al Hamra Village, Mina Al Arab, Al Dhait, and Khuzam. Our crew knows the access rules and gate procedures for gated communities in RAK — no last-minute delays.",
-    image:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/Villa-Movers.jpg",
+    alt: "Nice Movers villa moving team in Ras Al Khaimah",
   },
   {
     id: 4,
@@ -617,24 +638,24 @@ const servicesData = [
     ],
     footerText:
       "We've worked with businesses in RAK's main commercial zones and understand the access requirements of free zone facilities.",
-    image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/Office-Moving.jpg",
+    alt: "Nice Movers office and commercial relocation in Ras Al Khaimah",
   },
   {
     id: 5,
     title: "Furniture Moving in Ras Al Khaimah",
     description:
       "Need to move a few items — not a full home? Our furniture moving service in RAK handles single-room jobs, furniture deliveries, or individual pieces like sofas, dining sets, and wardrobes. No minimum-load requirement.",
-    image:
-      "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/packing-unpacking.jpg",
+    alt: "Nice Movers crew wrapping furniture and fragile items for a move in Ras Al Khaimah",
   },
   {
     id: 6,
     title: "Inter-Emirate Moves",
     description:
       "Plenty of RAK residents are relocating to other emirates for work or lifestyle reasons. We handle inter-emirate moves as part of our standard service — no extra paperwork on your end. RAK to Dubai typically takes one day. RAK to Abu Dhabi is easily managed in a single trip.",
-    image:
-      "https://images.unsplash.com/photo-1519643381401-22c77e60520e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/nice-movers-transport-trucks.jpg",
+    alt: "Nice Movers branded trucks for inter-emirate moves from Ras Al Khaimah",
   },
 ];
 
