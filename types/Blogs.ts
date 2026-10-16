@@ -9,6 +9,7 @@ export interface Blog {
     caption:   string;
     slug:      string;
     createdAt: Date;
+    updatedAt?: Date;
     image:     string;
     category:  string;
 }

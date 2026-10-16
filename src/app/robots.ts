@@ -10,7 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: [
           '/api/',
-          '/_next/',
           '/static/',
           '/server/',
           '/private/',
@@ -21,8 +20,7 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: [
       `${APP.url}/sitemap.xml`,
       `${APP.url}/sitemap-blogs.xml`
-      
+
     ],
-    host: `${APP.url}`,
   }
 }
