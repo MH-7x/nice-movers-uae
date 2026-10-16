@@ -11,7 +11,7 @@ import PopUp from "@/components/PopUp";
 import GTM from "@/components/GTM";
 
 export const rootMetadata: Metadata = {
-  metadataBase: new URL(process.env.APP_URI || "https://www.nicemoversuae.com"),
+  metadataBase: new URL(process.env.APP_URI || "https://nicemoversuae.com"),
   applicationName: "Nice Movers",
   robots: {
     "max-image-preview": "large",

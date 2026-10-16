@@ -52,7 +52,7 @@ export const EmailTemplate = ({
                 margin: "0 auto",
               }}
               alt="Nice Movers"
-              src={`${process.env.APP_URI || "https://www.nicemoversuae.com"}/Picture1.png`}
+              src={`${process.env.APP_URI || "https://nicemoversuae.com"}/Picture1.png`}
             />
           </Section>
 
@@ -160,4 +160,3 @@ const content = {
 const boxInfos = {
   padding: "20px",
 };
-
