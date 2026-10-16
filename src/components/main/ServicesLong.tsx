@@ -13,11 +13,11 @@ const services = [
         <p>
           From studio flats to family homes, we handle every household
           relocation with care. We also dismantle and reassemble furniture as
-          needed and load everything securely for transport
+          needed and load everything securely for transport.
         </p>
         <p>
           {" "}
-          In Sharjah, our movers and packers handle every detail . For Sharjah
+          In Sharjah, our movers and packers handle every detail. For Sharjah
           home moves, Nice Movers is among the movers and packers Sharjah
           customers trust.
         </p>
@@ -44,7 +44,7 @@ const services = [
         </p>
         <p>
           For any large villa move in Sharjah, trust our movers and packers for
-          careful handling . Sharjah villas rely on movers and packers like us
+          careful handling. Sharjah villas rely on movers and packers like us
           for careful handling.
         </p>
       </>
@@ -56,7 +56,7 @@ const services = [
   },
   {
     title: "Office and Commercial Moving",
-    desc: "Time is money, so our office movers and packers in Sharjah minimize your downtime. We start with a free consultation and on- site survey to understand your requirements",
+    desc: "Time is money, so our office movers and packers in Sharjah minimize your downtime. We start with a free consultation and on-site survey to understand your requirements",
     more: (
       <>
         <p>
@@ -156,13 +156,13 @@ const services = [
 
 const ServicesLong = () => {
   return (
-    <main className="mt-32 md:w-11/12 mx-auto md:px-0 px-3">
+    <section className="mt-32 md:w-11/12 mx-auto md:px-0 px-3">
       <h2 className="md:text-4xl text-2xl font-bold b-red text-center">
         Our Moving Services in Sharjah
       </h2>
       <p className="mt-3 max-w-xl text-lg mx-auto b-text text-center">
         We provide a wide range of moving and packing services in Sharjah for
-        you specific needs.
+        your specific needs.
       </p>
       <div className="mt-20 md:px-16" id="our-services-in-sharjah">
         {services.map((service, index) => (
@@ -192,8 +192,12 @@ const ServicesLong = () => {
                 </div>
               </details>
               <div className="mt-5 flex gap-x-3">
-                <Button className="b-red-bg">WhatsApp Us</Button>
-                <Button variant={"secondary"}>Get A Quote</Button>
+                <Button wtBtn className="b-red-bg">
+                  WhatsApp Us
+                </Button>
+                <Button quoteBtn variant={"secondary"}>
+                  Get A Quote
+                </Button>
               </div>
             </div>
             <div
@@ -208,6 +212,7 @@ const ServicesLong = () => {
                 alt={service.image.alt}
                 fill
                 loading="lazy"
+                sizes="(min-width:768px) 50vw, 100vw"
                 className="absolute object-cover object-center"
               />
               <Link href={"tel:+971563560017"} title="Call To Us">
@@ -229,7 +234,7 @@ const ServicesLong = () => {
           </div>
         ))}
       </div>
-    </main>
+    </section>
   );
 };
 

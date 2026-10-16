@@ -15,21 +15,28 @@ export const MobileNavbar = () => {
             <Image
               alt="Nice Movers Company Logo"
               src={logo}
-              loading="eager"
               priority
+              sizes="160px"
               className="object-contain object-center absolute mt-0.5"
               quality={90}
             />
           </Link>
         </div>
 
-        <input type="checkbox" id="menu-toggle" className="peer hidden" />
+        <input
+          type="checkbox"
+          id="menu-toggle"
+          aria-label="Open menu"
+          className="peer sr-only"
+        />
         <label
           htmlFor="menu-toggle"
-          className="flex items-center gap-x-2  py-2 px-2.5 rounded-md b-red-bg b-white"
+          aria-label="Open menu"
+          title="Open menu"
+          className="flex items-center gap-x-2  py-2 px-2.5 rounded-md b-red-bg b-white cursor-pointer peer-focus-visible:ring-2 peer-focus-visible:ring-[#c00000] peer-focus-visible:ring-offset-2"
         >
           {" "}
-          <Menu size={25} />
+          <Menu size={25} aria-hidden="true" />
         </label>
 
         <Sidebar />
@@ -48,29 +55,39 @@ const Sidebar = () => {
       {/* Close Button */}
       <label
         htmlFor="menu-toggle"
+        aria-label="Close menu"
+        title="Close menu"
         className="absolute top-3 right-4 text-xl cursor-pointer"
       >
-        <span className="text-2xl">✖</span>
+        <span className="text-2xl" aria-hidden="true">
+          ✖
+        </span>
       </label>
 
       <ul className="w-full px-5 mt-[70px] text-lg">
         {/* SERVICES DROPDOWN */}
         <li className="border-b border-[#e7e6e6] mb-2">
-          <input type="checkbox" id="services-toggle" className="peer hidden" />
+          <input
+            type="checkbox"
+            id="services-toggle"
+            aria-label="Show services links"
+            className="peer sr-only"
+          />
           <label
             htmlFor="services-toggle"
-            className="flex items-center justify-between w-full pl-4 py-2 cursor-pointer"
+            aria-label="Show services links"
+            className="flex items-center justify-between w-full pl-4 py-2 cursor-pointer peer-focus-visible:underline"
           >
             <span>Services</span>
-            <Plus className="transition-transform peer-checked:rotate-45" />
+            <Plus
+              aria-hidden="true"
+              className="transition-transform peer-checked:rotate-45"
+            />
           </label>
           <DropDown
-            list={servicesList.map((ser) => {
-              return {
-                link: ser.link,
-                title: ser.title,
-              };
-            })}
+            list={servicesList.flatMap((ser) =>
+              ser.link ? [{ link: ser.link, title: ser.title }] : []
+            )}
           />
         </li>
 
@@ -79,14 +96,19 @@ const Sidebar = () => {
           <input
             type="checkbox"
             id="locations-toggle"
-            className="peer hidden"
+            aria-label="Show movers and packers locations"
+            className="peer sr-only"
           />
           <label
             htmlFor="locations-toggle"
-            className="flex items-center justify-between w-full pl-4 py-2 cursor-pointer"
+            aria-label="Show movers and packers locations"
+            className="flex items-center justify-between w-full pl-4 py-2 cursor-pointer peer-focus-visible:underline"
           >
             <span>Movers And Packers</span>
-            <Plus className="transition-transform peer-checked:rotate-45" />
+            <Plus
+              aria-hidden="true"
+              className="transition-transform peer-checked:rotate-45"
+            />
           </label>
           <DropDown
             list={ServicesLocations.map((loc) => {
@@ -110,10 +132,9 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className="border-b border-[#e7e6e6] mb-2 pl-4 py-2">
-          <a onClick={closeSidebar} href={"/blogs"}>
-            {" "}
+          <Link onClick={closeSidebar} href={"/blogs"}>
             Blogs
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

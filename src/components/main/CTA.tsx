@@ -9,6 +9,7 @@ const CTA = ({ title, desc }: { title?: ReactNode; desc?: ReactNode }) => {
         src={"/nice-movers-team-work.png"}
         alt="nice movers team on work"
         fill
+        sizes="100vw"
         className="absolute object-cover object-center"
       />
       <div className="absolute w-full h-full top-0 left-0 flex flex-col items-start justify-center cta-grd md:pl-20 md:px-0 px-3">

@@ -24,6 +24,10 @@ import Image from "next/image";
 import { FAQs } from "@/components/main/FAQs";
 import { Metadata } from "next";
 import MetadataTemplate from "@/lib/MetaDataTemplate";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbFor, generateServiceSchema } from "@/lib/ServiceSchemaGen";
+import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
+import { APP } from "@/lib/App";
 
 // ─────────────────────────────────────────────────────────────── Data ──────
 
@@ -367,24 +371,71 @@ function CellIcon({ val }: { val: CellValue }) {
 
 // ──────────────────────────────────────────────────────────────── Page ──────
 
-export const metadata: Metadata = MetadataTemplate({
+const AR_SLUG = "نقل-الاثاث-دبي";
+const AR_URL = `${APP.url}/${encodeURIComponent(AR_SLUG)}`;
+const EN_URL = `${APP.url}/movers-and-packers-in-dubai`;
+const OG_ALT_AR = "فريق نايس موفرز لنقل الاثاث في دبي";
+
+const baseMetadata = MetadataTemplate({
   data: {
     meta: {
       title: "نقل الاثاث دبي | شركة نقل أثاث معتمدة ISO — نايس موفرز",
-      desc: "شركة نقل أثاث في دبي معتمدة (ISO 9001). نقدم خدمات التغليف، الفك، والتركيب بأسعار تنافسية وضمان شامل. فريقنا متاح 24/7 لخدمتك في كافة أنحاء دبي. اطلب سعرك المجاني اليوم!",
+      desc: "شركة نقل أثاث في دبي معتمدة ISO 9001:2015. تغليف وفك وتركيب بأسعار شفافة وتأمين على الأثاث، 7 أيام في الأسبوع في كل أنحاء دبي. اطلب عرض سعر مجاني اليوم.",
     },
     image: {
       path: "/dubai/nice-movers-and-packers-in-dubai.jpg",
-      alt: "Nice Movers and Packers in Dubai",
+      alt: OG_ALT_AR,
     },
     path: "/نقل-الاثاث-دبي",
   },
 });
 
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: baseMetadata.alternates?.canonical,
+    languages: {
+      "en-AE": EN_URL,
+      "ar-AE": AR_URL,
+      "x-default": EN_URL,
+    },
+  },
+  openGraph: {
+    ...baseMetadata.openGraph,
+    locale: "ar_AE",
+    images: [
+      {
+        url: `${APP.url}/dubai/nice-movers-and-packers-in-dubai.jpg`,
+        alt: OG_ALT_AR,
+      },
+    ],
+  },
+};
+
+const serviceJsonLd = generateServiceSchema({
+  serviceName: "نقل الاثاث دبي",
+  serviceDescription:
+    "خدمات نقل الأثاث في دبي من نايس موفرز: تغليف احترافي، فك وتركيب، نقل آمن بسيارات مغلقة، وتخزين مؤقت للمنازل والفلل والمكاتب، مع عرض سعر شفاف ومجاني.",
+  serviceUrl: AR_URL,
+  priceRange: "499 AED - 5000 AED",
+  imageUrls: [`${APP.url}/dubai/nice-movers-and-packers-in-dubai.jpg`],
+  areaServed: ["دبي", ...areas.flat()],
+  inLanguage: "ar",
+});
+
+const faqJsonLd = generateFAQSchema(faqs);
+const breadcrumbJsonLd = breadcrumbFor(
+  "نقل الاثاث دبي",
+  "/" + encodeURIComponent(AR_SLUG)
+);
+
 export default function NaqelAthathDubaiPage() {
   return (
     <>
-      <main dir="rtl" className="overflow-x-hidden pb-24 md:pb-0">
+      <JsonLd id="service-schema" data={serviceJsonLd} />
+      <JsonLd id="faqs-schema" data={faqJsonLd} />
+      <JsonLd id="breadcrumb-schema" data={breadcrumbJsonLd} />
+      <main dir="rtl" lang="ar" className="overflow-x-hidden pb-24 md:pb-0">
         {/* ══════════════════════════════════════════════════════ 1. HERO */}
         <section className="bg-[#2d2d2d] relative overflow-hidden">
           {/* Decorative atmosphere */}
@@ -491,6 +542,7 @@ export default function NaqelAthathDubaiPage() {
 
         {/* ════════════════════════════════════════ 2. FORM PLACEHOLDER */}
         <ContactSection
+          locale="ar"
           title="اتصل بنا لنقل الأثاث في دبي"
           desc="هل تبحث عن تجربة نقل خالية من الإجهاد؟ نحن نوفر لك أفضل خدمات نقل الأثاث في دبي بأسعار تنافسية. نعتمد على فريق محترف متخصص في الفك، التغليف، والتركيب لضمان سلامة ممتلكاتك. اتصل بنا الآن واحصل على معاينة مجانية وخدمة سريعة تضمن لك راحة البال."
         />
@@ -555,6 +607,7 @@ export default function NaqelAthathDubaiPage() {
                       src={image}
                       alt={alt}
                       fill
+                      sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
                       className="object-cover"
                     />
                   </div>
@@ -748,6 +801,7 @@ export default function NaqelAthathDubaiPage() {
                   <Image
                     src="/ar/nice-movers-dubai-moving-pricing-transparent-quote.jpg"
                     fill
+                    sizes="(min-width:1024px) 50vw, 100vw"
                     alt="أسعار نقل الاثاث في دبي"
                     className="object-cover"
                   />
@@ -917,7 +971,7 @@ export default function NaqelAthathDubaiPage() {
         {/* ═══════════════════════════════════════════ 10. FAQ */}
 
         <div className="-mt-20">
-          <FAQs faqs={faqs} />
+          <FAQs faqs={faqs} locale="ar" />
         </div>
 
         {/* ════════════════════════════════ 11. COMPETITOR COMPARISON */}

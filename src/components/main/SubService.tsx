@@ -9,12 +9,12 @@ const services = [
       <>
         {" "}
         <p className="text-sm text-gray-600 mb-1">
-          Begin your villa moving process in dubai with a clear financial
+          Begin your villa moving process in Dubai with a clear financial
           picture.
         </p>
         <p className="text-sm text-gray-600 mb-2">
-          Our system is designed to provideonline estimates villa movers in
-          dubai, giving you a quick, accurate, and transparent quote with no
+          Our system is designed to provide online estimates for villa moves in
+          Dubai, giving you a quick, accurate, and transparent quote with no
           hidden fees.
         </p>
       </>
@@ -27,7 +27,7 @@ const services = [
     desc: (
       <>
         <p className="text-sm text-gray-600 mb-1">
-          As expert villa packers and movers in dubai, our team uses premium,
+          As expert villa packers and movers in Dubai, our team uses premium,
           eco-friendly packing materials to protect your possessions.
         </p>
         <p className="text-sm text-gray-600 mb-2">
@@ -85,8 +85,8 @@ const services = [
           keep your items safe.
         </p>
         <p className="text-sm text-gray-600 mb-2">
-          So waiting for what, call to our experts and make you next villa
-          moving in dubai with Nice Movers!
+          So what are you waiting for? Call our experts and make your next villa
+          move in Dubai with Nice Movers!
         </p>
       </>
     ),
@@ -115,10 +115,10 @@ const SubService = () => {
             </p>
           </div>
           <Link
-            href="#"
+            href="/contact-us"
             className="mt-4 md:mt-0 text-sm font-semibold text-white hover:underline"
           >
-            EXPLORE SERVICES
+            GET A FREE QUOTE
           </Link>
         </div>
 
@@ -134,6 +134,7 @@ const SubService = () => {
                   src={service.img}
                   alt={service.alt}
                   fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
                   className="object-cover object-center absolute"
                 />
               </div>

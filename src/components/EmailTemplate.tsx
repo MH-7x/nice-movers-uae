@@ -51,7 +51,8 @@ export const EmailTemplate = ({
                 objectFit: "contain",
                 margin: "0 auto",
               }}
-              src={`https://nicemovers.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FPicture1.a75f7cd9.png&w=1920&q=90`}
+              alt="Nice Movers"
+              src={`${process.env.APP_URI || "https://nicemoversuae.com"}/Picture1.png`}
             />
           </Section>
 
@@ -66,7 +67,7 @@ export const EmailTemplate = ({
                     textAlign: "center",
                   }}
                 >
-                  Mr. {name} contact you to Move his {movingType} from{" "}
+                  {name} requested a quote to move {movingType} from{" "}
                   {movingFrom} to {movingTo}.
                 </Heading>
 
@@ -117,18 +118,10 @@ export const EmailTemplate = ({
                 </Text>
 
                 <Text style={paragraph}>
-                  You Can Contact Him on the Provided Phone Number
+                  You can contact them on the provided phone number
                 </Text>
               </Column>
             </Row>
-          </Section>
-
-          <Section style={containerImageFooter}>
-            <Img
-              style={image}
-              width={620}
-              src={`https://react-email-demo-q2iyfgd67-resend.vercel.app/static/yelp-footer.png`}
-            />
           </Section>
 
           <Text
@@ -138,7 +131,7 @@ export const EmailTemplate = ({
               color: "rgb(0,0,0, 0.7)",
             }}
           >
-            © 2025 | abumuhammadmovers.online | All Rights Reserved
+            © {Date.getFullYear()} Nice Movers | All Rights Reserved
           </Text>
         </Container>
       </Body>
@@ -164,14 +157,6 @@ const content = {
   overflow: "hidden",
 };
 
-const image = {
-  maxWidth: "100%",
-};
-
 const boxInfos = {
   padding: "20px",
-};
-
-const containerImageFooter = {
-  padding: "45px 0 0 0",
 };

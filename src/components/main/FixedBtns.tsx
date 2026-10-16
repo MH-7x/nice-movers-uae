@@ -6,7 +6,8 @@ export const FixedBtns = () => {
   return (
     <div className="fixed w-full bottom-0 left-0 z-50 flex items-end justify-between md:px-10 px-3 md:mb-5 mb-3">
       <Link
-        href={"tel:971563560017"}
+        href={"tel:+971563560017"}
+        aria-label="Call Nice Movers"
         title="Nice Movers Phone Number"
         rel="noopener noreferrer"
         className="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition"
@@ -16,6 +17,7 @@ export const FixedBtns = () => {
       <Link
         target="_blank"
         title="Nice Movers WhatsApp Contact"
+        aria-label="WhatsApp Nice Movers"
         rel="noopener noreferrer"
         href={"https://wa.me/971563560017?text=I%20Need%20Movers"}
         className="bg-[#075e54] text-white p-4 rounded-full shadow-lg hover:bg-[#075e54e2] transition"

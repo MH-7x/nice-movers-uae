@@ -2,173 +2,7 @@ import { servicesList } from "@/components/main/CoreServices";
 import { APP } from "@/lib/App";
 import { PlainFAQ } from "@/lib/GenerateFaqSchema";
 
-export const breadcrumbs = [
-  {
-    name: "Home",
-    url: APP.url,
-  },
-  {
-    name: "House Shifting Services",
-    url: `${APP.url}/house-shifting-services`,
-  },
-  {
-    name: "Contact Us",
-    url: `${APP.url}/contact-us`,
-  },
-  {
-    name: "About Us",
-    url: `${APP.url}/about-us`,
-  },
-  {
-    name: "Villa Movers in Dubai",
-    url: `${APP.url}/villa-movers-in-dubai`,
-  },
-  {
-    name: "Office Movers in Dubai",
-    url: `${APP.url}/office-movers-in-dubai`,
-  },
-  {
-    name: "Movers and packers in Sharjah",
-    url: `${APP.url}/movers-and-packers-sharjah`,
-  },
-  {
-    name: "Blogs",
-    url: `${APP.url}/blogs`,
-  },
-];
-
-export const services = [
-  "Dubai movers",
-  "Best Mover Dubai",
-  "Movers and Packers Dubai",
-  "Moving Company Dubai",
-  "Furniture Movers in Dubai",
-  "Cheap Movers in Dubai",
-  "Relocation Company in Dubai",
-  "Same Day Furniture Removal",
-  "Moving Company Dubai Prices",
-  "Villa Movers in Dubai",
-  "Cheap Moving Company Dubai",
-  "Best Movers Packers Dubai",
-  "Movers and Packers near me",
-  "House shifting services",
-  "UAE Mover Packers",
-  "Mover and Packer in UAE",
-  "Packers and Movers Near Me",
-  "Residential Movers Near Me",
-  "Movers and Packers Sharjah",
-  "Furniture Movers in Dubai",
-  "Cheap Movers and Packers in Dubai",
-  "Best Moving Companies in Dubai",
-  "Best Movers and Packers Dubai",
-  "Local Movers in Dubai",
-  "Office Movers in Dubai",
-  "Movers and Packers Ajman",
-  "Furniture Movers Abu Dhabi",
-  "Cheap Movers and Packers in Abu Dhabi",
-  "Best Moving Company in Abu Dhabi",
-  "Professional Movers and Packers Dubai",
-  "House Movers Abu Dhabi",
-  "UAE Movers and Packers",
-  "Best Movers in Abu Dhabi",
-  "House Shifting Services Dubai",
-  "Cheap Movers in Abu Dhabi",
-  "Villa Movers and Packers in Dubai",
-  "Villa Movers in Abu Dhabi",
-  "Movers and Packers Al Ain",
-  "Furniture Movers and Packers in Abu Dhabi",
-  "Movers and Packers Dubai Marina",
-  "Movers and Packers Al Quoz",
-  "Office Movers and Packers in Dubai",
-  "Best Movers and Packers in Abu Dhabi",
-  "Office Movers in Abu Dhabi",
-  "Movers and Packers in Dubai Marina",
-  "Movers in Dubai Marina",
-  "Packers and Movers Ajman",
-  "Best Movers in Sharjah",
-  "Abu Dhabi House Movers and Packers",
-  "Expert Movers and Packers Dubai",
-  "Movers and Packers Al Nahda Dubai",
-  "Movers and Packers in Palm Jumeirah",
-  "Movers and Packers in Mussafah",
-  "Home Shifting Services in Abu Dhabi",
-  "Best Movers and Packers in Sharjah",
-  "Movers and Packers Bur Dubai",
-  "Cheap and Best Movers and Packers in Dubai",
-  "Movers in Al Nahda Dubai",
-  "Movers and Packers Umm Al Quwain",
-  "Movers and Packers Fujairah",
-  "House Moving Companies in Abu Dhabi",
-  "House Shifting Services in Sharjah",
-  "Ajman Movers and Packers",
-  "House Shifting Services in Abu Dhabi",
-  "Office Movers in Ajman",
-  "Best Furniture Movers in Dubai",
-  "House Movers and Packers in Dubai",
-  "Home Movers in Ajman",
-  "Packers and Movers in Mussafah",
-  "Home Shifting in Dubai",
-  "Movers and Packers Sharjah Nahda",
-  "Professional Movers and Packers Sharjah",
-  "Professional Movers in Sharjah",
-  "Best Moving Company in UAE",
-  "Furniture Movers and Packers in Dubai",
-  "House Furniture Movers in Abu Dhabi",
-  "Movers and Packers Al Barsha",
-  "House Movers and Packers in Abu Dhabi",
-  "Affordable Movers in Dubai",
-  "Best Home Movers and Packers in Dubai",
-  "Movers and Packers in Marina Dubai",
-  "Movers and Packers in Sharjah Al Nahda",
-  "Home Shifting Services in Dubai",
-  "Home Shifting Services in Sharjah",
-  "Movers and Packers Dubai Silicon Oasis",
-  "Professional Packers and Movers Dubai",
-  "Movers Packers in Abu Dhabi",
-  "Movers and Packers in Dubai Silicon Oasis",
-  "Affordable Movers Dubai Moving Company",
-  "Abu Dhabi Movers and Packer",
-  "Best Furniture Movers and Packers in Dubai",
-  "Best Furniture Movers in Abu Dhabi",
-  "Best Home Movers and Packers in Sharjah",
-  "Best Home Movers in Sharjah",
-  "Best House Movers in Dubai",
-  "Best Local Movers in Dubai",
-  "Best Movers and Packers in Ajman",
-  "Best Movers and Packers in Al Ain",
-  "Best Movers in Al Ain",
-  "Best Movers in Bur Dubai",
-  "Best Movers in Dubai Marina",
-  "Best Movers Packers Dubai",
-  "Best Office Movers in Dubai",
-  "Cheap and Best Movers in Dubai",
-  "Cheap Movers and Packers in Dubai Marina",
-  "Cheap Movers and Packers in Sharjah",
-  "Fast House Movers and Packers Dubai",
-  "Fast Movers and Packers in Dubai",
-  "Furniture Movers and Packers Dubai",
-  "Furniture Moving Company in Dubai",
-  "Professional House Movers and Packers in Dubai",
-  "No 1 UAE Mover Packers",
-  "Low Price UAE Mover Packers",
-  "Professional Packers and Movers Abu Dhabi",
-  "Professional Packers and Movers in Dubai",
-  "Residential Movers in Dubai",
-  "Room Shifting Services in Abu Dhabi",
-  "Villa Movers Abu Dhabi",
-  "Villa Movers and Packers in Abu Dhabi",
-  "Villa Movers and Packers in Sharjah",
-  "Villa Movers in Al Ain",
-  "Villa Movers in Palm Jumeirah",
-  "Villa Movers in Sharjah",
-];
-
 export const ServicesLocations = [
-  {
-    title: "Movers in Abu Dhabi",
-    desc: "Professional movers in Abu Dhabi offering reliable and affordable moving services for homes and offices across the UAE.",
-    link: "/",
-  },
   {
     title: "Movers in Dubai",
     desc: "Expert movers in Dubai providing fast, secure, and cost-effective moving solutions for residential and commercial clients.",
@@ -185,41 +19,10 @@ export const ServicesLocations = [
     link: "/movers-in-ras-al-khaimah",
   },
   {
-    title: "Movers in Fujairah",
-    desc: "Professional moving and packing services in Fujairah for residential, commercial, and furniture relocation across the UAE.",
-    link: "/",
-  },
-  {
     title: "Movers in Sharjah",
     desc: "Trusted movers and packers in Sharjah with same-day service, safe packing, and expert handling for all types of moves.",
     link: "/movers-and-packers-sharjah",
   },
-  {
-    title: "Movers in Al Ain",
-    desc: "Top-rated movers and packers in Al Ain specializing in villa, apartment, and office moving services at competitive rates.",
-    link: "/",
-  },
-  {
-    title: "Movers Palm Jumeirah",
-    desc: "Experienced movers and packers in Palm Jumeirah offering luxury relocation services with full packing and transport support.",
-    link: "/movers-and-packers-in-dubai",
-  },
-  {
-    title: "Movers in JVC",
-    desc: "Affordable and professional movers in JVC (Jumeirah Village Circle) for fast, secure, and hassle-free moving solutions.",
-    link: "/movers-and-packers-in-dubai",
-  },
-  {
-    title: "Movers in Business Bay",
-    desc: "Efficient movers and packers in Business Bay for office relocations and home shifting with expert packing and delivery.",
-    link: "/movers-and-packers-in-dubai",
-  },
-  {
-    title: "Movers and Packers in JLT",
-    desc: "Safe and reliable movers and packers in JLT (Jumeirah Lake Towers) with professional service and timely delivery.",
-    link: "/movers-and-packers-in-dubai",
-  },
-
   {
     title: "نقل الاثاث دبي",
     desc: "نقل أثاث دبي: خدمات احترافية تشمل الفك، التغليف، والتركيب بضمان شامل وأسعار تنافسية. فريقنا خبير ومعتمد لضمان سلامة ممتلكاتك.",
@@ -232,6 +35,8 @@ export const cities = [
   "Dubai",
   "Fujairah",
   "Sharjah",
+  "Ajman",
+  "Ras Al Khaimah",
   "Al Ain",
   "Palm Jumeirah",
   "JVC (Jumeirah Village Circle)",
@@ -242,9 +47,30 @@ export const cities = [
   "Arabian Ranches",
 ];
 
+// Must equal ORGANIZATION_ID in src/lib/ServiceSchemaGen.ts
+const ORGANIZATION_ID = `${APP.url}/#organization`;
+
+const areaServedNames = [
+  "Dubai",
+  "Sharjah",
+  "Ajman",
+  "Ras Al Khaimah",
+  "Abu Dhabi",
+  "Fujairah",
+  "Al Ain",
+  "Palm Jumeirah",
+  "JVC",
+  "Business Bay",
+  "JLT",
+  "Al Nahda",
+  "Al Barsha",
+  "Arabian Ranches",
+];
+
 export const schemaData = {
   "@context": "https://schema.org",
   "@type": "MovingCompany",
+  "@id": ORGANIZATION_ID,
   name: APP.name,
   url: APP.url,
   logo: `${APP.url}/Picture1.png`,
@@ -253,13 +79,13 @@ export const schemaData = {
     "Nice Movers is a leading movers and packers company in the UAE, offering affordable, fast, and secure relocation services including house shifting, villa moving, office relocation, storage, and more.",
   telephone: "+971563560017",
   email: "nicemovers.com@gmail.com",
+  foundingDate: "2015",
+  sameAs: ["https://www.facebook.com/profile.php?id=61578872861851"],
   address: {
     "@type": "PostalAddress",
-    streetAddress:
-      "2 Moatab Bin Auf St - Bu Shaghara - Hay Al Qasimiah - Sharjah",
+    streetAddress: "2 Moatab Bin Auf St, Bu Shaghara, Hay Al Qasimiah",
     addressLocality: "Sharjah",
     addressRegion: "Sharjah",
-    postalCode: "00000",
     addressCountry: "AE",
   },
   openingHoursSpecification: [
@@ -283,34 +109,34 @@ export const schemaData = {
       closes: "18:00",
     },
   ],
-  areaServed: [
-    "Abu Dhabi",
-    "Dubai",
-    "Fujairah",
-    "Sharjah",
-    "Al Ain",
-    "Palm Jumeirah",
-    "JVC",
-    "Business Bay",
-    "JLT",
-    "Al Nahda",
-    "Al Barsha",
-    "Arabian Ranches",
-  ],
+  areaServed: areaServedNames.map((name) => ({ "@type": "City", name })),
   priceRange: "$$",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Moving Services",
-    itemListElement: servicesList.map((services) => ({
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: services.title,
-        description: services.desc,
-        url: `${APP.url}/${services.link}`,
-      },
-    })),
+    // Only services that have their own page
+    itemListElement: servicesList
+      .filter((s) => s.link && s.link !== "/")
+      .map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          description: s.desc,
+          url: `${APP.url}${s.link}`,
+        },
+      })),
   },
+};
+
+export const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${APP.url}/#website`,
+  name: APP.name,
+  url: APP.url,
+  inLanguage: ["en", "ar"],
+  publisher: { "@id": ORGANIZATION_ID },
 };
 
 export const HouseShiftingRawFaqs: PlainFAQ[] = [
@@ -374,11 +200,6 @@ export const VillaMovingRawFaqs: PlainFAQ[] = [
   },
   {
     question: "Do you offer villa moving services in all over UAE?",
-    answer:
-      "Although we specialize in villa relocations in Dubai and Abu Dhabi, our services extend across all UAE emirates — including Sharjah, Ras Al Khaimah, Fujairah, Ajman, and Umm Al Quwain — providing professional villa moving solutions no matter where you're located.",
-  },
-  {
-    question: "What type of Villa moving services are you offering?",
     answer:
       "Although we specialize in villa relocations in Dubai and Abu Dhabi, our services extend across all UAE emirates — including Sharjah, Ras Al Khaimah, Fujairah, Ajman, and Umm Al Quwain — providing professional villa moving solutions no matter where you're located.",
   },
@@ -460,7 +281,7 @@ export const sharjahPageFaqs: PlainFAQ[] = [
   {
     question: "Are you licensed and insured?",
     answer:
-      "Yes. Nice Movers is fully licensed in the UAE (MOE-approved) and every move is fully insured. We are ISO 9001:2015 and FAIM certified, which means we follow strict international safety and quality standards throughout the moving process.",
+      "Yes. Nice Movers is fully licensed in the UAE (MOE-approved) and every move is fully insured. We are ISO 9001:2015 certified, which means we follow strict international safety and quality standards throughout the moving process.",
   },
   {
     question: "Do you pack fragile items?",

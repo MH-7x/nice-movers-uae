@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -30,21 +30,24 @@ const Pricing = () => {
           </p>
           <p>
             {" "}
-            (By comparison, a moving cost guide lists studio moves at ~AED
-            800–1,200 and 1-BHK at AED 1,200–2,500 .)
-          </p>
-          <p>
-            {" "}
             For an exact quote tailored to your move, use our free online quote
             form or contact us – there are no hidden fees.
           </p>
         </div>
         <div className="mt-5 flex gap-x-3">
-          <Link href={"/"} title="Get A Free Moving Quote">
-            <Button className="b-red-bg">Get A Quote</Button>
+          <Link
+            href={"/contact-us"}
+            title="Get A Free Moving Quote"
+            className={buttonVariants({ className: "b-red-bg" })}
+          >
+            Get A Quote
           </Link>
-          <Link title="About Nice Movers" href={"/"}>
-            <Button variant={"secondary"}>About Us</Button>
+          <Link
+            title="About Nice Movers"
+            href={"/about-us"}
+            className={buttonVariants({ variant: "secondary" })}
+          >
+            About Us
           </Link>
         </div>
       </div>
@@ -53,6 +56,7 @@ const Pricing = () => {
           src={"/nice-movers-trucks-vans.png"}
           alt="Nice Movers trucks and Vans"
           fill
+          sizes="(min-width:768px) 50vw, 100vw"
           className="absolute object-center object-cover"
         />
       </div>

@@ -23,7 +23,8 @@ const ServiceHero = ({
         alt={image.alt}
         fill
         placeholder="blur"
-        loading="eager"
+        priority
+        sizes="100vw"
         className="absolute object-cover object-center"
         quality={90}
       />
@@ -32,7 +33,7 @@ const ServiceHero = ({
           <div className="w-full h-5 b-red-bg absolute top-10 -left-10"></div>
           <h1 className="font-bold md:text-4xl text-2xl md:mt-5">{title}</h1>
           <p className="b-text mt-5">{desc}</p>
-          <Button callBtn className="mt-5 b-red-bg">
+          <Button callBtn className="mt-5 b-red-bg self-start">
             {btnText}
           </Button>
         </div>

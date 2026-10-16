@@ -30,7 +30,7 @@ const DesktopNav = () => {
               className="object-contain object-center absolute"
               alt="Nice Movers Company Logo"
               priority
-              loading="eager"
+              sizes="256px"
               quality={90}
             />
           </Link>

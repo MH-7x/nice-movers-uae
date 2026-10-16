@@ -7,12 +7,15 @@ const ContactSection = ({
   desc,
   dm = false,
   h1 = false,
+  locale = "en",
 }: {
   title: string;
   desc: string | ReactNode;
   dm?: boolean;
   h1?: boolean;
+  locale?: "en" | "ar";
 }) => {
+  const isAr = locale === "ar";
   return (
     <section
       id="quote-section"
@@ -21,7 +24,7 @@ const ContactSection = ({
       }  w-11/12 mx-auto grid md:grid-cols-2 grid-cols-1 gap-20 items-center`}
     >
       <div>
-        <QuoteForm />
+        <QuoteForm locale={locale} />
       </div>
 
       {/* Right Info Panel */}
@@ -36,13 +39,25 @@ const ContactSection = ({
           <div className="flex flex-col items-center justify-center gap-3">
             <Timer size={40} className="text-[#c00000]" />
             <h3 className="md:text-xl text-lg text-center">
-              Quick Response Within <br />5 Minutes
+              {isAr ? (
+                "استجابة سريعة خلال 5 دقائق"
+              ) : (
+                <>
+                  Quick Response Within <br />5 Minutes
+                </>
+              )}
             </h3>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
             <Stars size={40} className="text-[#c00000]" />
             <h3 className="md:text-xl text-lg text-center">
-              800+ Customers Reviews <br /> from UAE
+              {isAr ? (
+                "أكثر من 800 تقييم من عملائنا في الإمارات"
+              ) : (
+                <>
+                  800+ Customer Reviews <br /> from UAE
+                </>
+              )}
             </h3>
           </div>
         </div>
